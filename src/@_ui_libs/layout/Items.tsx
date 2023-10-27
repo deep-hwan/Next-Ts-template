@@ -6,6 +6,7 @@ import {
   PaddingTheme,
   ScrollTheme,
   StyleTheme,
+  TabTheme,
   ViewportTheme,
 } from '@/@_ui_libs/_theme';
 
@@ -101,6 +102,7 @@ interface ItemProps extends HTMLAttributes<HTMLLIElement> {
     type?: 'visible' | 'auto' | 'scroll' | 'hidden';
     bar?: boolean;
   };
+  cursor?: 'default' | 'grab' | 'pointer' | 'zoom';
 }
 
 // -----------------------------------
@@ -180,6 +182,7 @@ export const Item = forwardRef(function Item(
     borderRadius,
     boxShadow,
     scroll,
+    cursor,
     ...props
   }: ItemProps,
   ref?: ForwardedRef<HTMLLIElement>,
@@ -194,6 +197,7 @@ export const Item = forwardRef(function Item(
         FlexTheme({ direction, align, crossAlign, wrap, gap, crossGap }),
         StyleTheme({ backgroundColor, border, borderRadius, boxShadow }),
         ScrollTheme({ scroll }),
+        TabTheme({ cursor }),
       ]}
       {...props}
     >

@@ -7,7 +7,6 @@ import { PaddingTheme, MarignTheme, FlexTheme, TypographyTheme } from '../_theme
 // --------------------------------------------
 interface Props extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
-  txtAlign?: 'start' | 'end' | 'center';
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'strong' | 'p';
   direction?: 'horizontal' | 'vertical';
   gap?: number;
@@ -16,6 +15,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
   lineHeight?: number;
   weight?: 'lighter' | 'normal' | 'medium' | 'bold';
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line';
+  txtAlign?: 'start' | 'end' | 'center';
   padding?: {
     all?: number;
     horizontal?: number;

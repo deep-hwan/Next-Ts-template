@@ -21,6 +21,7 @@ import { Img } from './images/Img';
 import { Input } from './input/Input';
 import { CheckInput } from './input/CheckBox';
 import { Select, Option } from './input/Select';
+import { ProfileUploadBox } from './input/ProfileUploadBox';
 
 //tab
 import { Button } from './tab/Button';
@@ -79,6 +80,7 @@ export {
   LoadingLayer,
   AccordionPanel,
   ScrollTopTab,
+  ProfileUploadBox,
   Dialog,
   BottomSheet,
   CalenderModal,

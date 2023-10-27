@@ -13,7 +13,14 @@ import React, {
 } from 'react';
 import { Interpolation, Theme } from '@emotion/react';
 import { Column, Txt } from '../_index';
-import { GlobalInputStyles } from '@/@_ui_libs/_theme';
+import {
+  FieldBoxTheme,
+  GlobalInputTheme,
+  LabelTheme,
+  PaddingTheme,
+  TypographyTheme,
+  ViewportTheme,
+} from '@/@_ui_libs/_theme';
 
 // --------------------------------------------
 // -------------- Type Interface --------------
@@ -56,7 +63,7 @@ export function Select({ children, label, labelEdge, maxWidth, ...props }: Selec
   return (
     <Column maxWidth={maxWidth} {...props}>
       {label && (
-        <label htmlFor={id} css={[labelTheme(error)]}>
+        <label htmlFor={id} css={[LabelTheme(error)]}>
           {label}
           {labelEdge && (
             <span css={{ fontSize: '0.65rem', color: '#ed5c5c', marginLeft: '4px' }}>
@@ -100,7 +107,10 @@ Select.SelectBox = forwardRef(function SelectBox(
       {cloneElement(
         <select
           ref={ref}
-          css={[SelectTypeStyles(shape, error), SelectTheme(value as boolean | string | number)]}
+          css={[
+            FieldBoxTheme(shape, error),
+            SelectTheme(shape, value as boolean | string | number),
+          ]}
           {...props}
         >
           {placeholder && (
@@ -135,56 +145,19 @@ export const Option = memo(function Option({ children, ...props }: OptionProps) 
 // -----------------------------------------
 // -------------- THEME_STYLE --------------
 // -----------------------------------------
-function SelectTypeStyles(shape: 'default' | 'box', error?: boolean | string) {
-  let styles: Record<string, string | any> = {};
-
-  if (shape === 'default') {
-    styles = {
-      padding: '12px',
-      borderBottom: error ? `1px solid #ED5C5C` : `1px solid #e2e2e2`,
-      backgroundColor: error ? '#FFF8F8' : '#f8f9fc',
-      '&:focus, &:hover, &:active': {
-        backgroundColor: error ? '#FFF4F4' : '#f5f7fc',
-      },
-    };
-  } else if (shape === 'box') {
-    styles = {
-      padding: '14px 12px',
-      border: error ? `1px solid #ED5C5C` : `1px solid #e2e2e2`,
-      backgroundColor: error ? '#FFF8F8' : '#ffffff',
-      borderRadius: '14px',
-      '&:focus, &:hover, &:active': {
-        backgroundColor: error ? '#FFF4F4' : '#fafafa',
-      },
-    };
-  }
-
-  return styles;
-}
-
-function labelTheme(error: boolean) {
-  return {
-    color: error ? '#ED5C5C' : '#797979',
-    display: 'inline-block',
-    fontSize: '0.813rem',
-    marginBottom: '6px',
-
-    '&:focus-within': {
-      fontWeight: 500,
-    },
-  };
-}
-
-function SelectTheme(value: boolean | string | number): Interpolation<Theme> {
-  const globalStyles = GlobalInputStyles();
-  if (typeof globalStyles === 'object' && globalStyles !== null) {
-    return {
-      ...globalStyles,
-      width: '100%',
-      minWidth: '100px',
+function SelectTheme(
+  shape: 'default' | 'box',
+  value: boolean | string | number,
+): Interpolation<Theme> {
+  return [
+    GlobalInputTheme(),
+    ViewportTheme({ width: '100%', minWidth: 100 }),
+    TypographyTheme({ size: 15, color: value !== '' ? '#555555' : '#e2e2e2' }),
+    shape === 'default' && PaddingTheme({ padding: { all: 12 } }),
+    shape === 'box' && PaddingTheme({ padding: { vertical: 14, horizontal: 12 } }),
+    {
       display: 'flex',
-      fontSize: `0.913rem !important`,
-      color: value !== '' ? '#555555' : '#cccccc',
+      fontSize: '0.938rem !important',
       font: 'inherit',
       WebkitBoxSizing: 'border-box',
       MozBoxSizing: 'border-box',
@@ -199,13 +172,12 @@ function SelectTheme(value: boolean | string | number): Interpolation<Theme> {
       backgroundRepeat: 'no-repeat',
       outline: '0',
       paddingRight: '30px',
-      transition: '0.4s ease-in-out',
 
       '&:disabled': {
         backgroundColor: '#f2f2f2',
         color: '#999',
         opacity: '0.9',
       },
-    };
-  }
+    },
+  ];
 }

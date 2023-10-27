@@ -10,6 +10,7 @@ interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   type?: 'button' | 'submit';
   weight?: 'lighter' | 'normal' | 'medium' | 'bold';
+  txtAlign?: 'start' | 'end' | 'center';
   size?: number | string;
   color?: string;
   padding?: {
@@ -36,7 +37,7 @@ interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 // -------------- TxtTab --------------
 // ------------------------------------
 export const TxtTab = forwardRef(function TxtTab(
-  { children, type = 'button', size, weight, color, padding, margin, ...props }: TabProps,
+  { children, type = 'button', size, txtAlign, weight, color, padding, margin, ...props }: TabProps,
   ref?: ForwardedRef<HTMLButtonElement>,
 ) {
   return (
@@ -51,6 +52,7 @@ export const TxtTab = forwardRef(function TxtTab(
           color: color ? color : colors.keyColor,
           weight,
           whiteSpace: 'nowrap',
+          txtAlign,
         }),
         TabTheme({ opacityDisabled: 0.4 }),
         { '&:hover': { fontWeight: '500' } },

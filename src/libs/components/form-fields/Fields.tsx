@@ -5,21 +5,35 @@ import { useRouter, NextRouter } from 'next/router';
 import { useRaiseEditor } from 'react-raise-editor';
 
 //libs
-import { Button, Column, Form, Input, LoadingLayer, Row, Tab, Wrap } from '@/@_ui_libs/_index';
+import {
+  Button,
+  Column,
+  Form,
+  Input,
+  LoadingLayer,
+  Row,
+  Select,
+  Option,
+  Tab,
+  ProfileUploadBox,
+} from '@/@_ui_libs/_index';
+import { colors } from '@/libs/themes/_index';
 
 //utils
 import { moment } from '@/libs/utils/moment';
+import { regEx } from '@/libs/utils/regEx';
 
 //components
 import CheckBoxs from './CheckBoxs';
 import CheckModals from './CheckModals';
-import { colors } from '@/libs/themes/colors';
 
 //
 interface isValuesProps {
+  profileImg: string;
   name: string;
   tel: string;
   email: string;
+  gender: string;
   price: string;
   date: Date | string;
   context: string;
@@ -36,9 +50,11 @@ export default function Fields() {
   const [isType, setIsType] = useState<'default' | 'box'>('box');
 
   const [isValues, setIsValues] = useState<isValuesProps>({
+    profileImg: '',
     name: '',
     tel: '',
     email: '',
+    gender: '',
     price: '',
     date: new Date(),
     context: '',
@@ -46,17 +62,6 @@ export default function Fields() {
     check2: false,
     check3: false,
   });
-
-  // 이메일 정규식
-  const emailRegex =
-    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-
-  //
-  /// 입력 핸들러
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setIsValues({ ...isValues, [name]: value });
-  };
 
   //
   /// 인풋 핸들러
@@ -89,7 +94,7 @@ export default function Fields() {
     <>
       {isLoading && <LoadingLayer />}
 
-      <Column gap={22}>
+      <Column gap={30}>
         <Row gap={10}>
           <Tab
             onClick={() => setIsType('default')}
@@ -113,7 +118,15 @@ export default function Fields() {
           </Tab>
         </Row>
 
-        <Form gap={24} onSubmit={handleOnSubmit}>
+        <Form gap={22} onSubmit={handleOnSubmit} align="center">
+          {/* ----- 프로필 사진 업로드 : ProfileUploadBox ----- */}
+          <ProfileUploadBox
+            size={120}
+            image={isValues.profileImg}
+            imageOnload={(result: any) => setIsValues({ ...isValues, profileImg: result })}
+            uploadCancel={() => setIsValues({ ...isValues, profileImg: '' })}
+          />
+
           {/* ----- 이름 텍스트 타입 인풋 : TextField ----- */}
           <Input label="이름" labelEdge="(필수)">
             <Input.TextField
@@ -122,7 +135,9 @@ export default function Fields() {
               type="text"
               name="name"
               value={isValues.name}
-              onChange={handleOnChange}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setIsValues({ ...isValues, name: e.target.value })
+              }
             />
           </Input>
 
@@ -132,7 +147,9 @@ export default function Fields() {
               shape={isType}
               placeholder="연락처를 입력하세요"
               value={isValues.tel}
-              onChange={handleOnChange}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setIsValues({ ...isValues, tel: e.target.value })
+              }
             />
           </Input>
 
@@ -144,20 +161,35 @@ export default function Fields() {
               type="text"
               name="email"
               value={isValues.email}
-              onChange={handleOnChange}
-              error={!!isValues.email && !emailRegex.test(isValues.email)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setIsValues({ ...isValues, email: e.target.value })
+              }
+              error={!!isValues.email && !regEx.email.test(isValues.email)}
               errorMsg="이메일 형식으로 입력하세요"
             />
           </Input>
 
+          {/* ----- 셀렉트 타입 인풋 : SelectBox ----- */}
+          <Select label="성별">
+            <Select.SelectBox
+              shape={isType}
+              placeholder="성별을 입력하세요"
+              value={isValues.gender}
+              onChange={(e) => setIsValues({ ...isValues, gender: e.target.value })}
+            >
+              <Option value="남성">남성</Option>
+              <Option value="여성">여성</Option>
+            </Select.SelectBox>
+          </Select>
+
           {/* ----- 가격 넘버릭 타입 인풋 : NumericField ----- */}
           <Input label="가격">
-            <Input.NumericField
+            <Input.NumbericField
               shape={isType}
               placeholder="가격을 입력하세요"
               name="price"
               value={isValues.price}
-              onChange={handleOnChange}
+              onChange={(e) => setIsValues({ ...isValues, price: e.target.value })}
               edge="원"
             />
           </Input>
@@ -180,7 +212,9 @@ export default function Fields() {
               name="context"
               value={isValues.context}
               ref={textRef}
-              onChange={handleOnChange}
+              onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+                setIsValues({ ...isValues, context: e.target.value })
+              }
               tolTip="문의 내용을 자유룝게 작성해주세요"
             />
           </Input>

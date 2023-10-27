@@ -20,7 +20,18 @@ import { ko } from 'date-fns/locale';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { Column, Padding, Row, Txt, TxtSpan, TxtTab, Wrap } from '../_index';
-import { GlobalInputStyles, ScrollTheme } from '@/@_ui_libs/_theme';
+import {
+  GlobalInputTheme,
+  ScrollTheme,
+  LabelTheme,
+  FlexTheme,
+  ViewportTheme,
+  TypographyTheme,
+  MarignTheme,
+  StyleTheme,
+  PaddingTheme,
+  FieldBoxTheme,
+} from '@/@_ui_libs/_theme';
 
 // --------------------------------------------
 // -------------- Type Interface --------------
@@ -39,6 +50,7 @@ interface FieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
   errorMsg?: boolean | string;
   tolTip?: boolean | string;
   edge?: ReactNode;
+  txtAlign?: 'start' | 'end' | 'center';
 }
 
 interface SearchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
@@ -48,12 +60,13 @@ interface SearchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'
   searchTab?: boolean;
 }
 
-interface NumericFieldProps
+interface NumbericFieldProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
     Omit<FieldProps, 'autoComplete'> {
   autoComplete?: 'on' | 'off';
   numericValue?: number | string;
   onNumericChange?: (value: number) => void;
+  txtAlign?: 'start' | 'end' | 'center';
 }
 
 interface TextareaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> {
@@ -91,7 +104,7 @@ export function Input({ children, label, labelEdge, maxWidth, ...props }: InputP
   return (
     <Column maxWidth={maxWidth} {...props}>
       {label && (
-        <label htmlFor={id} css={[labelTheme(error)]}>
+        <label htmlFor={id} css={[LabelTheme(error)]}>
           {label}
           {labelEdge && (
             <span css={{ fontSize: '0.65rem', color: '#ed5c5c', marginLeft: '4px' }}>
@@ -125,12 +138,12 @@ export function Input({ children, label, labelEdge, maxWidth, ...props }: InputP
 // -------------- TextField --------------
 // ---------------------------------------
 Input.TextField = forwardRef(function TextField(
-  { shape = 'default', error, edge, tolTip, ...props }: FieldProps,
+  { shape = 'default', error, edge, tolTip, txtAlign, ...props }: FieldProps,
   ref?: ForwardedRef<HTMLInputElement>,
 ) {
   return (
-    <Row align="center" css={[FieldTypeStyles(shape, error)]}>
-      <input ref={ref} css={[InputTypeStyles('default', shape), InputTheme()]} {...props} />
+    <Row align="center" css={[FieldBoxTheme(shape, error)]}>
+      <input ref={ref} css={InputTheme(txtAlign, shape)} {...props} />
 
       {edge && (
         <TxtSpan padding={{ right: shape === 'box' ? 10 : 12 }} color="#999999">
@@ -149,7 +162,7 @@ Input.SearchField = forwardRef(function SearchField(
   ref?: ForwardedRef<HTMLInputElement>,
 ) {
   return (
-    <Row align="center" gap={8} css={[FieldTypeStyles(shape)]} padding={{ horizontal: 12 }}>
+    <Row align="center" gap={8} css={[FieldBoxTheme(shape)]} padding={{ horizontal: 12 }}>
       <Wrap minWidth={17} width="auto">
         <SearchIcon />
       </Wrap>
@@ -165,7 +178,11 @@ Input.SearchField = forwardRef(function SearchField(
             document.getElementById(`${id}-button`)?.click();
           }
         }}
-        css={[InputTypeStyles('search', shape), InputTheme()]}
+        css={[
+          InputTheme(),
+          shape === 'default' && PaddingTheme({ padding: { vertical: 12 } }),
+          shape === 'box' && PaddingTheme({ padding: { vertical: 14 } }),
+        ]}
         {...props}
       />
 
@@ -228,7 +245,7 @@ Input.PhoneNumberField = forwardRef(function PhoneNumberField(
   };
 
   return (
-    <Row align="center" css={[FieldTypeStyles(shape, error)]}>
+    <Row align="center" css={[FieldBoxTheme(shape, error)]}>
       <input
         ref={ref}
         type="text"
@@ -236,7 +253,7 @@ Input.PhoneNumberField = forwardRef(function PhoneNumberField(
         maxLength={13}
         value={internalValue}
         onChange={handleInputChange}
-        css={[InputTypeStyles('default', shape), InputTheme()]}
+        css={InputTheme('start', shape)}
         {...props}
       />
 
@@ -252,19 +269,19 @@ Input.PhoneNumberField = forwardRef(function PhoneNumberField(
 // ----------------------------------------
 // -------------- PriceField --------------
 // ----------------------------------------
-Input.NumericField = forwardRef(function NumericField(
-  { shape = 'default', error, edge, tolTip, ...props }: NumericFieldProps,
+Input.NumbericField = forwardRef(function NumbericField(
+  { shape = 'default', error, edge, tolTip, txtAlign, ...props }: NumbericFieldProps,
   ref?: ForwardedRef<HTMLInputElement>,
 ) {
   const [displayValue, setDisplayValue] = useState<string | any>(props.value || '');
 
-  useEffect(() => {
-    if (typeof props.value === 'number') {
-      setDisplayValue(props.value.toLocaleString());
-    } else if (typeof props.value === 'string') {
-      setDisplayValue(props.value);
-    }
-  }, [props.value]);
+  // useEffect(() => {
+  //   if (typeof props.value === 'number') {
+  //     setDisplayValue(props.value.toLocaleString());
+  //   } else if (typeof props.value === 'string') {
+  //     setDisplayValue(props.value);
+  //   }
+  // }, [props.value]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value.replace(/,/g, '');
@@ -295,15 +312,16 @@ Input.NumericField = forwardRef(function NumericField(
       }
     }
   };
+
   return (
-    <Row align="center" css={[FieldTypeStyles(shape, error)]}>
+    <Row align="center" css={[FieldBoxTheme(shape, error)]}>
       <input
         ref={ref}
         {...props}
         value={displayValue}
         onChange={handleInputChange}
         autoComplete="off"
-        css={[InputTypeStyles('default', shape), InputTheme()]}
+        css={InputTheme(txtAlign, shape)}
       />
 
       {edge && (
@@ -336,7 +354,7 @@ Input.DateField = forwardRef(function DateField({
   };
 
   return (
-    <Row align="center" css={[FieldTypeStyles(shape, error)]}>
+    <Row align="center" css={[FieldBoxTheme(shape, error)]}>
       <DatePicker
         placeholderText={placeholder}
         dateFormat={dateFormat}
@@ -344,7 +362,7 @@ Input.DateField = forwardRef(function DateField({
         selected={selected}
         onChange={handleDateChange}
         autoComplete="off"
-        css={[InputTypeStyles('default', shape), InputTheme()]}
+        css={InputTheme('start', shape)}
         {...props}
       />
     </Row>
@@ -359,13 +377,12 @@ Input.Textarea = forwardRef(function Textarea(
   ref?: ForwardedRef<HTMLTextAreaElement>,
 ) {
   return (
-    <Row align="end" css={[FieldTypeStyles(shape, error)]}>
+    <Row align="end" css={[FieldBoxTheme(shape, error)]}>
       <textarea
         ref={ref}
         rows={rows}
         css={[
-          InputTypeStyles('default', shape),
-          InputTheme(),
+          InputTheme('start', shape),
           ScrollTheme({
             scroll: {
               type: rows >= 2 ? 'auto' : 'visible',
@@ -398,94 +415,22 @@ Input.Textarea = forwardRef(function Textarea(
 // -----------------------------------------
 // -------------- THEME_STYLE --------------
 // -----------------------------------------
-function FieldTypeStyles(shape: 'default' | 'box', error?: boolean | string) {
-  let styles: Record<string, string | any> = {};
+function InputTheme(
+  txtAlign?: 'start' | 'end' | 'center',
+  shape?: 'box' | 'default',
+): Interpolation<Theme> {
+  return [
+    ViewportTheme({ width: '100%' }),
+    GlobalInputTheme(),
+    FlexTheme({ direction: 'horizontal', align: 'center' }),
+    TypographyTheme({ size: 15, txtAlign, color: '#555555' }),
+    MarignTheme({ margin: { all: 0 } }),
+    StyleTheme({ backgroundColor: 'transparent', borderRadius: 0 }),
+    shape === 'default' && PaddingTheme({ padding: { all: 12 } }),
+    shape === 'box' && PaddingTheme({ padding: { vertical: 14, horizontal: 12 } }),
 
-  if (shape === 'default') {
-    styles = {
-      borderBottom: error ? `1px solid #ED5C5C` : `1px solid #e2e2e2`,
-      backgroundColor: error ? '#FFF8F8' : '#f8f9fc',
-      '&:focus, &:hover, &:active': {
-        backgroundColor: error ? '#FFF4F4' : '#f5f7fc',
-      },
-    };
-  } else if (shape === 'box') {
-    styles = {
-      border: error ? `1px solid #ED5C5C` : `1px solid #e2e2e2`,
-      backgroundColor: error ? '#FFF8F8' : '#ffffff',
-      borderRadius: '14px',
-      '&:focus, &:hover, &:active': {
-        backgroundColor: error ? '#FFF4F4' : '#fafafa',
-      },
-    };
-  }
-
-  return styles;
-}
-
-function InputTypeStyles(
-  type: 'default' | 'search',
-  shape: 'default' | 'box',
-): { padding: string } {
-  const VARIANTS: {
-    [key in 'default' | 'search']: {
-      [key in 'default' | 'box']: { padding: string };
-    };
-  } = {
-    default: {
-      default: {
-        padding: '12px',
-      },
-      box: {
-        padding: '14px 12px',
-      },
-    },
-    search: {
-      default: {
-        padding: '12px 0',
-      },
-      box: {
-        padding: '14px 0',
-      },
-    },
-  };
-
-  return VARIANTS[type][shape] || VARIANTS[type].default;
-}
-
-function labelTheme(error: boolean) {
-  return {
-    color: error ? '#ED5C5C' : '#797979',
-    display: 'inline-block',
-    fontSize: '0.813rem',
-    marginBottom: '6px',
-
-    '&:focus-within': {
-      fontWeight: 500,
-    },
-  };
-}
-
-function InputTheme(): Interpolation<Theme> {
-  const globalStyles = GlobalInputStyles();
-  if (typeof globalStyles === 'object' && globalStyles !== null) {
-    return {
-      ...globalStyles,
-      width: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      margin: 0,
-      border: 'none',
-      backgroundColor: 'transparent',
-      outline: 'none',
-      borderRadius: '0px',
-      fontSize: '0.938rem',
-      color: '#555555',
-      overflow: 'hidden',
-      resize: 'none',
-      transition: '0.4s ease-in-out',
-    };
-  }
+    { border: 'none', outline: 'none', overflow: 'hidden', resize: 'none' },
+  ];
 }
 
 // ----------------------------------------

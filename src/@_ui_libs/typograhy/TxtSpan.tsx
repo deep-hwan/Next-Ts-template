@@ -9,6 +9,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
   size?: number | string;
   color?: string;
+  txtAlign?: 'start' | 'end' | 'center';
   weight?: 'lighter' | 'normal' | 'medium' | 'bold';
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line';
   padding?: {
@@ -38,6 +39,7 @@ export const TxtSpan = forwardRef(function TxtSpan(
   {
     children,
     size = 13,
+    txtAlign,
     weight = 'normal',
     color = '#888888',
     whiteSpace = 'nowrap',

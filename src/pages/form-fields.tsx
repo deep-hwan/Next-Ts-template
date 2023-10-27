@@ -21,7 +21,7 @@ export default function FormFields() {
       <Section>
         <Container
           maxWidth={560}
-          gap={26}
+          gap={22}
           padding={{ top: 40, bottom: 20, horizontal: 20 }}
           css={{ [MQ[3]]: { paddingTop: 16, paddingBottom: 0 } }}
         >

@@ -354,10 +354,54 @@ export function ScrollTheme({
   };
 }
 
+// ------------------------
+// -------- Label ---------
+// ------------------------
+export function LabelTheme(error: boolean): Interpolation<Theme> {
+  return {
+    color: error ? '#ED5C5C' : '#797979',
+    display: 'inline-block',
+    fontSize: '0.813rem',
+    marginBottom: '6px',
+
+    '&:focus-within': {
+      fontWeight: 500,
+    },
+  };
+}
+
+// -----------------------------------------------
+// -------- FieldBoxTheme : 인풋 박스 스타일 ---------
+// -----------------------------------------------
+export function FieldBoxTheme(shape: 'default' | 'box', error?: boolean | string) {
+  let styles: Record<string, string | any> = {};
+
+  if (shape === 'default') {
+    styles = {
+      borderBottom: error ? `1px solid #ED5C5C` : `1px solid #e2e2e2`,
+      backgroundColor: error ? '#FFF8F8' : '#f8f9fc',
+      '&:focus, &:hover, &:active': {
+        backgroundColor: error ? '#FFF4F4' : '#f5f7fc',
+      },
+    };
+  } else if (shape === 'box') {
+    styles = {
+      border: error ? `1px solid #ED5C5C` : `1px solid #e2e2e2`,
+      backgroundColor: error ? '#FFF8F8' : '#ffffff',
+      borderRadius: '14px',
+      '&:focus, &:hover, &:active': {
+        backgroundColor: error ? '#FFF4F4' : '#fafafa',
+      },
+    };
+  }
+
+  return styles;
+}
+
 // -------------------------------------
 // -------- Global_Input_Styles --------
 // -------------------------------------
-export function GlobalInputStyles(): Interpolation<Theme> {
+export function GlobalInputTheme(): Interpolation<Theme> {
   return {
     '::placeholder': { color: colors.grey300 },
 
