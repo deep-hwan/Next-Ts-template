@@ -23,7 +23,7 @@ export default function BottomNaviTabBar() {
 
       <NavigationTab
         label="메시지"
-        href="/view"
+        href=""
         css={{
           color: router.pathname === '/2' ? colors.keyColor : colors.grey300,
         }}

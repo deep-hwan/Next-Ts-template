@@ -266,9 +266,9 @@ Input.PhoneNumberField = forwardRef(function PhoneNumberField(
   );
 });
 
-// ----------------------------------------
-// -------------- PriceField --------------
-// ----------------------------------------
+// -------------------------------------------
+// -------------- NumbericField --------------
+// -------------------------------------------
 Input.NumbericField = forwardRef(function NumbericField(
   { shape = 'default', error, edge, tolTip, txtAlign, ...props }: NumbericFieldProps,
   ref?: ForwardedRef<HTMLInputElement>,

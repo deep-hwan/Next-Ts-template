@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import Image from 'next/image';
+import { Theme } from 'next-auth';
+import { Interpolation } from '@emotion/react';
 
 interface Props {
   src: string;
@@ -8,6 +10,7 @@ interface Props {
   size?: number;
   borderRadius?: number | string;
   onClick?: () => void;
+  css?: Interpolation<Theme>;
 }
 
 export function ProfileImage({ src, alt, size = 40, borderRadius = 10000, ...props }: Props) {
