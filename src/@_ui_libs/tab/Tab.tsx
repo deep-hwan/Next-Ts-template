@@ -75,7 +75,7 @@ export const Tab = forwardRef(function Tab(
       button: variant === 'box' ? '#f5f7fc' : '#ffffff',
       txt: variant === 'box' ? '#797979' : '#666666',
     },
-    borderRadius = 13,
+    borderRadius = 15,
     border = {
       solid: variant === 'border' ? 1 : 0,
       color: variant === 'border' ? '#e2e2e2' : 'transparent',

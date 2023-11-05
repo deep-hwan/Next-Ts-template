@@ -1,14 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import React, { ForwardedRef, ReactNode, forwardRef, HTMLAttributes } from 'react';
-import { PaddingTheme, MarignTheme, FlexTheme, TypographyTheme } from '../_theme';
+import { PaddingTheme, MarignTheme, FlexTheme, TypographyTheme, ViewportTheme } from '../_theme';
 
 // --------------------------------------------
 // -------------- Type Interface --------------
 // --------------------------------------------
 interface Props extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
-  txtAlign?: 'start' | 'end' | 'center';
+  ellipsis?: { ellipsis?: boolean; line?: number };
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'strong' | 'p';
+  maxWidth?: number | string;
+  txtAlign?: 'start' | 'end' | 'center';
   direction?: 'horizontal' | 'vertical';
   gap?: number;
   color?: string;
@@ -42,7 +44,9 @@ interface Props extends HTMLAttributes<HTMLElement> {
 export const Txt = forwardRef(function Txt(
   {
     children,
+    ellipsis = { ellipsis: false, line: 1 },
     as = 'p',
+    maxWidth,
     direction = 'horizontal',
     gap = 4,
     size,
@@ -217,17 +221,26 @@ export const Txt = forwardRef(function Txt(
         <p
           ref={ref}
           css={[
+            ViewportTheme({ maxWidth }),
             PaddingTheme({ padding }),
             MarignTheme({ margin }),
-            FlexTheme({ direction, gap, align: 'center' }),
             TypographyTheme({
               size: size ? size : 15,
               weight: weight ? weight : 'normal',
               color,
               txtAlign,
-              whiteSpace,
+              whiteSpace: ellipsis.ellipsis ? 'normal' : 'pre-line',
               lineHeight,
             }),
+            ellipsis.ellipsis
+              ? {
+                  display: '-webkit-box',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  WebkitBoxOrient: 'vertical',
+                  WebkitLineClamp: ellipsis.line,
+                }
+              : FlexTheme({ direction, gap, align: 'center' }),
           ]}
           {...Props}
         >
