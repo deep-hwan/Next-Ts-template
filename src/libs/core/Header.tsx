@@ -7,7 +7,7 @@ import { Interpolation, Theme } from '@emotion/react';
 import { Drawer } from './Drawer';
 
 //libs
-import { AppBar, IconTab, Items, Item, Wrap, Row } from '@/@_ui_libs/_index';
+import { AppBar, IconTab, Items, Item, Wrap, Row } from '@/_ui_libs/_index';
 import { borderRadius, fontSize, colors, MQ } from '@/libs/themes/_index';
 
 //assets
@@ -25,7 +25,13 @@ export default function Header() {
   return (
     <>
       <AppBar width={1200}>
-        <Row align="center" height="100%" crossAlign="space-between" padding={{ horizontal: 20 }}>
+        <Row
+          align="center"
+          height="100%"
+          crossAlign="space-between"
+          padding={{ horizontal: 20 }}
+          css={{ transition: '0s' }}
+        >
           <Link href="/">
             <Logo />
           </Link>

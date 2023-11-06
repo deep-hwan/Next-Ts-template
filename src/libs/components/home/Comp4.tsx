@@ -12,7 +12,7 @@ import {
   TxtSpan,
   TxtTab,
   Wrap,
-} from '@/@_ui_libs/_index';
+} from '@/_ui_libs/_index';
 import { colors } from '@/libs/themes/colors';
 import { moment } from '@/libs/utils/moment';
 

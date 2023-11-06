@@ -50,7 +50,7 @@
 
 ### UI_Weidgets (위젯)
 
-##### 파일경로 : src > @ui_libs
+##### 파일경로 : src > \_ui_libs
 
 즉시 사용할 수 있는 디자인 UI 위젯입니다.
 
@@ -58,7 +58,7 @@
 
 **모든 위젯의 스타일은 공통적인 \_theme**을 통해 관리하고 있습니다.
 
-( 경로 : src > @ui_libs > \_theme.tsx )
+( 경로 : src > \_ui_libs > \_theme.tsx )
 
 **Layout Widgets**
 

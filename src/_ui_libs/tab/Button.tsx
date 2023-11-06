@@ -7,7 +7,7 @@ import {
   ViewportTheme,
   TypographyTheme,
   TabTheme,
-} from '@/@_ui_libs/_theme';
+} from '@/_ui_libs/_theme';
 import { MQ, colors } from '@/libs/themes/_index';
 import { Wrap } from '../_index';
 

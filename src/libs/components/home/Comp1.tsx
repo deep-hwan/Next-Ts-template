@@ -1,7 +1,7 @@
 import React from 'react';
 
 //libs
-import { BoxShadow, Column, ProfileImage, Row, Txt } from '@/@_ui_libs/_index';
+import { BoxShadow, Column, ProfileImage, Row, Txt } from '@/_ui_libs/_index';
 import { colors } from '@/libs/themes/colors';
 
 //

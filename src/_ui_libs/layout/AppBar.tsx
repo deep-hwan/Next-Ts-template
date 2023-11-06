@@ -50,7 +50,7 @@ export const AppBar = forwardRef(function AppBar(
             position: { type: 'fixed', top: 0, left: 0, right: 0 },
           }),
           StyleTheme({
-            backgroundColor: TYPE_VARIANTS[variant].backgroundColor,
+            backgroundColor: isActive ? TYPE_VARIANTS[variant].backgroundColor : 'transparent',
             border: {
               solid: 1,
               position: 'bottom',

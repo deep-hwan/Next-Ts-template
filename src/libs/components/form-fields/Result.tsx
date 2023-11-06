@@ -5,7 +5,7 @@ import { NextRouter, useRouter } from 'next/router';
 import { WidgetsImg } from '@/libs/assets/images';
 
 //libs
-import { Button, Img } from '@/@_ui_libs/_index';
+import { Button, Img } from '@/_ui_libs/_index';
 
 export default function Result() {
   const router: NextRouter = useRouter();

@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 import { NextRouter, useRouter } from 'next/router';
 
 //libs
-import { Container, Input, Section, Spacing } from '@/@_ui_libs/_index';
+import { Container, Input, Section, Spacing } from '@/_ui_libs/_index';
 import { MQ } from '@/libs/themes/_index';
 
 //components

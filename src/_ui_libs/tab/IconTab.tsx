@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { Children, ForwardedRef, HTMLAttributes, ReactElement, forwardRef } from 'react';
 import { css } from '@emotion/react';
-import { FlexTheme, PaddingTheme, TabTheme, ViewportTheme } from '@/@_ui_libs/_theme';
+import { FlexTheme, PaddingTheme, TabTheme, ViewportTheme } from '@/_ui_libs/_theme';
 import { MQ } from '@/libs/themes/_index';
 
 // --------------------------------------------
@@ -44,7 +44,6 @@ export const IconTab = forwardRef(function IconTab(
       ]}
     >
       <div
-        onClick={onClick}
         css={css`
           width: ${`${iconSize}px`};
           height: ${`${iconSize}px`};

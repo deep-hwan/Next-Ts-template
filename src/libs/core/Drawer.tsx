@@ -6,8 +6,8 @@ import Link from 'next/link';
 import menus from '../json/menu.json';
 
 //libs
-import { AppDrawer, Item, Items, Txt, Wrap } from '@/@_ui_libs/_index';
-import { FlexTheme, PaddingTheme, StyleTheme, ViewportTheme } from '../../@_ui_libs/_theme';
+import { AppDrawer, Item, Items, Txt, Wrap } from '@/_ui_libs/_index';
+import { FlexTheme, PaddingTheme, StyleTheme, ViewportTheme } from '../../_ui_libs/_theme';
 import { MQ, colors } from '../themes/_index';
 
 //assets

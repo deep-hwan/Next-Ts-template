@@ -2,7 +2,7 @@ import React from 'react';
 import { NextRouter, useRouter } from 'next/router';
 
 //libs
-import { Container, Section, Txt, Wrap } from '@/@_ui_libs/_index';
+import { Container, Section, Txt, Wrap } from '@/_ui_libs/_index';
 import { MQ, colors, fontSize } from '@/libs/themes/_index';
 
 //components

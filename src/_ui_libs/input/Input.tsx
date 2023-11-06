@@ -31,7 +31,7 @@ import {
   StyleTheme,
   PaddingTheme,
   FieldBoxTheme,
-} from '@/@_ui_libs/_theme';
+} from '@/_ui_libs/_theme';
 
 // --------------------------------------------
 // -------------- Type Interface --------------

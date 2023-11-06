@@ -1,4 +1,4 @@
-import { BoxShadow, Column, DragScrollContainer, Item, Items, Txt, Wrap } from '@/@_ui_libs/_index';
+import { BoxShadow, Column, DragScrollContainer, Item, Items, Txt, Wrap } from '@/_ui_libs/_index';
 import { colors } from '@/libs/themes/colors';
 import React from 'react';
 

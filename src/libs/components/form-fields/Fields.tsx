@@ -16,7 +16,7 @@ import {
   Option,
   Tab,
   ProfileUploadBox,
-} from '@/@_ui_libs/_index';
+} from '@/_ui_libs/_index';
 import { colors } from '@/libs/themes/_index';
 
 //utils

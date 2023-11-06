@@ -1,7 +1,7 @@
 import React from 'react';
 
 //libs
-import { BoxShadow, Item, Items, Txt, TxtSpan, Wrap } from '@/@_ui_libs/_index';
+import { BoxShadow, Item, Items, Txt, TxtSpan, Wrap } from '@/_ui_libs/_index';
 import { colors } from '@/libs/themes/colors';
 
 //

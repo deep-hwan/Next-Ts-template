@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useRouter, NextRouter } from 'next/router';
 
 //libs
-import { CheckInput, Padding, Spacing, Txt, TxtSpan, Wrap } from '@/@_ui_libs/_index';
+import { CheckInput, Padding, Spacing, Txt, TxtSpan, Wrap } from '@/_ui_libs/_index';
 import { colors, borderRadius, fontSize } from '@/libs/themes/_index';
 
 //

@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter, NextRouter } from 'next/router';
 
 //libs
-import { BottomSheet, Button, Dialog, Padding, Spacing, Txt } from '@/@_ui_libs/_index';
+import { BottomSheet, Button, Dialog, Padding, Spacing, Txt } from '@/_ui_libs/_index';
 import { colors } from '@/libs/themes/_index';
 
 //
