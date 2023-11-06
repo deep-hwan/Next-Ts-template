@@ -41,7 +41,7 @@ export const TxtSpan = forwardRef(function TxtSpan(
     size = 13,
     txtAlign,
     weight = 'normal',
-    color = '#888888',
+    color = '#9a9a9a',
     whiteSpace = 'nowrap',
     padding = { all: 0 },
     margin = { all: 0 },
@@ -56,7 +56,7 @@ export const TxtSpan = forwardRef(function TxtSpan(
         TypographyTheme({ size, weight, color, whiteSpace }),
         PaddingTheme({ padding }),
         MarignTheme({ margin }),
-        FlexTheme({ align: 'center' }),
+        FlexTheme({ align: 'center', direction: 'horizontal', gap: 4 }),
       ]}
       {...props}
     >
