@@ -40,7 +40,10 @@ export const IconTab = forwardRef(function IconTab(
         FlexTheme({ align: 'center', crossAlign: 'center' }),
         TabTheme({ borderRadius: 8 }),
         PaddingTheme({ padding: { all: 6 } }),
-        { '&:hover': { backgroundColor: '#f8f9fc' }, [MQ[3]]: { backgroundColor: 'transparent' } },
+        {
+          '&:hover': { backgroundColor: 'rgba(0,0,0,0.04)' },
+          [MQ[3]]: { backgroundColor: 'transparent' },
+        },
       ]}
     >
       <div

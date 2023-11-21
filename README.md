@@ -70,6 +70,7 @@
 - Container / Wrap : 레이아웃 위젯
 - Row / Column : 가로 및 세로 정렬 레이아웃 위젯
 - Padding : 패딩 사이즈 레이아웃 위젯
+- BackgroundImgBox : 배경이미지가 있는 레이아웃 위젯
 - BoxShadow : 그림자 형태의 박스 레이아웃 위젯
 - DragScrollContainer : 가로 터치 스크롤이 가능한 레이아웃 위젯
 - Form : form 위젯
@@ -103,6 +104,7 @@
 - Button : 타이틀 버튼 위젯
 - Tab : 서브 타이틀 버튼 위젯
 - IconTab : 아이콘 탭을 커스텀 버튼 위젯
+- LinkHref : a테그 탭 위젯
 
 **Typography Widgets**
 

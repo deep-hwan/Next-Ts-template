@@ -64,20 +64,21 @@ export function BottomSheet({
   );
 
   useEffect(() => {
-    viewRef.current?.scrollTo(0, 0);
-
     if (view) {
       const scrollY = window.scrollY;
+
+      document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollY}px`;
       document.body.style.overflowY = 'hidden';
     } else {
       const scrollY = document.body.style.top;
+      document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.overflowY = 'auto';
 
       window.scrollTo(0, parseInt(scrollY || '0') * -1);
     }
-  }, [view, viewRef]);
+  }, [view]);
 
   useEffect(() => {
     document.addEventListener('mousedown', clickModalOutside);

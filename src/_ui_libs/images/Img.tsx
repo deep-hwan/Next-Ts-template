@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
+import { CSSObject } from '@emotion/react';
 
 interface Props {
   src: string | StaticImageData;
@@ -17,6 +18,8 @@ interface Props {
   };
   objectFit?: 'cover' | 'contain' | 'fill';
   borderRadius?: number | string;
+  css?: CSSObject;
+  screenRatio?: { x?: number; y?: number };
 }
 
 export function Img({
@@ -27,6 +30,7 @@ export function Img({
   size,
   objectFit = 'cover',
   borderRadius = 18,
+  screenRatio = { x: 4, y: 3 },
   ...props
 }: Props) {
   return (
@@ -48,6 +52,7 @@ export function Img({
           maxHeight: typeof size?.maxHeight === 'number' ? `${size?.maxHeight}px` : size?.maxHeight,
           objectFit: objectFit,
           borderRadius: typeof borderRadius === 'number' ? `${borderRadius}px` : borderRadius,
+          aspectRatio: `${screenRatio.x}/${screenRatio.y}`,
         }}
         {...props}
       />

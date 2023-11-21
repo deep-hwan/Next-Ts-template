@@ -1,13 +1,13 @@
-import BackIcon from 'public/icons/back-icon.svg';
-import CancelIcon from 'public/icons/cancel-icon.svg';
-import PathIcon from 'public/icons/path-icon.svg';
-import ToastIcon from 'public/icons/toast-icon.svg';
-import HomeIcon from 'public/icons/home-icon.svg';
-import MessageIcon from 'public/icons/message-icon.svg';
-import CopyIcon from 'public/icons/copy-icon.svg';
-import SettingIcon from 'public/icons/setting-icon.svg';
-import DirectIcon from 'public/icons/direct-icon.svg';
-import ProfileIcon from 'public/icons/profile-icon.svg';
+import BackIcon from 'public/assets/icons/back-icon.svg';
+import CancelIcon from 'public/assets/icons/cancel-icon.svg';
+import PathIcon from 'public/assets/icons/path-icon.svg';
+import ToastIcon from 'public/assets/icons/toast-icon.svg';
+import HomeIcon from 'public/assets/icons/home-icon.svg';
+import MessageIcon from 'public/assets/icons/message-icon.svg';
+import CopyIcon from 'public/assets/icons/copy-icon.svg';
+import SettingIcon from 'public/assets/icons/setting-icon.svg';
+import DirectIcon from 'public/assets/icons/direct-icon.svg';
+import ProfileIcon from 'public/assets/icons/profile-icon.svg';
 
 export {
   ToastIcon,

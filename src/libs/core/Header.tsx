@@ -1,14 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import React, { useCallback, useState } from 'react';
 import Link from 'next/link';
-import { Interpolation, Theme } from '@emotion/react';
 
 //components
 import { Drawer } from './Drawer';
 
 //libs
-import { AppBar, IconTab, Items, Item, Wrap, Row } from '@/_ui_libs/_index';
-import { borderRadius, fontSize, colors, MQ } from '@/libs/themes/_index';
+import { AppBar, IconTab, Items, Item, Wrap, Row, LinkHref } from '@/_ui_libs/_index';
+import { MQ } from '@/libs/themes/_index';
 
 //assets
 import { ToastIcon } from '@/libs/assets/icons';
@@ -47,9 +46,13 @@ export default function Header() {
             {menus.map((item, i) => {
               return (
                 <Item key={i} width="auto" align="center" crossAlign="center">
-                  <Link href={item.path} css={theme.linkItem as Interpolation<Theme>}>
+                  <LinkHref
+                    a={item.path}
+                    padding={{ all: '0.75rem' }}
+                    css={{ '&:hover': { backgroundColor: '#f7f7f7', borderRadius: 12 } }}
+                  >
                     {item.name}
-                  </Link>
+                  </LinkHref>
                 </Item>
               );
             })}
@@ -74,18 +77,6 @@ export default function Header() {
     </>
   );
 }
-
-// styled
-const theme = {
-  linkItem: {
-    fontSize: fontSize.s15,
-    padding: '0.8em',
-    '&:hover': {
-      backgroundColor: colors.ground100,
-      borderRadius: borderRadius.s400,
-    },
-  },
-};
 
 const Logo = () => {
   return (

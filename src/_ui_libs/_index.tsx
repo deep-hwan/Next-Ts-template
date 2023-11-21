@@ -10,6 +10,7 @@ import { Spacing } from './layout/Spacing';
 import { Layer } from './layout/Layer';
 import { Items, Item } from './layout/Items';
 import { BoxShadow } from './layout/View';
+import { BackgroundImgBox } from './layout/BackgroundImgBox';
 import { Accordion, AccordionPanel } from './layout/Accordion';
 import { DragScrollContainer } from './layout/DragScrollContainer';
 
@@ -29,6 +30,7 @@ import { Tab } from './tab/Tab';
 import { TxtTab } from './tab/TxtTab';
 import { IconTab } from './tab/IconTab';
 import { ScrollTopTab } from './tab/ScrollTopTab';
+import { LinkHref } from './tab/LinkHref';
 
 //typography
 import { Txt } from './typograhy/Txt';
@@ -55,6 +57,7 @@ export {
   Section,
   Container,
   DragScrollContainer,
+  BackgroundImgBox,
   BoxShadow,
   Form,
   Wrap,
@@ -68,6 +71,7 @@ export {
   Skeleton,
   Button,
   Tab,
+  LinkHref,
   IconTab,
   Items,
   Item,

@@ -23,9 +23,8 @@ export const AppDrawer = forwardRef(function AppDrawer(
 
   const clickModalOutside = useCallback(
     (event: MouseEvent) => {
-      if (view && drawerRef.current && !drawerRef.current.contains(event.target as Node)) {
+      if (view && drawerRef.current && !drawerRef.current.contains(event.target as Node))
         onCancel();
-      }
     },
     [view, onCancel, drawerRef],
   );
@@ -33,11 +32,8 @@ export const AppDrawer = forwardRef(function AppDrawer(
   useEffect(() => {
     drawerRef.current?.scrollTo(0, 0);
 
-    if (view) {
-      document.body.style.overflowY = 'hidden';
-    } else {
-      document.body.style.overflowY = 'auto';
-    }
+    if (view) document.body.style.overflowY = 'hidden';
+    else document.body.style.overflowY = 'auto';
 
     document.addEventListener('mousedown', clickModalOutside);
     return () => {

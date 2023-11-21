@@ -98,13 +98,13 @@ export function PaddingTheme({
 }: {
   safeArea?: boolean;
   padding?: {
-    all?: number;
-    horizontal?: number;
-    vertical?: number;
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
+    all?: number | string;
+    horizontal?: number | string;
+    vertical?: number | string;
+    top?: number | string;
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
   };
 }): Interpolation<Theme> {
   return {
@@ -112,31 +112,31 @@ export function PaddingTheme({
       ? (padding?.all && `max(${padding?.all}px, env(safe-area-inset-top))`) ||
         (padding?.vertical && `max(${padding?.vertical}px, env(safe-area-inset-top))`) ||
         (padding?.top && `max(${padding?.top}px, env(safe-area-inset-top))`)
-      : (padding?.all && `${padding?.all}px`) ||
-        (padding?.vertical && `${padding?.vertical}px`) ||
-        (padding?.top && `${padding?.top}px`),
+      : (padding?.all && padding?.all) ||
+        (padding?.vertical && padding?.vertical) ||
+        (padding?.top && padding?.top),
 
     paddingBottom: safeArea
       ? (padding?.all && `max(${padding?.all}px, env(safe-area-inset-bottom))`) ||
         (padding?.vertical && `max(${padding?.vertical}px, env(safe-area-inset-bottom))`) ||
         (padding?.bottom && `max(${padding?.bottom}px, env(safe-area-inset-bottom))`)
-      : (padding?.all && `${padding?.all}px`) ||
-        (padding?.vertical && `${padding?.vertical}px`) ||
-        (padding?.bottom && `${padding?.bottom}px`),
+      : (padding?.all && padding?.all) ||
+        (padding?.vertical && padding?.vertical) ||
+        (padding?.bottom && padding?.bottom),
     paddingLeft: safeArea
       ? (padding?.all && `max(${padding?.all}px, env(safe-area-inset-left))`) ||
         (padding?.horizontal && `max(${padding?.horizontal}px, env(safe-area-inset-left))`) ||
         (padding?.left && `max(${padding?.left}px, env(safe-area-inset-left))`)
-      : (padding?.all && `${padding?.all}px`) ||
-        (padding?.horizontal && `${padding?.horizontal}px`) ||
-        (padding?.left && `${padding?.left}px`),
+      : (padding?.all && padding?.all) ||
+        (padding?.horizontal && padding?.horizontal) ||
+        (padding?.left && padding?.left),
     paddingRight: safeArea
       ? (padding?.all && `max(${padding?.all}px, env(safe-area-inset-right))`) ||
         (padding?.horizontal && `max(${padding?.horizontal}px, env(safe-area-inset-right))`) ||
         (padding?.right && `max(${padding?.right}px, env(safe-area-inset-right))`)
-      : (padding?.all && `${padding?.all}px`) ||
-        (padding?.horizontal && `${padding?.horizontal}px`) ||
-        (padding?.right && `${padding?.right}px`),
+      : (padding?.all && padding?.all) ||
+        (padding?.horizontal && padding?.horizontal) ||
+        (padding?.right && padding?.right),
   };
 }
 
@@ -147,32 +147,32 @@ export function MarignTheme({
   margin,
 }: {
   margin?: {
-    all?: number;
-    horizontal?: number;
-    vertical?: number;
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
+    all?: number | string;
+    horizontal?: number | string;
+    vertical?: number | string;
+    top?: number | string;
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
   };
 }): Interpolation<Theme> {
   return {
     marginTop:
-      (margin?.all && `${margin?.all}px`) ||
-      (margin?.vertical && `${margin?.vertical}px`) ||
-      (margin?.top && `${margin?.top}px`),
+      (margin?.all && margin?.all) ||
+      (margin?.vertical && margin?.vertical) ||
+      (margin?.top && margin?.top),
     marginBottom:
-      (margin?.all && `${margin?.all}px`) ||
-      (margin?.vertical && `${margin?.vertical}px`) ||
-      (margin?.bottom && `${margin?.bottom}px`),
+      (margin?.all && margin?.all) ||
+      (margin?.vertical && margin?.vertical) ||
+      (margin?.bottom && margin?.bottom),
     marginLeft:
-      (margin?.all && `${margin?.all}px`) ||
-      (margin?.horizontal && `${margin?.horizontal}px`) ||
-      (margin?.left && `${margin?.left}px`),
+      (margin?.all && margin?.all) ||
+      (margin?.horizontal && margin?.horizontal) ||
+      (margin?.left && margin?.left),
     marginRight:
-      (margin?.all && `${margin?.all}px`) ||
-      (margin?.horizontal && `${margin?.horizontal}px`) ||
-      (margin?.right && `${margin?.right}px`),
+      (margin?.all && margin?.all) ||
+      (margin?.horizontal && margin?.horizontal) ||
+      (margin?.right && margin?.right),
   };
 }
 

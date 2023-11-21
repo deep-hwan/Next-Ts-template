@@ -21,15 +21,12 @@ export const AppBar = forwardRef(function AppBar(
   ref?: ForwardedRef<HTMLDivElement>,
 ) {
   const [isActive, setIsActive] = useState<boolean>(false);
-  const scrollActive = () => {
-    if (window.scrollY >= 100) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  };
+
   useEffect(() => {
-    window.addEventListener('scroll', scrollActive);
+    window.addEventListener('scroll', () => {
+      if (window.scrollY >= 100) setIsActive(true);
+      else setIsActive(false);
+    });
   }, []);
 
   // VARIANTS

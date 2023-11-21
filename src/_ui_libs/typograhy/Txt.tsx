@@ -19,22 +19,22 @@ interface Props extends HTMLAttributes<HTMLElement> {
   weight?: 'lighter' | 'normal' | 'medium' | 'bold';
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line';
   padding?: {
-    all?: number;
-    horizontal?: number;
-    vertical?: number;
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
+    all?: number | string;
+    horizontal?: number | string;
+    vertical?: number | string;
+    top?: number | string;
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
   };
   margin?: {
-    all?: number;
-    horizontal?: number;
-    vertical?: number;
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
+    all?: number | string;
+    horizontal?: number | string;
+    vertical?: number | string;
+    top?: number | string;
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
   };
 }
 
