@@ -50,7 +50,7 @@ export default function Comp3() {
               <Txt size={16} as="strong">
                 {item.txt}
               </Txt>
-              <Txt size={13} color={colors.grey700}>
+              <Txt size={13} color={colors.grey700} whiteSpace="pre-line">
                 {item.subTxt}
               </Txt>
             </Item>
