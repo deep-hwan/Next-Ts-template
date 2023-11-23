@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
 import Image from 'next/image';
-import { Theme } from 'next-auth';
+import { Theme } from '@emotion/react';
 import { Interpolation } from '@emotion/react';
 
 interface Props {
