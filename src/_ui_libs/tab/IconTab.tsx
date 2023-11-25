@@ -12,13 +12,20 @@ interface IconProps extends HTMLAttributes<HTMLElement> {
   onClick: () => void;
   size?: number;
   iconSize?: number;
+  position?: {
+    type?: 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
+    top?: number | string;
+    bottom?: number | string;
+    right?: number | string;
+    left?: number | string;
+  };
 }
 
 // -------------------------------------
 // -------------- IconTab --------------
 // -------------------------------------
 export const IconTab = forwardRef(function IconTab(
-  { children, size, iconSize = 24, onClick, ...props }: IconProps,
+  { children, position, size, iconSize = 24, onClick, ...props }: IconProps,
   ref: ForwardedRef<HTMLButtonElement>,
 ) {
   const child = Children.only(children);
@@ -36,7 +43,13 @@ export const IconTab = forwardRef(function IconTab(
       onClick={onClick}
       ref={ref}
       css={[
-        ViewportTheme({ minWidth: size, maxWidth: size, minHeight: size, maxHeight: size }),
+        ViewportTheme({
+          position,
+          minWidth: size,
+          maxWidth: size,
+          minHeight: size,
+          maxHeight: size,
+        }),
         FlexTheme({ align: 'center', crossAlign: 'center' }),
         TabTheme({ borderRadius: 8 }),
         PaddingTheme({ padding: { all: 6 } }),
