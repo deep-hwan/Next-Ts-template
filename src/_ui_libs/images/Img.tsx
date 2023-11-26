@@ -9,10 +9,10 @@ interface Props {
   width?: number;
   height?: number;
   size?: {
-    width?: 'auto' | '100%' | string;
+    width?: 'auto' | '100%' | '100vw';
     minWidth?: number | string;
     maxWidth?: number | string;
-    height?: 'auto' | '100%';
+    height?: 'auto' | '100%' | '100vh';
     minHeight?: number | string;
     maxHeight?: number | string;
   };
