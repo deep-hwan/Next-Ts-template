@@ -42,7 +42,7 @@ const LoadingSpinnerUi = forwardRef(function LoadingSpinnerUi(
           minWidth: `${size}px`,
           height: `${size}px`,
           minHeight: `${size}px`,
-          border: '4px solid #ccc',
+          border: '3px solid #e2e2e2',
           borderBottomColor: 'transparent',
           borderRadius: '50%',
           display: 'inline-block',

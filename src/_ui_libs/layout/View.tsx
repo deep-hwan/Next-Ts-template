@@ -6,6 +6,7 @@ import {
   PaddingTheme,
   ScrollTheme,
   StyleTheme,
+  TabTheme,
   ViewportTheme,
 } from '@/_ui_libs/_theme';
 
@@ -70,6 +71,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
     right?: number | string;
     left?: number | string;
   };
+  cursor?: 'default' | 'grab' | 'pointer' | 'zoom';
 }
 
 // ----------------------------------------------
@@ -146,6 +148,7 @@ export const Wrap = forwardRef(function Wrap(
     padding,
     margin,
     scroll,
+    cursor,
     ...props
   }: Props,
   ref?: ForwardedRef<HTMLDivElement>,
@@ -169,6 +172,7 @@ export const Wrap = forwardRef(function Wrap(
         MarignTheme({ margin }),
         StyleTheme({ backgroundColor, border, borderRadius, boxShadow }),
         ScrollTheme({ scroll }),
+        TabTheme({ cursor }),
       ]}
       {...props}
     >

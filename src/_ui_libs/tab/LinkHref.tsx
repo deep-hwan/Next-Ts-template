@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import React, { AnchorHTMLAttributes, ReactNode } from 'react';
 import { MarignTheme, PaddingTheme, TabTheme, TypographyTheme } from '../_theme';
-import { colors, borderRadius } from '@/libs/themes/_index';
 
 //
 interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -39,6 +38,7 @@ interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
     left?: number | string;
     right?: number | string;
   };
+  blank?: boolean;
 }
 
 //
@@ -53,11 +53,13 @@ export function LinkHref({
   border,
   boxShadow,
   margin,
+  blank,
   ...props
 }: Props) {
   return (
     <Link
       href={a}
+      target={blank ? '_blank' : ''}
       css={[
         PaddingTheme({ padding }),
         MarignTheme({ margin }),

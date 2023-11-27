@@ -9,17 +9,18 @@ interface Props {
   width?: number;
   height?: number;
   size?: {
-    width?: 'auto' | '100%' | '100vw';
+    width?: 'auto' | '100%' | string;
     minWidth?: number | string;
     maxWidth?: number | string;
-    height?: 'auto' | '100%' | '100vh';
+    height?: 'auto' | '100%';
     minHeight?: number | string;
     maxHeight?: number | string;
   };
-  objectFit?: 'cover' | 'contain' | 'fill';
+  objectFit?: 'cover' | 'contain' | 'fill' | undefined;
   borderRadius?: number | string;
   css?: CSSObject;
   screenRatio?: { x?: number; y?: number };
+  onClick?: any;
 }
 
 export function Img({
@@ -31,6 +32,7 @@ export function Img({
   objectFit = 'cover',
   borderRadius = 18,
   screenRatio = { x: 4, y: 3 },
+  onClick,
   ...props
 }: Props) {
   return (
@@ -43,6 +45,7 @@ export function Img({
         blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
         width={width}
         height={height}
+        onClick={onClick}
         css={{
           width: size?.width ? size?.width : '100%',
           height: size?.height ? size?.height : 'auto',

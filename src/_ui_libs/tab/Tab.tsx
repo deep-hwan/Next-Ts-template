@@ -73,7 +73,7 @@ export const Tab = forwardRef(function Tab(
     gap = 8,
     colors = {
       button: variant === 'box' ? '#f5f7fc' : '#ffffff',
-      txt: variant === 'box' ? '#797979' : '#666666',
+      txt: variant === 'box' ? '#797979' : '#999999',
     },
     borderRadius = 15,
     border = {
