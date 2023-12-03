@@ -1,37 +1,26 @@
 /** @jsxImportSource @emotion/react */
 import React, { ForwardedRef, forwardRef, memo, useEffect, useState } from 'react';
-import { FlexTheme, TabTheme, ViewportTheme } from '@/_ui_libs/_theme';
+import { FlexTheme, StyleTheme, ViewportTheme } from '@/_ui_libs/_theme';
 import { MQ } from '@/libs/themes/_index';
 
-// ------------------------------------------
-// -------------- ScrollTopTab --------------
-// ------------------------------------------
 export const ScrollTopTab = memo(
   forwardRef(function ScrollTopTab({ ...props }, ref?: ForwardedRef<HTMLButtonElement>) {
     const [ScrollY, setScrollY] = useState<number>(0);
 
     // 스크롤 수치 감지
-    const handleFollow = () => {
-      setScrollY(window.pageYOffset);
-    };
+    const handleFollow = () => setScrollY(window.pageYOffset);
 
     // 탭 위로 핸들러
     const handleTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-      setScrollY(0); // ScrollY 의 값을 초기화
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setScrollY(0);
     };
 
     useEffect(() => {
-      const watch = () => {
-        window.addEventListener('scroll', handleFollow);
-      };
+      const watch = () => window.addEventListener('scroll', handleFollow);
       watch();
-      return () => {
-        window.removeEventListener('scroll', handleFollow);
-      };
+
+      return () => window.removeEventListener('scroll', handleFollow);
     }, [ScrollY]);
 
     return (
@@ -41,12 +30,14 @@ export const ScrollTopTab = memo(
             onClick={handleTop}
             css={[
               ViewportTheme({
-                zIndex: 9999,
+                zIndex: 8888,
                 position: { type: 'fixed', bottom: 100, right: 20 },
                 minWidth: 42,
+                maxWidth: 42,
                 minHeight: 42,
+                maxHeight: 42,
               }),
-              TabTheme({
+              StyleTheme({
                 backgroundColor: '#ffffff',
                 boxShadow: { x: 0, y: 3, blur: 10, color: 'rgba(0, 0, 0, 0.25)' },
                 borderRadius: 1000,

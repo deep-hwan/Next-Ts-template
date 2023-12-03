@@ -1,8 +1,15 @@
-import { NextRouter, useRouter } from 'next/router';
-import { EventHandler, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import React, { EventHandler, useEffect } from 'react';
 
-export function useRouteOnloadState(handleOnLoad: EventHandler<any>) {
-  const router: NextRouter = useRouter();
+export function useRouteOnload(handleOnLoad: EventHandler<any>) {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', handleOnLoad);
+    return () => {
+      router.events.off('routeChangeStart', handleOnLoad);
+    };
+  }, [handleOnLoad, router.events]);
 
   useEffect(() => {
     router.events.on('routeChangeComplete', handleOnLoad);

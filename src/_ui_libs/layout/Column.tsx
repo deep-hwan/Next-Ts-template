@@ -1,23 +1,39 @@
 /** @jsxImportSource @emotion/react */
 import React, { ForwardedRef, HTMLAttributes, ReactNode, forwardRef } from 'react';
-import { FlexTheme, MarignTheme, PaddingTheme, StyleTheme, ViewportTheme } from '@/_ui_libs/_theme';
-import { FlexTypes, MarginTypes, PaddingTypes, StyleslTypes, ViewportTypes } from '../_types';
+import {
+  FlexTypes,
+  MarginTypes,
+  PaddingTypes,
+  ScrollTypes,
+  StyleslTypes,
+  ViewportTypes,
+} from '../_types';
+import {
+  FlexTheme,
+  MarignTheme,
+  PaddingTheme,
+  ScrollTheme,
+  StyleTheme,
+  ViewportTheme,
+} from '../_theme';
 
 interface Props
-  extends HTMLAttributes<HTMLElement>,
-    Omit<ViewportTypes, 'position'>,
+  extends HTMLAttributes<HTMLDivElement>,
+    ViewportTypes,
     FlexTypes,
     MarginTypes,
     PaddingTypes,
-    Omit<StyleslTypes, 'cursor'> {
+    Omit<StyleslTypes, 'cursor'>,
+    ScrollTypes {
   children?: ReactNode;
 }
 
-export const Form = forwardRef<HTMLFormElement, Props>(
+export const Column = forwardRef<HTMLDivElement, Props>(
   (
     {
       children,
-      //
+      zIndex,
+      position,
       width = '100%',
       height,
       minWidth,
@@ -27,7 +43,7 @@ export const Form = forwardRef<HTMLFormElement, Props>(
       //
       flex,
       direction = 'vertical',
-      align,
+      align = 'start',
       crossAlign,
       wrap = 'nowrap',
       gap = 0,
@@ -36,28 +52,32 @@ export const Form = forwardRef<HTMLFormElement, Props>(
       padding,
       margin,
       //
-      border,
       backgroundColor,
       borderRadius,
       boxShadow,
+      border,
+      scroll,
       ...props
     },
-    ref?: ForwardedRef<HTMLFormElement>,
+    ref: ForwardedRef<HTMLDivElement>,
   ) => {
+    const viewProps = { width, height, minWidth, maxWidth, minHeight, maxHeight, position, zIndex };
+
     return (
-      <form
+      <div
         ref={ref}
         css={[
-          ViewportTheme({ width, height, minWidth, maxWidth, minHeight, maxHeight }),
+          ViewportTheme(viewProps),
           FlexTheme({ flex, direction, align, crossAlign, wrap, gap, crossGap }),
           PaddingTheme({ padding }),
           MarignTheme({ margin }),
           StyleTheme({ backgroundColor, border, borderRadius, boxShadow }),
+          ScrollTheme({ scroll }),
         ]}
         {...props}
       >
         {children}
-      </form>
+      </div>
     );
   },
 );

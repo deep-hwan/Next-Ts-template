@@ -1,12 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
 import { Interpolation, Theme } from '@emotion/react';
 import { keyframes } from '@emotion/css';
 import { Layer } from '../_index';
 
-// ------------------------------------------
-// -------------- LoadingLayer --------------
-// ------------------------------------------
 export function LoadingLayer({ size = 48 }: { size?: number }) {
   const rotation = keyframes`
   0% {

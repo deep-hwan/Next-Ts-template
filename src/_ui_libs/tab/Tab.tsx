@@ -5,61 +5,36 @@ import {
   FlexTheme,
   MarignTheme,
   PaddingTheme,
-  TabTheme,
+  StyleTheme,
   TypographyTheme,
   ViewportTheme,
 } from '@/_ui_libs/_theme';
+import {
+  FlexTypes,
+  MarginTypes,
+  PaddingTypes,
+  StyleslTypes,
+  TypographyTypes,
+  ViewportTypes,
+} from '../_types';
 
-// --------------------------------------------
-// -------------- Type Interface --------------
-// --------------------------------------------
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    Omit<ViewportTypes, 'position' | 'zIndex'>,
+    MarginTypes,
+    PaddingTypes,
+    Pick<FlexTypes, 'gap'>,
+    Pick<TypographyTypes, 'weight'>,
+    Pick<StyleslTypes, 'borderRadius' | 'boxShadow' | 'border'> {
   children: ReactNode;
   variant?: 'border' | 'box';
   type?: 'button' | 'submit';
-  width?: 'auto' | '100%';
-  minWidth?: number | string;
-  maxWidth?: number | string;
-  gap?: number;
   txtSize?: number | string;
-  weight?: 'lighter' | 'normal' | 'medium' | 'bold';
   colors?: { button?: string; txt?: string };
-  borderRadius?: number | string;
-  boxShadow?: {
-    x?: number;
-    y?: number;
-    blur?: number;
-    color?: string;
-  };
-  border?: {
-    solid: number;
-    color?: string;
-  };
-  padding?: {
-    all?: number;
-    horizontal?: number;
-    vertical?: number;
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
-  };
-  margin?: {
-    all?: number;
-    horizontal?: number;
-    vertical?: number;
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
-  };
 }
 
 type ThemeStyleProps = Omit<Props, 'children'>;
 
-// ---------------------------------
-// -------------- Tab --------------
-// ---------------------------------
 export const Tab = forwardRef(function Tab(
   {
     children,
@@ -75,11 +50,11 @@ export const Tab = forwardRef(function Tab(
       button: variant === 'box' ? '#f5f7fc' : '#ffffff',
       txt: variant === 'box' ? '#797979' : '#999999',
     },
-    borderRadius = 15,
     border = {
       solid: variant === 'border' ? 1 : 0,
       color: variant === 'border' ? '#e2e2e2' : 'transparent',
     },
+    borderRadius = 15,
     boxShadow,
     padding = { all: 12 },
     margin,
@@ -98,12 +73,7 @@ export const Tab = forwardRef(function Tab(
         FlexTheme({ direction: 'horizontal', align: 'center', crossAlign: 'center', gap }),
         PaddingTheme({ padding }),
         MarignTheme({ margin }),
-        TabTheme({
-          backgroundColor: colors?.button,
-          border,
-          borderRadius,
-          boxShadow,
-        }),
+        StyleTheme({ backgroundColor: colors?.button, border, borderRadius, boxShadow }),
       ]}
       {...props}
     >

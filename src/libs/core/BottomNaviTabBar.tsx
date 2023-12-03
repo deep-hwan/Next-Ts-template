@@ -10,7 +10,7 @@ export default function BottomNaviTabBar() {
   const router: NextRouter = useRouter();
 
   return (
-    <BottomNavigationBar maxWidth={600}>
+    <BottomNavigationBar maxWidth={600} >
       <NavigationTab
         label="홈"
         href="/"

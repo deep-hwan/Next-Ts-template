@@ -1,4 +1,13 @@
 /** @jsxImportSource @emotion/react */
+import {
+  FlexTypes,
+  PaddingTypes,
+  ViewportTypes,
+  MarginTypes,
+  ScrollTypes,
+  StyleslTypes,
+  TypographyTypes,
+} from './_types';
 import { Interpolation, Theme } from '@emotion/react';
 import { colors } from '../libs/themes/colors';
 
@@ -7,46 +16,28 @@ import { colors } from '../libs/themes/colors';
 // ---------------------------
 export function ViewportTheme({
   zIndex,
-  backgroundColor,
-  width,
+  width = '100%',
   height = 'auto',
   minWidth,
   maxWidth,
   minHeight,
   maxHeight,
   position = { type: 'relative' },
-}: {
-  zIndex?: number;
-  backgroundColor?: string;
-  width?: 'auto' | '100%';
-  minWidth?: number | string;
-  maxWidth?: number | string;
-  height?: 'auto' | '100%';
-  minHeight?: number | string;
-  maxHeight?: number | string;
-  position?: {
-    type?: 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
-    top?: number | string;
-    bottom?: number | string;
-    left?: number | string;
-    right?: number | string;
-  };
-}): Interpolation<Theme> {
+}: ViewportTypes): Interpolation<Theme> {
   return {
-    width: width,
-    minWidth: typeof minWidth === 'number' ? `${minWidth}px` : minWidth,
-    maxWidth: typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth,
-    height: height ? height : maxHeight ? '100%' : 'auto',
-    minHeight: typeof minHeight === 'number' ? `${minHeight}px` : minHeight,
-    maxHeight: typeof maxHeight === 'number' ? `${maxHeight}px` : maxHeight,
-    position: position?.type,
-    top: typeof position.top === 'number' ? `${position.top}px` : position.top,
-    bottom: typeof position.bottom === 'number' ? `${position.bottom}px` : position.bottom,
-    right: typeof position.right === 'number' ? `${position.right}px` : position.right,
-    left: typeof position.right === 'number' ? `${position.left}px` : position.left,
     zIndex: zIndex,
-    backgroundColor,
     transition: '0.3s ease-in-out',
+    width: width,
+    height: height,
+    minWidth: minWidth,
+    maxWidth: maxWidth,
+    minHeight: minHeight,
+    maxHeight: maxHeight,
+    position: position?.type,
+    top: position.top,
+    bottom: position.bottom,
+    right: position.right,
+    left: position.left,
   };
 }
 
@@ -54,22 +45,17 @@ export function ViewportTheme({
 // -------- Flex ---------
 // -----------------------
 export function FlexTheme({
+  flex,
   direction,
   align,
   crossAlign,
-  wrap,
+  wrap = 'nowrap',
   gap,
   crossGap,
-}: {
-  direction?: 'horizontal' | 'vertical';
-  align?: 'start' | 'end' | 'center' | 'stretch';
-  crossAlign?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
-  wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
-  gap?: number;
-  crossGap?: number;
-}): Interpolation<Theme> {
+}: FlexTypes): Interpolation<Theme> {
   return {
     display: 'flex',
+    flex: flex,
     flexDirection: direction === 'horizontal' ? 'row' : 'column',
     alignItems: align ? align : direction === 'horizontal' ? 'stretch' : 'flex-start',
     justifyContent: crossAlign && crossAlign,
@@ -97,15 +83,7 @@ export function PaddingTheme({
   safeArea = false,
 }: {
   safeArea?: boolean;
-  padding?: {
-    all?: number | string;
-    horizontal?: number | string;
-    vertical?: number | string;
-    top?: number | string;
-    bottom?: number | string;
-    left?: number | string;
-    right?: number | string;
-  };
+  padding: PaddingTypes['padding'];
 }): Interpolation<Theme> {
   return {
     paddingTop: safeArea
@@ -143,19 +121,7 @@ export function PaddingTheme({
 // ------------------------
 // -------- Margin --------
 // ------------------------
-export function MarignTheme({
-  margin,
-}: {
-  margin?: {
-    all?: number | string;
-    horizontal?: number | string;
-    vertical?: number | string;
-    top?: number | string;
-    bottom?: number | string;
-    left?: number | string;
-    right?: number | string;
-  };
-}): Interpolation<Theme> {
+export function MarignTheme({ margin }: MarginTypes): Interpolation<Theme> {
   return {
     marginTop:
       (margin?.all && margin?.all) ||
@@ -186,14 +152,7 @@ export function TypographyTheme({
   txtAlign,
   whiteSpace,
   lineHeight,
-}: {
-  size?: number | string;
-  color?: string;
-  weight?: 'lighter' | 'normal' | 'medium' | 'bold';
-  txtAlign?: 'start' | 'end' | 'center';
-  whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line';
-  lineHeight?: number | string;
-}): Interpolation<Theme> {
+}: TypographyTypes): Interpolation<Theme> {
   const TYPOGRAPH_WEIGHT = {
     lighter: { fontWeight: '300' },
     normal: { fontWeight: '400' },
@@ -214,62 +173,6 @@ export function TypographyTheme({
   };
 }
 
-// ----------------------
-// -------- Tab ---------
-// ----------------------
-export function TabTheme({
-  backgroundColor,
-  backgroundColorHover,
-  opacityHover,
-  opacityDisabled,
-  border,
-  borderRadius,
-  boxShadow,
-  cursor,
-}: {
-  backgroundColor?: string;
-  backgroundColorHover?: string;
-  opacityHover?: string | number;
-  opacityDisabled?: string | number;
-  borderRadius?: number | string;
-  cursor?: 'default' | 'grab' | 'pointer' | 'zoom';
-  boxShadow?: {
-    x?: number;
-    y?: number;
-    blur?: number;
-    color?: string;
-  };
-  border?: {
-    solid: number;
-    position?: 'left' | 'right' | 'top' | 'bottom';
-    color?: string;
-  };
-}): Interpolation<Theme> {
-  return {
-    outline: 'none',
-    border: 'none',
-    userSelect: 'none',
-    whiteSpace: 'nowrap',
-    transition: '0.3s ease-in-out',
-
-    '&:hover': {
-      opacity: opacityHover,
-      backgroundColor: backgroundColorHover,
-      border: backgroundColorHover && 'transparent',
-    },
-
-    '&:disabled': { opacity: opacityDisabled },
-
-    ...(StyleTheme({
-      backgroundColor,
-      borderRadius,
-      cursor,
-      boxShadow,
-      border,
-    }) as string[]),
-  };
-}
-
 // ------------------------
 // -------- Stlye ---------
 // ------------------------
@@ -279,23 +182,7 @@ export function StyleTheme({
   borderRadius,
   boxShadow,
   cursor,
-}: {
-  backgroundColor?: string;
-  backgroundColorHover?: string;
-  borderRadius?: number | string;
-  cursor?: 'default' | 'grab' | 'pointer' | 'zoom';
-  boxShadow?: {
-    x?: number;
-    y?: number;
-    blur?: number;
-    color?: string;
-  };
-  border?: {
-    solid: number;
-    position?: 'left' | 'right' | 'top' | 'bottom';
-    color?: string;
-  };
-}): Interpolation<Theme> {
+}: StyleslTypes): Interpolation<Theme> {
   return {
     backgroundColor: backgroundColor,
     border:
@@ -322,18 +209,13 @@ export function StyleTheme({
 // -------------------------
 export function ScrollTheme({
   scroll = { type: 'visible', bar: true },
-}: {
-  scroll?: {
-    type?: 'visible' | 'auto' | 'scroll' | 'hidden';
-    bar?: boolean;
-  };
-}): Interpolation<Theme> {
+}: ScrollTypes): Interpolation<Theme> {
   return {
     overflow: scroll.type,
 
     '::-webkit-scrollbar': {
       display: scroll.bar ? 'flex' : 'none',
-      width: '5px',
+      width: '4px',
       height: '6px',
     },
     '::-webkit-scrollbar-track': {

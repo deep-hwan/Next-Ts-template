@@ -6,20 +6,21 @@ import { CSSObject } from '@emotion/react';
 interface Props {
   src: string | StaticImageData;
   alt: string;
+  priority?:boolean;
   width?: number;
   height?: number;
   size?: {
     width?: 'auto' | '100%' | string;
     minWidth?: number | string;
     maxWidth?: number | string;
-    height?: 'auto' | '100%';
+    height?: 'auto' | '100%'| string;
     minHeight?: number | string;
     maxHeight?: number | string;
   };
-  objectFit?: 'cover' | 'contain' | 'fill' | undefined;
+  screenRatio?: { x?: number; y?: number };
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | undefined;
   borderRadius?: number | string;
   css?: CSSObject;
-  screenRatio?: { x?: number; y?: number };
   onClick?: any;
 }
 
@@ -29,6 +30,7 @@ export function Img({
   width = 500,
   height = 500,
   size,
+  priority,
   objectFit = 'cover',
   borderRadius = 18,
   screenRatio = { x: 4, y: 3 },
@@ -40,21 +42,24 @@ export function Img({
       <Image
         src={src}
         alt={alt}
+        priority={priority}
+        loading= {priority ?"eager" :"lazy"}
+        layout="responsive"
         placeholder="blur"
-        loading="lazy"
         blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
         width={width}
         height={height}
         onClick={onClick}
+      
         css={{
           width: size?.width ? size?.width : '100%',
           height: size?.height ? size?.height : 'auto',
-          minWidth: typeof size?.minWidth === 'number' ? `${size?.minWidth}px` : size?.minWidth,
-          maxWidth: typeof size?.maxWidth === 'number' ? `${size?.maxWidth}px` : size?.maxWidth,
-          minHeight: typeof size?.minHeight === 'number' ? `${size?.minHeight}px` : size?.minHeight,
-          maxHeight: typeof size?.maxHeight === 'number' ? `${size?.maxHeight}px` : size?.maxHeight,
+          minWidth:  size?.minWidth,
+          maxWidth:  size?.maxWidth,
+          minHeight: size?.minHeight,
+          maxHeight:  size?.maxHeight,
           objectFit: objectFit,
-          borderRadius: typeof borderRadius === 'number' ? `${borderRadius}px` : borderRadius,
+          borderRadius: borderRadius,
           aspectRatio: `${screenRatio.x}/${screenRatio.y}`,
         }}
         {...props}

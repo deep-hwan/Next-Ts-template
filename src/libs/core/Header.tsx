@@ -23,7 +23,7 @@ export default function Header() {
 
   return (
     <>
-      <AppBar width={1200}>
+      <AppBar width={1200} serviceName="서비스명">
         <Row
           align="center"
           height="100%"

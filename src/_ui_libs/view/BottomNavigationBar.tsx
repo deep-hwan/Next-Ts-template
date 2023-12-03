@@ -30,10 +30,10 @@ interface MenuProps extends HTMLAttributes<HTMLLinkElement> {
 // -------------------------------------------------
 // -------------- BottomNavigationBar --------------
 // -------------------------------------------------
-export const BottomNavigationBar = forwardRef(function BottomNavigationBar(
+export const BottomNavigationBar = forwardRef((
   { children, design = 'default', maxWidth = 600 }: Props,
   ref?: ForwardedRef<HTMLDivElement>,
-) {
+) =>{
   const childrenArray = Children.toArray(children);
 
   if (childrenArray.length < 7) {
@@ -50,10 +50,10 @@ export const BottomNavigationBar = forwardRef(function BottomNavigationBar(
 // -------------------------------------------
 // -------------- NavigationTab --------------
 // -------------------------------------------
-export const NavigationTab = forwardRef(function NavigationTab(
+export const NavigationTab = forwardRef((
   { children, href, label, ...props }: MenuProps,
   ref?: ForwardedRef<HTMLAnchorElement>,
-) {
+)=> {
   const child = Children.only(children);
 
   return (

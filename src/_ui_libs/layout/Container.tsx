@@ -1,30 +1,43 @@
 /** @jsxImportSource @emotion/react */
 import React, { ForwardedRef, HTMLAttributes, ReactNode, forwardRef } from 'react';
-import { FlexTheme, MarignTheme, PaddingTheme, StyleTheme, ViewportTheme } from '@/_ui_libs/_theme';
-import { FlexTypes, MarginTypes, PaddingTypes, StyleslTypes, ViewportTypes } from '../_types';
+import {
+  FlexTypes,
+  MarginTypes,
+  PaddingTypes,
+  ScrollTypes,
+  StyleslTypes,
+  ViewportTypes,
+} from '../_types';
+import {
+  FlexTheme,
+  MarignTheme,
+  PaddingTheme,
+  ScrollTheme,
+  StyleTheme,
+  ViewportTheme,
+} from '../_theme';
 
 interface Props
   extends HTMLAttributes<HTMLElement>,
-    Omit<ViewportTypes, 'position'>,
+    Omit<ViewportTypes, 'position' | 'zIndex'>,
     FlexTypes,
-    MarginTypes,
     PaddingTypes,
-    Omit<StyleslTypes, 'cursor'> {
+    MarginTypes,
+    ScrollTypes,
+    Pick<StyleslTypes, 'backgroundColor'> {
   children?: ReactNode;
 }
 
-export const Form = forwardRef<HTMLFormElement, Props>(
+export const Container = forwardRef<HTMLDivElement, Props>(
   (
     {
       children,
-      //
       width = '100%',
       height,
       minWidth,
       maxWidth,
       minHeight,
       maxHeight,
-      //
       flex,
       direction = 'vertical',
       align,
@@ -32,32 +45,29 @@ export const Form = forwardRef<HTMLFormElement, Props>(
       wrap = 'nowrap',
       gap = 0,
       crossGap = 0,
-      //
       padding,
       margin,
-      //
-      border,
       backgroundColor,
-      borderRadius,
-      boxShadow,
+      scroll,
       ...props
     },
-    ref?: ForwardedRef<HTMLFormElement>,
+    ref: ForwardedRef<HTMLDivElement>,
   ) => {
     return (
-      <form
+      <div
         ref={ref}
         css={[
           ViewportTheme({ width, height, minWidth, maxWidth, minHeight, maxHeight }),
           FlexTheme({ flex, direction, align, crossAlign, wrap, gap, crossGap }),
           PaddingTheme({ padding }),
           MarignTheme({ margin }),
-          StyleTheme({ backgroundColor, border, borderRadius, boxShadow }),
+          StyleTheme({ backgroundColor }),
+          ScrollTheme({ scroll }),
         ]}
         {...props}
       >
         {children}
-      </form>
+      </div>
     );
   },
 );

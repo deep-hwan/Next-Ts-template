@@ -41,13 +41,13 @@ export function CheckInput({ label, children, ...props }: InputProps) {
   const id = child.props.id ?? 'check';
 
   return (
-    <Row gap={2} width="auto" css={{ cursor: 'pointer', userSelect: 'none' }}>
+    <Row gap={2} css={{ cursor: 'pointer', userSelect: 'none' }}>
       {cloneElement(child, {
         id,
         ...child.props,
       })}
 
-      <Row width="auto" align="center" crossAlign="center" padding={{ bottom: 2 }}>
+      <Row align="center" crossAlign="start" padding={{ bottom: 2 }}>
         <label
           htmlFor={id}
           css={[TypographyTheme({ size: 15, color: '#555555' }), { cursor: 'pointer' }]}
@@ -73,11 +73,8 @@ CheckInput.CheckBox = forwardRef(function CheckBox(
         FlexTheme({ crossAlign: 'center' }),
         ViewportTheme({ maxWidth: 28, maxHeight: 28 }),
         PaddingTheme({ padding: { all: 6 } }),
-        StyleTheme({
-          borderRadius: 100,
-          backgroundColorHover: colors.ground200,
-          cursor: 'pointer',
-        }),
+        StyleTheme({ borderRadius: 100, cursor: 'pointer' }),
+        { '&:hover': { backgroundColor: colors.ground200 } },
       ]}
       htmlFor={id}
     >

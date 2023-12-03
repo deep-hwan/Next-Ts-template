@@ -275,31 +275,24 @@ Input.NumbericField = forwardRef(function NumbericField(
 ) {
   const [displayValue, setDisplayValue] = useState<string | any>(props.value || '');
 
-  // useEffect(() => {
-  //   if (typeof props.value === 'number') {
-  //     setDisplayValue(props.value.toLocaleString());
-  //   } else if (typeof props.value === 'string') {
-  //     setDisplayValue(props.value);
-  //   }
-  // }, [props.value]);
-
+  useEffect(() => {
+    if (typeof props.value === 'number') {
+      setDisplayValue(props.value.toLocaleString());
+    } else if (props.value === '') {
+      setDisplayValue('');
+    } else if (typeof props.value === 'string' && !isNaN(Number(props.value))) {
+      setDisplayValue(parseFloat(props.value).toLocaleString());
+    }
+  }, [props.value]);
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value.replace(/,/g, '');
 
     if (rawValue === '') {
       setDisplayValue('');
-      if (props.onChange) {
-        const newEvent = {
-          ...e,
-          target: {
-            ...e.target,
-            value: '',
-          },
-        } as ChangeEvent<HTMLInputElement>;
-        props.onChange(newEvent);
-      }
     } else if (!isNaN(Number(rawValue))) {
-      setDisplayValue(parseFloat(rawValue).toLocaleString());
+      const formattedValue = parseFloat(rawValue).toLocaleString();
+      setDisplayValue(formattedValue);
+
       if (props.onChange) {
         const newEvent = {
           ...e,

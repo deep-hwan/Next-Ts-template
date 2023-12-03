@@ -20,9 +20,7 @@ export function Dialog({ children, view, onCancel, ...props }: Props) {
 
   const clickModalOutside = useCallback(
     (event: MouseEvent) => {
-      if (view && ref.current && !ref.current.contains(event.target as Node)) {
-        onCancel();
-      }
+      if (view && ref.current && !ref.current.contains(event.target as Node)) onCancel();
     },
     [view, onCancel],
   );
@@ -46,9 +44,7 @@ export function Dialog({ children, view, onCancel, ...props }: Props) {
 
   useEffect(() => {
     document.addEventListener('mousedown', clickModalOutside);
-    return () => {
-      document.removeEventListener('mousedown', clickModalOutside);
-    };
+    return () => document.removeEventListener('mousedown', clickModalOutside);
   }, [clickModalOutside, view]);
 
   return (

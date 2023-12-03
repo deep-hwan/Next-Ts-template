@@ -27,9 +27,7 @@ export function CalenderModal({
 
   const clickModalOutside = useCallback(
     (event: MouseEvent) => {
-      if (view && ref.current && !ref.current.contains(event.target as Node)) {
-        onCancel();
-      }
+      if (view && ref.current && !ref.current.contains(event.target as Node)) onCancel();
     },
     [view, onCancel],
   );
@@ -42,17 +40,8 @@ export function CalenderModal({
     }
 
     document.addEventListener('mousedown', clickModalOutside);
-    return () => {
-      document.removeEventListener('mousedown', clickModalOutside);
-    };
+    return () => document.removeEventListener('mousedown', clickModalOutside);
   }, [view, clickModalOutside]);
-
-  //
-  const [date, setDate] = useState(new Date());
-
-  const handleDateChange = (value: any) => {
-    setDate(value as Date);
-  };
 
   return (
     <>

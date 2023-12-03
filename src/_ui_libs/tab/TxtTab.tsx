@@ -1,43 +1,37 @@
 /** @jsxImportSource @emotion/react */
 import React, { ButtonHTMLAttributes, ForwardedRef, ReactNode, forwardRef } from 'react';
-import { MarignTheme, PaddingTheme, TabTheme, TypographyTheme } from '@/_ui_libs/_theme';
+import { MarignTheme, PaddingTheme, TypographyTheme } from '@/_ui_libs/_theme';
 import { colors } from '@/libs/themes/_index';
+import { MarginTypes, PaddingTypes, TypographyTypes } from '../_types';
 
 // --------------------------------------------
 // -------------- Type Interface --------------
 // --------------------------------------------
-interface TabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface TabProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    PaddingTypes,
+    MarginTypes,
+    Pick<TypographyTypes, 'weight' | 'txtAlign' | 'size' | 'color'> {
   children: ReactNode;
   type?: 'button' | 'submit';
-  weight?: 'lighter' | 'normal' | 'medium' | 'bold';
-  txtAlign?: 'start' | 'end' | 'center';
-  size?: number | string;
-  color?: string;
-  padding?: {
-    all?: number;
-    horizontal?: number;
-    vertical?: number;
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
-  };
-  margin?: {
-    all?: number;
-    horizontal?: number;
-    vertical?: number;
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
-  };
 }
 
 // ------------------------------------
 // -------------- TxtTab --------------
 // ------------------------------------
 export const TxtTab = forwardRef(function TxtTab(
-  { children, type = 'button', size, txtAlign, weight, color, padding, margin, ...props }: TabProps,
+  {
+    children,
+    type = 'button',
+    size = 14,
+    txtAlign,
+    weight,
+    color = colors.keyColor,
+    //
+    padding,
+    margin,
+    ...props
+  }: TabProps,
   ref?: ForwardedRef<HTMLButtonElement>,
 ) {
   return (
@@ -47,15 +41,8 @@ export const TxtTab = forwardRef(function TxtTab(
       css={[
         PaddingTheme({ padding }),
         MarignTheme({ margin }),
-        TypographyTheme({
-          size: size ? size : 14,
-          color: color ? color : colors.keyColor,
-          weight,
-          whiteSpace: 'nowrap',
-          txtAlign,
-        }),
-        TabTheme({ opacityDisabled: 0.4 }),
-        { '&:hover': { fontWeight: '500' } },
+        TypographyTheme({ size, color, weight, whiteSpace: 'nowrap', txtAlign }),
+        { '&:hover': { fontWeight: '500' }, '&:disabled': { opacity: 0.4 } },
       ]}
       {...props}
     >

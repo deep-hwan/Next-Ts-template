@@ -53,31 +53,33 @@
 ##### 파일경로 : src > \_ui_libs
 
 즉시 사용할 수 있는 디자인 UI 위젯입니다.
-
 디자인 위젯은 앞으로 계속해서 추가 및 업데이트 될 예정입니다.
 
 **모든 위젯의 스타일은 공통적인 \_theme**을 통해 관리하고 있습니다.
 
 ( 경로 : src > \_ui_libs > \_theme.tsx )
 
-**Layout Widgets**
+**View Widgets**
 
 - Appbar : 헤더의 앱바
 - AppDrawer : 메뉴 드로어
 - BottomNavigationBar : 바텀네비게이션 바
 - NavigationTab : 바텀네비게이션 바 > 메뉴 탭
+
+**Layout Widgets**
+
 - Section : 섹션 레이아웃
-- Container / Wrap : 레이아웃 위젯
-- Row / Column : 가로 및 세로 정렬 레이아웃 위젯
+- Container : 레이아웃 위젯1
+- Wrap : 레이아웃 위젯2
+- Row / Column : 가로 / 세로 정렬 레이아웃 위젯
 - Padding : 패딩 사이즈 레이아웃 위젯
 - BackgroundImgBox : 배경이미지가 있는 레이아웃 위젯
 - BoxShadow : 그림자 형태의 박스 레이아웃 위젯
-- DragScrollContainer : 가로 터치 스크롤이 가능한 레이아웃 위젯
+- DragScrollContainer : 컨테이너 내에서 가로 터치 스크롤이 가능한 레이아웃 위젯
 - Form : form 위젯
 - Items, Item : ul / li 레이아웃
-- Spacing : 공간 및 여백을 설정하는 박스 레이아웃
-- Layout : 팝업 및 모달 시 노출되는 백그라운드 레이아웃
-- Accordion / AccordionPanel : 아코디언 드롭다운의 타이틀 및 아코디언 패널
+- Spacing : 공간 및 여백을 처리하는 박스 레이아웃
+- Layout : 백그라운드 블러 레이아웃 위젯
 
 **Image Widgets**
 

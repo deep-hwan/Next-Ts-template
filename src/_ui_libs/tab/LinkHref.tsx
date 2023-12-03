@@ -1,59 +1,36 @@
 import Link from 'next/link';
 import React, { AnchorHTMLAttributes, ReactNode } from 'react';
-import { MarignTheme, PaddingTheme, TabTheme, TypographyTheme } from '../_theme';
+import { MarignTheme, PaddingTheme, StyleTheme, TypographyTheme } from '../_theme';
+import { MarginTypes, PaddingTypes, StyleslTypes, TypographyTypes } from '../_types';
 
-//
-interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
+interface Props
+  extends AnchorHTMLAttributes<HTMLAnchorElement>,
+    PaddingTypes,
+    MarginTypes,
+    Pick<StyleslTypes, 'borderRadius' | 'boxShadow' | 'border'>,
+    Pick<TypographyTypes, 'weight'> {
   children: ReactNode;
   a: any;
-  txtSize?: number | string;
-  weight?: 'lighter' | 'normal' | 'medium' | 'bold';
-  colors?: { button?: string; txt?: string };
-  borderRadius?: number | string;
-  boxShadow?: {
-    x?: number;
-    y?: number;
-    blur?: number;
-    color?: string;
-  };
-  border?: {
-    solid: number;
-    color?: string;
-  };
-  padding?: {
-    all?: number | string;
-    horizontal?: number | string;
-    vertical?: number | string;
-    top?: number | string;
-    bottom?: number | string;
-    left?: number | string;
-    right?: number | string;
-  };
-  margin?: {
-    all?: number | string;
-    horizontal?: number | string;
-    vertical?: number | string;
-    top?: number | string;
-    bottom?: number | string;
-    left?: number | string;
-    right?: number | string;
-  };
   blank?: boolean;
+  txtSize?: number | string;
+  colors?: { button?: string; txt?: string };
 }
 
-//
 export function LinkHref({
   a,
+  blank,
   children,
+  //
   txtSize = 15,
   weight = 'normal',
-  padding,
   colors = { button: '', txt: '#555' },
+  //
   borderRadius,
   border,
   boxShadow,
+  //
   margin,
-  blank,
+  padding,
   ...props
 }: Props) {
   return (
@@ -64,12 +41,7 @@ export function LinkHref({
         PaddingTheme({ padding }),
         MarignTheme({ margin }),
         TypographyTheme({ size: txtSize, weight: weight, color: colors.txt }),
-        TabTheme({
-          backgroundColor: colors?.button,
-          border,
-          borderRadius,
-          boxShadow,
-        }),
+        StyleTheme({ backgroundColor: colors?.button, border, borderRadius, boxShadow }),
       ]}
       {...props}
     >

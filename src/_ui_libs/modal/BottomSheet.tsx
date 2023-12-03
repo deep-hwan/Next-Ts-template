@@ -44,9 +44,7 @@ export function BottomSheet({
   const handleTouchEnd = () => {
     const distance = currentY - startY;
 
-    if (distance > 80) {
-      onCancel();
-    }
+    if (distance > 80) onCancel();
 
     setCurrentY(0);
     setStartY(0);
@@ -56,9 +54,7 @@ export function BottomSheet({
   // 외부클릭
   const clickModalOutside = useCallback(
     (event: MouseEvent) => {
-      if (view && ref.current && !ref.current.contains(event.target as Node)) {
-        onCancel();
-      }
+      if (view && ref.current && !ref.current.contains(event.target as Node)) onCancel();
     },
     [view, onCancel],
   );
@@ -82,9 +78,7 @@ export function BottomSheet({
 
   useEffect(() => {
     document.addEventListener('mousedown', clickModalOutside);
-    return () => {
-      document.removeEventListener('mousedown', clickModalOutside);
-    };
+    return () => document.removeEventListener('mousedown', clickModalOutside);
   }, [clickModalOutside, view]);
 
   return (
@@ -154,7 +148,6 @@ export function BottomSheet({
 // ------------------------------------
 // -------------- Styles --------------
 // ------------------------------------
-
 function BoxTheme(isActive?: boolean, theme?: 'light' | 'dark'): Interpolation<Theme> {
   return {
     backgroundColor: theme === 'dark' ? '#222222' : '#ffffff',

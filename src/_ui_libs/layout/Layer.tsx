@@ -2,16 +2,10 @@
 import { ForwardedRef, HTMLAttributes, forwardRef, memo } from 'react';
 import { Padding } from './Padding';
 
-// --------------------------------------------
-// -------------- Type Interface --------------
-// --------------------------------------------
 interface Props extends HTMLAttributes<HTMLDivElement> {
   isActive?: boolean;
 }
 
-// -----------------------------------
-// -------------- Layer --------------
-// -----------------------------------
 export const Layer = memo(
   forwardRef(function Layer({ isActive, ...props }: Props, ref?: ForwardedRef<HTMLDivElement>) {
     return (

@@ -21,7 +21,7 @@ export default function AppLayout({ children }: LayoutProps): JSX.Element {
       {!errPath && <Header />}
       <main>{children}</main>
 
-      {!(errPath || noneView) && <BottomNaviTabBar />}
+      {!(errPath || noneView) && <BottomNaviTabBar  />}
     </div>
   );
 }
