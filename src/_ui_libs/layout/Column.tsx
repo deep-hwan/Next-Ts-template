@@ -57,6 +57,7 @@ export const Column = forwardRef<HTMLDivElement, Props>(
       boxShadow,
       border,
       scroll,
+      transitionTime,
       ...props
     },
     ref: ForwardedRef<HTMLDivElement>,
@@ -71,7 +72,7 @@ export const Column = forwardRef<HTMLDivElement, Props>(
           FlexTheme({ flex, direction, align, crossAlign, wrap, gap, crossGap }),
           PaddingTheme({ padding }),
           MarignTheme({ margin }),
-          StyleTheme({ backgroundColor, border, borderRadius, boxShadow }),
+          StyleTheme({ backgroundColor, border, borderRadius, boxShadow, transitionTime }),
           ScrollTheme({ scroll }),
         ]}
         {...props}

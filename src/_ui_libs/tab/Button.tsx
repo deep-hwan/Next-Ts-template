@@ -17,7 +17,7 @@ interface Props
     Omit<ViewportTypes, 'position' | 'zIndex'>,
     PaddingTypes,
     MarginTypes,
-    Pick<StyleslTypes, 'borderRadius' | 'boxShadow' | 'border'> {
+    Pick<StyleslTypes, 'borderRadius' | 'boxShadow' | 'border' | 'transitionTime'> {
   children: ReactNode;
   bottomFixed?: boolean;
   txtSize?: number | string;
@@ -49,12 +49,19 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
       borderRadius = 18,
       border,
       boxShadow,
+      transitionTime,
       ...props
     },
     ref?: ForwardedRef<HTMLButtonElement>,
   ) => {
     const typographyProps = { size: txtSize, color: colors.txt, weight };
-    const tabProps = { backgroundColor: colors?.button, border, borderRadius, boxShadow };
+    const tabProps = {
+      backgroundColor: colors?.button,
+      border,
+      borderRadius,
+      boxShadow,
+      transitionTime,
+    };
     const buttonPropsArray = [
       ViewportTheme({ width, maxWidth, minWidth, minHeight }),
       FlexTheme({ align: 'center', crossAlign: 'center' }),

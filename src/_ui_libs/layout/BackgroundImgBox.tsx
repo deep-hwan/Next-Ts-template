@@ -23,7 +23,7 @@ interface Props
     FlexTypes,
     MarginTypes,
     PaddingTypes,
-    Pick<StyleslTypes, 'borderRadius' | 'boxShadow'>,
+    Pick<StyleslTypes, 'borderRadius' | 'boxShadow' | 'transitionTime'>,
     ScrollTypes {
   children?: ReactNode;
   imgSrc: string;
@@ -56,6 +56,7 @@ export const BackgroundImgBox = forwardRef<HTMLDivElement, Props>(
       scroll,
       //
       imgSrc,
+      transitionTime,
       ...props
     },
     ref: ForwardedRef<HTMLDivElement>,
@@ -71,7 +72,7 @@ export const BackgroundImgBox = forwardRef<HTMLDivElement, Props>(
           FlexTheme(flexProps),
           PaddingTheme({ padding }),
           MarignTheme({ margin }),
-          StyleTheme({ borderRadius, boxShadow }),
+          StyleTheme({ borderRadius, boxShadow, transitionTime }),
           ScrollTheme({ scroll }),
           {
             backgroundImage: `url(${imgSrc})`,

@@ -25,7 +25,7 @@ interface Props
     PaddingTypes,
     Pick<FlexTypes, 'gap'>,
     Pick<TypographyTypes, 'weight'>,
-    Pick<StyleslTypes, 'borderRadius' | 'boxShadow' | 'border'> {
+    Pick<StyleslTypes, 'borderRadius' | 'boxShadow' | 'border' | 'transitionTime'> {
   children: ReactNode;
   variant?: 'border' | 'box';
   type?: 'button' | 'submit';
@@ -58,6 +58,7 @@ export const Tab = forwardRef(function Tab(
     boxShadow,
     padding = { all: 12 },
     margin,
+    transitionTime,
     ...props
   }: Props,
   ref?: ForwardedRef<HTMLButtonElement>,
@@ -73,7 +74,13 @@ export const Tab = forwardRef(function Tab(
         FlexTheme({ direction: 'horizontal', align: 'center', crossAlign: 'center', gap }),
         PaddingTheme({ padding }),
         MarignTheme({ margin }),
-        StyleTheme({ backgroundColor: colors?.button, border, borderRadius, boxShadow }),
+        StyleTheme({
+          backgroundColor: colors?.button,
+          border,
+          borderRadius,
+          boxShadow,
+          transitionTime,
+        }),
       ]}
       {...props}
     >

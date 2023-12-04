@@ -56,6 +56,7 @@ export const Row = forwardRef<HTMLDivElement, Props>(
       borderRadius,
       boxShadow,
       border,
+      transitionTime,
       scroll,
       ...props
     },

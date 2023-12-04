@@ -58,6 +58,7 @@ export const BoxShadow = forwardRef<HTMLDivElement, Props>(
       border,
       backgroundColor = '#ffffff',
       borderRadius = 18,
+      transitionTime,
       boxShadow = {
         x: 0,
         y: 2,
@@ -79,7 +80,7 @@ export const BoxShadow = forwardRef<HTMLDivElement, Props>(
           FlexTheme({ flex, direction, align, crossAlign, wrap, gap, crossGap }),
           PaddingTheme({ padding }),
           MarignTheme({ margin }),
-          StyleTheme({ backgroundColor, border, borderRadius, boxShadow }),
+          StyleTheme({ backgroundColor, border, borderRadius, boxShadow, transitionTime }),
           ScrollTheme({ scroll }),
         ]}
         {...props}

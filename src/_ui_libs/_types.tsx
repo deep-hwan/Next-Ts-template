@@ -53,6 +53,7 @@ export interface StyleslTypes {
   cursor?: 'default' | 'grab' | 'pointer' | 'zoom';
   backgroundColor?: string;
   borderRadius?: number | string;
+  transitionTime?: number;
   boxShadow?: {
     x?: number;
     y?: number;

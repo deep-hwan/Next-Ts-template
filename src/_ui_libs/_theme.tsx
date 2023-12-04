@@ -26,7 +26,6 @@ export function ViewportTheme({
 }: ViewportTypes): Interpolation<Theme> {
   return {
     zIndex: zIndex,
-    transition: '0.3s ease-in-out',
     width: width,
     height: height,
     minWidth: minWidth,
@@ -182,9 +181,11 @@ export function StyleTheme({
   borderRadius,
   boxShadow,
   cursor,
+  transitionTime = 0.3,
 }: StyleslTypes): Interpolation<Theme> {
   return {
     backgroundColor: backgroundColor,
+    transition: `${transitionTime}s ease-in-out`,
     border:
       border?.position !== 'bottom' && 'top' && 'right' && 'left'
         ? `${border?.solid}px solid ${border?.color}`

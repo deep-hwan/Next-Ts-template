@@ -23,7 +23,7 @@ interface ItemsProps
     FlexTypes,
     PaddingTypes,
     MarginTypes,
-    Pick<StyleslTypes, 'backgroundColor' | 'borderRadius'>,
+    Pick<StyleslTypes, 'backgroundColor' | 'borderRadius' | 'transitionTime'>,
     ScrollTypes {
   children: ReactNode;
 }
@@ -68,6 +68,7 @@ export const Items = forwardRef<HTMLUListElement, ItemsProps>(
       margin = { all: 0 },
       backgroundColor,
       borderRadius,
+      transitionTime,
       scroll,
       ...props
     },
@@ -89,7 +90,7 @@ export const Items = forwardRef<HTMLUListElement, ItemsProps>(
           }),
           PaddingTheme({ padding }),
           MarignTheme({ margin }),
-          StyleTheme({ backgroundColor, borderRadius }),
+          StyleTheme({ backgroundColor, borderRadius, transitionTime }),
           ScrollTheme({ scroll }),
         ]}
         {...props}
@@ -132,6 +133,7 @@ export const Item = forwardRef<HTMLLIElement, ItemProps>(
       borderRadius,
       boxShadow,
       cursor,
+      transitionTime,
       scroll,
       ...props
     },
@@ -145,7 +147,7 @@ export const Item = forwardRef<HTMLLIElement, ItemProps>(
           FlexTheme({ flex, direction, align, crossAlign, wrap, gap, crossGap }),
           PaddingTheme({ padding }),
           MarignTheme({ margin }),
-          StyleTheme({ backgroundColor, border, borderRadius, boxShadow, cursor }),
+          StyleTheme({ backgroundColor, border, borderRadius, boxShadow, cursor, transitionTime }),
           ScrollTheme({ scroll }),
         ]}
         {...props}

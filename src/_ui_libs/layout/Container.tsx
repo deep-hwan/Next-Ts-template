@@ -24,7 +24,7 @@ interface Props
     PaddingTypes,
     MarginTypes,
     ScrollTypes,
-    Pick<StyleslTypes, 'backgroundColor'> {
+    Pick<StyleslTypes, 'backgroundColor' | 'transitionTime'> {
   children?: ReactNode;
 }
 
@@ -48,6 +48,7 @@ export const Container = forwardRef<HTMLDivElement, Props>(
       padding,
       margin,
       backgroundColor,
+      transitionTime,
       scroll,
       ...props
     },
@@ -61,7 +62,7 @@ export const Container = forwardRef<HTMLDivElement, Props>(
           FlexTheme({ flex, direction, align, crossAlign, wrap, gap, crossGap }),
           PaddingTheme({ padding }),
           MarignTheme({ margin }),
-          StyleTheme({ backgroundColor }),
+          StyleTheme({ backgroundColor, transitionTime }),
           ScrollTheme({ scroll }),
         ]}
         {...props}

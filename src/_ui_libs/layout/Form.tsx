@@ -40,6 +40,7 @@ export const Form = forwardRef<HTMLFormElement, Props>(
       backgroundColor,
       borderRadius,
       boxShadow,
+      transitionTime,
       ...props
     },
     ref?: ForwardedRef<HTMLFormElement>,
@@ -52,7 +53,7 @@ export const Form = forwardRef<HTMLFormElement, Props>(
           FlexTheme({ flex, direction, align, crossAlign, wrap, gap, crossGap }),
           PaddingTheme({ padding }),
           MarignTheme({ margin }),
-          StyleTheme({ backgroundColor, border, borderRadius, boxShadow }),
+          StyleTheme({ backgroundColor, border, borderRadius, boxShadow, transitionTime }),
         ]}
         {...props}
       >

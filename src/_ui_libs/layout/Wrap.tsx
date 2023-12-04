@@ -58,6 +58,7 @@ export const Wrap = forwardRef<HTMLDivElement, WrapProps>(
       boxShadow,
       border,
       cursor,
+      transitionTime,
       scroll,
       ...props
     },
@@ -65,7 +66,14 @@ export const Wrap = forwardRef<HTMLDivElement, WrapProps>(
   ) => {
     const viewProps = { width, height, minWidth, maxWidth, minHeight, maxHeight, position, zIndex };
     const flexProps = { flex, direction, align, crossAlign, wrap, gap, crossGap };
-    const stylesProps = { backgroundColor, border, borderRadius, boxShadow, cursor };
+    const stylesProps = {
+      backgroundColor,
+      border,
+      borderRadius,
+      boxShadow,
+      transitionTime,
+      cursor,
+    };
 
     return (
       <div
