@@ -68,6 +68,7 @@
 
 **Layout Widgets**
 
+- Splash : 스플레쉬 화면
 - Section : 섹션 레이아웃
 - Container : 레이아웃 위젯1
 - Wrap : 레이아웃 위젯2

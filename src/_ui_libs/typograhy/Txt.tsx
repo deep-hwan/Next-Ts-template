@@ -208,7 +208,7 @@ export const Txt = forwardRef(
           <p
             ref={ref}
             css={[
-              ViewportTheme({ maxWidth }),
+              ViewportTheme({ width: 'auto', maxWidth }),
               PaddingTheme({ padding }),
               MarignTheme({ margin }),
               TypographyTheme({

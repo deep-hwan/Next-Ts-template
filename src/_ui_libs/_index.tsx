@@ -17,6 +17,7 @@ import { Layer } from './layout/Layer';
 import { Items, Item } from './layout/Items';
 import { BackgroundImgBox } from './layout/BackgroundImgBox';
 import { DragScrollContainer } from './layout/DragScrollContainer';
+import { Splash } from './layout/Splash';
 
 //images
 import { ProfileImage } from './images/ProfileImage';
@@ -58,6 +59,7 @@ export {
   NavigationTab,
 
   //layout
+  Splash,
   Section,
   Container,
   Wrap,
