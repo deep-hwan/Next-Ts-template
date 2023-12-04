@@ -208,6 +208,7 @@ export default function Fields() {
           <Input label="내용" labelEdge="(필수)">
             <Input.Textarea
               shape={isType}
+              rows={5}
               placeholder="내용을 입력하세요"
               name="context"
               value={isValues.context}

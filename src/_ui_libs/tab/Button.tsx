@@ -53,7 +53,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>(
     },
     ref?: ForwardedRef<HTMLButtonElement>,
   ) => {
-    const typographyProps = { size: txtSize, color: colors.txt, weight, lineHeight: '26px' };
+    const typographyProps = { size: txtSize, color: colors.txt, weight };
     const tabProps = { backgroundColor: colors?.button, border, borderRadius, boxShadow };
     const buttonPropsArray = [
       ViewportTheme({ width, maxWidth, minWidth, minHeight }),
