@@ -23,7 +23,7 @@ export function LinkHref({
   //
   txtSize = 15,
   weight = 'normal',
-  colors = { button: '', txt: '#555' },
+  colors = { button: '', txt: '#666' },
   //
   borderRadius,
   border,

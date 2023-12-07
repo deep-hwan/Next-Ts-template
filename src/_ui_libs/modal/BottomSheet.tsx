@@ -175,6 +175,6 @@ function TabTheme(theme?: 'light' | 'dark'): Interpolation<Theme> {
     outline: 'none',
     borderRadius: '1000px',
     cursor: 'pointer',
-    backgroundColor: theme === 'dark' ? '#444444' : '#e0e0e0',
+    backgroundColor: theme === 'dark' ? '#44' : '#e0e0e0',
   };
 }

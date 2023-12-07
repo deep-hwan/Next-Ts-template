@@ -242,7 +242,7 @@ export function ScrollTheme({
 // ------------------------
 export function LabelTheme(error: boolean): Interpolation<Theme> {
   return {
-    color: error ? '#ED5C5C' : '#797979',
+    color: error ? '#ED5C5C' : '#888888',
     display: 'inline-block',
     fontSize: '0.813rem',
     marginBottom: '6px',

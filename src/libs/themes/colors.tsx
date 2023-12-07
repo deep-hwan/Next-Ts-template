@@ -7,7 +7,7 @@ export const colors = {
   none: 'transparent',
   white: '#ffffff',
 
-  black100: '#333333',
+  black100: '#444444',
   black200: '#222222',
   black300: '#181818',
 
@@ -19,8 +19,8 @@ export const colors = {
   grey500: '#aaaaaa',
   grey600: '#9DA2A7',
   grey700: '#888888',
-  grey800: '#797979',
-  grey900: '#555555',
+  grey800: '#7a7a7a',
+  grey900: '#696969',
 
   red: '#ED5C5C',
   redBg: '#FFF2F2',

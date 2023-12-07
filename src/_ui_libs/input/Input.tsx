@@ -107,7 +107,7 @@ export function Input({ children, label, labelEdge, maxWidth, ...props }: InputP
         <label htmlFor={id} css={[LabelTheme(error)]}>
           {label}
           {labelEdge && (
-            <span css={{ fontSize: '0.65rem', color: '#ed5c5c', marginLeft: '4px' }}>
+            <span css={{ fontSize: '0.65rem', color: '#f76565', marginLeft: '4px' }}>
               {labelEdge}
             </span>
           )}
@@ -416,7 +416,7 @@ function InputTheme(
     ViewportTheme({ width: '100%' }),
     GlobalInputTheme(),
     FlexTheme({ direction: 'horizontal', align: 'center' }),
-    TypographyTheme({ size: 15, txtAlign, color: '#555555' }),
+    TypographyTheme({ size: 15, txtAlign, color: '#666666' }),
     MarignTheme({ margin: { all: 0 } }),
     StyleTheme({ backgroundColor: 'transparent', borderRadius: 0 }),
     shape === 'default' && PaddingTheme({ padding: { all: 12 } }),

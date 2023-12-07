@@ -138,7 +138,7 @@ const StyledWrap = styled.div`
     min-height: 40px;
     background: none;
     font-size: 0;
-    color: #797979;
+    color: #888888;
   }
 
   // 달력 > 네비게이션 버튼 : 타이틀
@@ -196,7 +196,7 @@ const StyledWrap = styled.div`
   .react-calendar__tile {
     font-size: 15px !important;
     padding: 16px 5px;
-    color: #555;
+    color: #666666;
   }
 
   // mm 박스 > 달력 > mm날짜

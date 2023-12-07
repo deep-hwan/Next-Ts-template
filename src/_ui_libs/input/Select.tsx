@@ -152,7 +152,7 @@ function SelectTheme(
   return [
     GlobalInputTheme(),
     ViewportTheme({ width: '100%', minWidth: 100 }),
-    TypographyTheme({ size: 15, color: value !== '' ? '#555555' : '#e2e2e2' }),
+    TypographyTheme({ size: 15, color: value !== '' ? '#666666' : '#e2e2e2' }),
     shape === 'default' && PaddingTheme({ padding: { all: 12 } }),
     shape === 'box' && PaddingTheme({ padding: { vertical: 14, horizontal: 12 } }),
     {

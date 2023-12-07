@@ -66,7 +66,7 @@ export default function Header() {
             css={{ display: 'none', [MQ[1]]: { display: 'flex' } }}
           >
             <IconTab onClick={handleActiveDrawer} iconSize={24}>
-              <ToastIcon fill="#555" width="100%" height="100%" />
+              <ToastIcon fill="#666666" width="100%" height="100%" />
             </IconTab>
           </Wrap>
         </Row>

@@ -50,7 +50,7 @@ export function CheckInput({ label, children, ...props }: InputProps) {
       <Row align="center" crossAlign="start" padding={{ bottom: 2 }}>
         <label
           htmlFor={id}
-          css={[TypographyTheme({ size: 15, color: '#555555' }), { cursor: 'pointer' }]}
+          css={[TypographyTheme({ size: 15, color: '#666666' }), { cursor: 'pointer' }]}
           {...props}
         >
           {label}
