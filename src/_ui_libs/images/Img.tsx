@@ -70,19 +70,35 @@ export function Img({
       }}
       {...props}
     >
-      <Image
-        src={src}
-        alt={alt}
-        priority={priority}
-        fill
-        layout="fill"
-        placeholder={blurDataURL ? 'blur' : 'empty'}
-        blurDataURL={blurDataURL}
-        objectFit={objectFit}
-        sizes={sizes}
-        onClick={onClick}
-        css={{ borderRadius: borderRadius }}
-      />
+      {!!blurDataURL ? (
+        <Image
+          src={src}
+          alt={alt}
+          priority={priority}
+          fill
+          layout="fill"
+          placeholder={blurDataURL ? 'blur' : 'empty'}
+          blurDataURL={blurDataURL}
+          objectFit={objectFit}
+          onClick={onClick}
+          sizes={sizes}
+          css={{ borderRadius: borderRadius }}
+        />
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          priority={priority}
+          fill
+          layout="fill"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAECAIAAADETxJQAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAM0lEQVR4nAEoANf/AP7+//j9/+ry/wDe3NbEqorX1cwAkn9ndUYhjHddAAgEBBIODgcHCB3XE9M/sWuRAAAAAElFTkSuQmCC"
+          objectFit={objectFit}
+          onClick={onClick}
+          sizes={sizes}
+          css={{ borderRadius: borderRadius }}
+        />
+      )}
     </div>
   );
 }

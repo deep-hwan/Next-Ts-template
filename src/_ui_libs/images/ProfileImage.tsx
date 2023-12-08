@@ -44,8 +44,6 @@ export function ProfileImage({
 
   const sizes = `(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw`;
 
-  console.log('blurDataURL', blurDataURL);
-
   return (
     <>
       {!!src ? (
@@ -80,7 +78,7 @@ export function ProfileImage({
               fill
               layout="fill"
               placeholder="blur"
-              blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAECAIAAADETxJQAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAM0lEQVR4nAEoANf/AP7+//j9/+ry/wDe3NbEqorX1cwAkn9ndUYhjHddAAgEBBIODgcHCB3XE9M/sWuRAAAAAElFTkSuQmCC"
               objectFit="cover"
               sizes={sizes}
               css={{ borderRadius: borderRadius }}
