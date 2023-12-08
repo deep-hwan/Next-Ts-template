@@ -13,7 +13,6 @@ export default function Comp2() {
           src="https://imagedelivery.net/vJSpkH6oHM7zquolzolo7A/77550435-1cc9-4b42-4519-3cd83f149b00/public"
           alt="템플릿"
           size={40}
-          
         />
         <Column gap={3}>
           <Txt as="strong" size={17}>

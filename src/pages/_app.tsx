@@ -4,7 +4,7 @@ import { useState } from 'react';
 //hooks
 import { SessionProvider } from 'next-auth/react';
 import { RecoilRoot } from 'recoil';
-import { dehydrate, Hydrate, QueryClient, QueryClientProvider } from 'react-query';
+import { dehydrate, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 //style
 import '@/styles/globals.css';

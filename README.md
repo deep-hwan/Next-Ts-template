@@ -39,6 +39,8 @@
 - React-query : 3.39.3
 - Recoil: 0.7.7
 - Emotion : 11.11.2
+- sharp: 0.33.0
+- plaiceholder: 3.0.0
 - React-cookie : 4.1.1
 - React-raise-editor: 0.1.4
 - React-datepicker: 4.16.0
@@ -84,7 +86,7 @@
 
 **Image Widgets**
 
-- ProfileImage : 프로필 이미지 위젯
+- ProfileImage : 프로필 이미지 위젯 (최적화)
 - Img : 최적화 이미지 위젯
 
 **Input Widgets**

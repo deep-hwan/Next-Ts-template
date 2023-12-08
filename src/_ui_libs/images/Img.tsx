@@ -1,19 +1,17 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { CSSObject } from '@emotion/react';
 
 interface Props {
   src: string | StaticImageData;
   alt: string;
-  priority?:boolean;
-  width?: number;
-  height?: number;
+  priority?: boolean;
   size?: {
     width?: 'auto' | '100%' | string;
     minWidth?: number | string;
     maxWidth?: number | string;
-    height?: 'auto' | '100%'| string;
+    height?: 'auto' | '100%' | string;
     minHeight?: number | string;
     maxHeight?: number | string;
   };
@@ -27,8 +25,6 @@ interface Props {
 export function Img({
   src,
   alt,
-  width = 500,
-  height = 500,
   size,
   priority,
   objectFit = 'cover',
@@ -37,33 +33,56 @@ export function Img({
   onClick,
   ...props
 }: Props) {
+  const [blurDataURL, setBlurDataURL] = useState('');
+
+  useEffect(() => {
+    async function fetchBlurDataURL() {
+      if (typeof src === 'string') {
+        try {
+          const response = await fetch(`/api/image-placeholder?url=${encodeURIComponent(src)}`);
+          if (!response.ok) {
+            throw new Error('Image processing failed');
+          }
+          const data = await response.json();
+          setBlurDataURL(data.base64);
+        } catch (error) {
+          console.error('Failed to load blur data URL:', error);
+        }
+      }
+    }
+
+    fetchBlurDataURL();
+  }, [src]);
+
+  const sizes = `(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw`;
+
   return (
-    <>
+    <div
+      css={{
+        position: 'relative',
+        width: size?.width ? size.width : '100%',
+        height: size?.height ? size.height : 'auto',
+        minWidth: size?.minWidth,
+        maxWidth: size?.maxWidth,
+        minHeight: size?.minHeight,
+        maxHeight: size?.maxHeight,
+        aspectRatio: `${screenRatio.x}/${screenRatio.y}`,
+      }}
+      {...props}
+    >
       <Image
         src={src}
         alt={alt}
         priority={priority}
-        loading= {priority ?"eager" :"lazy"}
-        layout="responsive"
-        placeholder="blur"
-        blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
-        width={width}
-        height={height}
+        fill
+        layout="fill"
+        placeholder={blurDataURL ? 'blur' : 'empty'}
+        blurDataURL={blurDataURL}
+        objectFit={objectFit}
+        sizes={sizes}
         onClick={onClick}
-      
-        css={{
-          width: size?.width ? size?.width : '100%',
-          height: size?.height ? size?.height : 'auto',
-          minWidth:  size?.minWidth,
-          maxWidth:  size?.maxWidth,
-          minHeight: size?.minHeight,
-          maxHeight:  size?.maxHeight,
-          objectFit: objectFit,
-          borderRadius: borderRadius,
-          aspectRatio: `${screenRatio.x}/${screenRatio.y}`,
-        }}
-        {...props}
+        css={{ borderRadius: borderRadius }}
       />
-    </>
+    </div>
   );
 }
