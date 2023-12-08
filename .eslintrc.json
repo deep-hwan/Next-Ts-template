@@ -18,7 +18,7 @@
       "jsx": true
     }
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier", "emotion"],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier", "emotion", "@emotion"],
   "rules": {
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error",

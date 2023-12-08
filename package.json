@@ -29,6 +29,7 @@
     "next-auth": "^4.22.1",
     "next-seo": "^6.1.0",
     "next-sitemap": "^4.1.8",
+    "plaiceholder": "^3.0.0",
     "react": "18.2.0",
     "react-calendar": "^4.6.0",
     "react-cookie": "^4.1.1",
