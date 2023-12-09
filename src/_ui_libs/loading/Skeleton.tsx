@@ -4,12 +4,13 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   borderRadius?: number | string;
   height: number;
   width?: number;
+  opacity?: number;
 }
 
 export const Skeleton = memo(
   forwardRef(
     (
-      { width, height = 10, borderRadius = 4, ...props }: Props,
+      { width, height = 10, borderRadius = 4, opacity, ...props }: Props,
       ref: ForwardedRef<HTMLDivElement>,
     ) => {
       const loadAnimation = `
@@ -32,6 +33,7 @@ export const Skeleton = memo(
                 height: height,
                 minHeight: height,
                 borderRadius: borderRadius,
+                opacity: opacity,
                 background:
                   'linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%)',
                 backgroundSize: '200% 100%',
