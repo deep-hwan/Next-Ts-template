@@ -43,7 +43,7 @@ import { TxtSpan } from './typograhy/TxtSpan';
 
 //loading
 import { LoadingSpinner } from './loading/LoaddingSpinner';
-import { Skeleton } from './loading/SkeletonUI';
+import { Skeleton } from './loading/Skeleton';
 import { LoadingLayer } from './loading/LoadingLayer';
 
 //modal

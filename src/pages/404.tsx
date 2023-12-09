@@ -14,7 +14,7 @@ export default function Error() {
     <>
       <SEO title="페이지를 찾을 수 없습니다" />
       <Section>
-        <Container padding={{ all: 26 }} crossAlign="center">
+        <Container padding={{ all: 26 }} crossAlign="center" align="center" flex={1}>
           <Txt as="h4" css={{ [MQ[3]]: { fontSize: fontSize.s26 } }}>
             페이지를 찾을 수 없습니다
           </Txt>
