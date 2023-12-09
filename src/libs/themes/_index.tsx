@@ -1,5 +1,5 @@
 import { colors } from './colors';
-import { fontSize, padding, borderRadius } from './size';
-import { MediaSize, MQ, skeletonURL } from './media';
+import { fontSize, borderRadius } from './size';
+import { screenSize, MQ } from './media';
 
-export { colors, fontSize, padding, borderRadius, MediaSize, MQ, skeletonURL };
+export { colors, fontSize, borderRadius, screenSize, MQ };

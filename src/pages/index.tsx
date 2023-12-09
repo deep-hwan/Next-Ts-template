@@ -3,7 +3,7 @@ import { NextRouter, useRouter } from 'next/router';
 
 //libs
 import { Container, Input, LinkHref, ScrollTopTab, Section, Spacing } from '@/_ui_libs/_index';
-import { MQ } from '@/libs/themes/_index';
+import { MQ, screenSize } from '@/libs/themes/_index';
 
 //components
 import SEO from '@/seo.config';
@@ -24,7 +24,7 @@ export default function Index() {
 
       <Section>
         <Container
-          maxWidth={560}
+          maxWidth={screenSize[3]}
           padding={{ top: 40, bottom: 60, horizontal: 20 }}
           css={{ [MQ[3]]: { paddingTop: 10, paddingBottom: 40 } }}
         >
