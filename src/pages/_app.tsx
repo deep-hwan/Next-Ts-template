@@ -10,7 +10,7 @@ import { dehydrate, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/
 import '@/styles/globals.css';
 
 //components
-import AppLayout from '@/libs/core/App';
+import AppLayout from '@/libs/view/App';
 
 //
 export default function MyApp({ Component, pageProps }: AppProps) {

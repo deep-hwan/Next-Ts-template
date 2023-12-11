@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { CSSObject, Theme } from '@emotion/react';
+import { CSSObject } from '@emotion/react';
 
 interface Props {
+  ssr?: boolean;
   src: string;
   alt: string;
   size?: number;
@@ -14,6 +15,7 @@ interface Props {
 }
 
 export function AvatarImg({
+  ssr = true,
   src,
   alt,
   priority,
@@ -25,7 +27,6 @@ export function AvatarImg({
 
   useEffect(() => {
     async function fetchBlurDataURL() {
-      // Check if src is a base64 string
       if (typeof src === 'string' && !src.startsWith('data:image/')) {
         try {
           const response = await fetch(`/api/image-placeholder?url=${encodeURIComponent(src)}`);
@@ -40,8 +41,8 @@ export function AvatarImg({
       }
     }
 
-    fetchBlurDataURL();
-  }, [src]);
+    if (ssr) fetchBlurDataURL();
+  }, [src, ssr]);
 
   const sizes = `(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw`;
 

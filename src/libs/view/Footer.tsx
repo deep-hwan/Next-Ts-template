@@ -1,12 +1,8 @@
-import React from 'react';
-import Link from 'next/link';
-import { Interpolation, Theme } from '@emotion/react';
-
 // json
 import menus from '../json/menu.json';
 
 //libs
-import { MQ, fontSize, colors } from '@/libs/themes/_index';
+import { MQ, colors } from '@/libs/themes/_index';
 import { Column, Item, Items, LinkHref, Spacing, Txt, TxtSpan, Wrap } from '@/_ui_libs/_index';
 
 //

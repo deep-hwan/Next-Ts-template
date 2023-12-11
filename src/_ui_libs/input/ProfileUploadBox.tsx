@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React, { useRef, ChangeEvent } from 'react';
-import { ProfileImage, Wrap } from '../_index';
+import { AvatarImg, Wrap } from '../_index';
 import { FlexTheme, StyleTheme, ViewportTheme } from '@/_ui_libs/_theme';
 
 // --------------------------------------------
@@ -55,12 +55,7 @@ export function ProfileUploadBox({
     >
       {image ? (
         <>
-          <ProfileImage
-            src={image}
-            alt={alt}
-            size={size}
-            onClick={() => uploadRef.current?.click()}
-          />
+          <AvatarImg src={image} alt={alt} size={size} onClick={() => uploadRef.current?.click()} />
           <button
             type="button"
             onClick={uploadCancel}

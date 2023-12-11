@@ -4,6 +4,7 @@ import Image, { StaticImageData } from 'next/image';
 import { CSSObject } from '@emotion/react';
 
 interface Props {
+  ssr?: boolean;
   src: string | StaticImageData;
   alt: string;
   priority?: boolean;
@@ -23,6 +24,7 @@ interface Props {
 }
 
 export function Img({
+  ssr = true,
   src,
   alt,
   size,
@@ -37,7 +39,6 @@ export function Img({
 
   useEffect(() => {
     async function fetchBlurDataURL() {
-      // Check if src is a base64 string
       if (typeof src === 'string' && !src.startsWith('data:image/')) {
         try {
           const response = await fetch(`/api/image-placeholder?url=${encodeURIComponent(src)}`);
@@ -52,8 +53,8 @@ export function Img({
       }
     }
 
-    fetchBlurDataURL();
-  }, [src]);
+    if (ssr) fetchBlurDataURL();
+  }, [src, ssr]);
 
   const sizes = `(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw`;
 

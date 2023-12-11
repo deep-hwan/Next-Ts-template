@@ -12,7 +12,7 @@ export default function Document() {
       <meta name="robots" content="index, follow" />
 
       <link rel="apple-touch-icon" href="/public/images/logo-192.png" />
-      <link rel="apple-touch-startup-image" href="public/images/logo-192.png" />
+      <link rel="apple-touch-startup-image" href="/public/images/logo-192.png" />
       <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       <link rel="manifest" href="/manifest.json" />
       <body>
