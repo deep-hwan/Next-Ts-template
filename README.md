@@ -86,7 +86,7 @@
 
 **Image Widgets**
 
-- ProfileImage : 프로필 이미지 위젯 (최적화)
+- AvatarImg : 프로필 아바타 이미지 위젯 (최적화)
 - Img : 최적화 이미지 위젯
 
 **Input Widgets**

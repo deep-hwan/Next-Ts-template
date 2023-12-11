@@ -20,7 +20,7 @@ import { DragScrollContainer } from './layout/DragScrollContainer';
 import { Splash } from './layout/Splash';
 
 //images
-import { ProfileImage } from './images/ProfileImage';
+import { AvatarImg } from './images/AvatarImg';
 import { Img } from './images/Img';
 
 //input
@@ -76,7 +76,7 @@ export {
   Layer,
 
   //img
-  ProfileImage,
+  AvatarImg,
   Img,
 
   //typography

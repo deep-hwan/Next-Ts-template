@@ -13,7 +13,7 @@ interface Props {
   css?: CSSObject;
 }
 
-export function ProfileImage({
+export function AvatarImg({
   src,
   alt,
   priority,
@@ -25,7 +25,8 @@ export function ProfileImage({
 
   useEffect(() => {
     async function fetchBlurDataURL() {
-      if (typeof src === 'string') {
+      // Check if src is a base64 string
+      if (typeof src === 'string' && !src.startsWith('data:image/')) {
         try {
           const response = await fetch(`/api/image-placeholder?url=${encodeURIComponent(src)}`);
           if (!response.ok) {
