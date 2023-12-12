@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, Suspense, lazy } from 'react';
 import { NextRouter, useRouter } from 'next/router';
 
 //components
-import Header from './Header';
-import BottomNaviTabBar from './BottomNaviTabBar';
+const Header = lazy(() => import('./Header'));
+const BottomNaviTabBar = lazy(() => import('./BottomNaviTabBar'));
 
 //
 type LayoutProps = {
@@ -18,10 +18,18 @@ export default function AppLayout({ children }: LayoutProps): JSX.Element {
 
   return (
     <div id="layout">
-      {!errPath && <Header />}
+      {!errPath && (
+        <Suspense fallback="loading...">
+          <Header />
+        </Suspense>
+      )}
       <main>{children}</main>
 
-      {!(errPath || noneView) && <BottomNaviTabBar  />}
+      {!(errPath || noneView) && (
+        <Suspense fallback="loading...">
+          <BottomNaviTabBar />
+        </Suspense>
+      )}
     </div>
   );
 }

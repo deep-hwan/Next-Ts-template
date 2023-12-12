@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
 
 // PWA
-const isProduction = process.env.NODE_ENV === 'production';
+const prod = process.env.NODE_ENV === 'production';
+const runtimeCaching = require('next-pwa/cache');
 const withPWA = require('next-pwa')({
   dest: 'public',
-  runtimeCaching: [],
-  disable: !isProduction, // 배포할때엔 활성화 하세요
+  register: true,
+  skipWaiting: true,
+  runtimeCaching,
+  disable: prod ? false : true,
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://next-typescript-tamplate.vercel.app/';
@@ -15,7 +18,7 @@ const nextConfig = {
   swcMinify: true,
   minimumCacheTTL: 60,
 
-  siteUrl: 'https://next-typescript-tamplate.vercel.app/',
+  siteUrl: siteUrl,
   additionalSitemaps: [`${siteUrl}server-sitemap.xml`],
   generateRobotsTxt: true,
   sitemapSize: 7000,

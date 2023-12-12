@@ -1,4 +1,5 @@
 import { NextSeo, NextSeoProps } from 'next-seo';
+import { SITE_URL } from './config/env_key';
 
 interface SEOProps extends NextSeoProps {
   title?: string;
@@ -15,11 +16,11 @@ function SEO({ title, description, image }: SEOProps) {
           : 'Next.js 템플릿에 오신 것을 환영합니다'
       } // 50~60자 이하
       description={description ? description : 'Next.js 템플릿에 오신 것을 환영합니다'} // 50~160자 이하
-      canonical="https://next-typescript-tamplate.vercel.app/"
+      canonical={SITE_URL}
       openGraph={{
         type: 'website',
         locale: 'ko_KR',
-        url: 'https://next-typescript-tamplate.vercel.app/',
+        url: SITE_URL,
         title: title
           ? `${title} | Next.js 템플릿에 오신 것을 환영합니다`
           : 'Next.js 템플릿에 오신 것을 환영합니다',
@@ -37,7 +38,7 @@ function SEO({ title, description, image }: SEOProps) {
       twitter={{
         cardType: 'summary_large_image', //4096x4096 이하 2:1
         handle: '@사이트명',
-        site: 'https://next-typescript-tamplate.vercel.app/',
+        site: SITE_URL,
       }}
     />
   );
