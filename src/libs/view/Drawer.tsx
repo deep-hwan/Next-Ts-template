@@ -43,7 +43,7 @@ export const Drawer = memo(function Drawer({ isDrawer, handleCloseDrawer }: Draw
                       align: 'center',
                       crossAlign: 'space-between',
                     }),
-                    { '&:hover': { backgroundColor: colors.ground100 } },
+                    { '&:hover': { backgroundColor: colors.teal100 } },
                   ]}
                 >
                   <Txt>{item.name}</Txt>

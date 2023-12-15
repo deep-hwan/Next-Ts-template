@@ -100,8 +100,8 @@ export default function Fields() {
             onClick={() => setIsType('default')}
             txtSize={13}
             colors={{
-              button: isType === 'default' ? colors.keyColor : colors.grey200,
-              txt: isType === 'default' ? colors.white : colors.grey600,
+              button: isType === 'default' ? colors.keyColor : colors.chiffon300,
+              txt: isType === 'default' ? colors.white : colors.chiffon700,
             }}
           >
             인풋 기본타입
@@ -109,8 +109,8 @@ export default function Fields() {
           <Tab
             txtSize={13}
             colors={{
-              button: isType === 'box' ? colors.keyColor : colors.grey200,
-              txt: isType === 'box' ? colors.white : colors.grey600,
+              button: isType === 'box' ? colors.keyColor : colors.chiffon300,
+              txt: isType === 'box' ? colors.white : colors.chiffon700,
             }}
             onClick={() => setIsType('box')}
           >

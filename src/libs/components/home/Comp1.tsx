@@ -18,7 +18,7 @@ export default function Comp2() {
           <Txt as="strong" size={17}>
             위젯 템플릿
           </Txt>
-          <Txt size={13} color={colors.grey600}>
+          <Txt size={13} color={colors.grey200}>
             위젯으로 빠른 개발을 경험해봐요 🥰
           </Txt>
         </Column>

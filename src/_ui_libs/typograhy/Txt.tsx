@@ -30,7 +30,7 @@ export const Txt = forwardRef(
       weight,
       txtAlign,
       whiteSpace = 'pre-line',
-      color = '#44444',
+      color = '#444444',
       lineHeight = 1.48,
       //
       padding = { all: 0 },

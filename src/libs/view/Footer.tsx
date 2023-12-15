@@ -21,7 +21,7 @@ export default function Footer() {
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        backgroundColor: colors.grey000,
+        backgroundColor: colors.chiffon100,
         padding: '40px 20px 50px',
       }}
     >

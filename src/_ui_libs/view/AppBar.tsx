@@ -34,7 +34,7 @@ export const AppBar = forwardRef(
     // VARIANTS
     const TYPE_VARIANTS = {
       primary: { color: '#e2e2e2', backgroundColor: '#ffffff' },
-      dark: { color: '#252525', backgroundColor: '#181818' },
+      dark: { color: '#111111', backgroundColor: '#111111' },
     };
 
     return (

@@ -23,7 +23,6 @@ body {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
   overflow-y: auto;
-  color: #555555;
   -webkit-text-size-adjust: 100%;
   font-family: 'Noto Sans KR', sans-serif;
 }

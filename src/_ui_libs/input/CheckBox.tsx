@@ -30,13 +30,14 @@ interface CheckProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
 }
 interface InputProps extends HTMLAttributes<HTMLLabelElement> {
   label?: ReactNode;
+  weight?: 'lighter' | 'normal' | 'medium' | 'bold';
   children: ReactElement;
 }
 
 // ------------------------------------------
 // -------------- Checkt Input --------------
 // ------------------------------------------
-export function CheckInput({ label, children, ...props }: InputProps) {
+export function CheckInput({ label, children, weight, ...props }: InputProps) {
   const child = Children.only(children);
   const id = child.props.id ?? 'check';
 
@@ -50,7 +51,10 @@ export function CheckInput({ label, children, ...props }: InputProps) {
       <Row align="center" crossAlign="start" padding={{ bottom: 2 }}>
         <label
           htmlFor={id}
-          css={[TypographyTheme({ size: 15, color: '#666666' }), { cursor: 'pointer' }]}
+          css={[
+            TypographyTheme({ size: 15, color: '#666666', weight: weight }),
+            { cursor: 'pointer' },
+          ]}
           {...props}
         >
           {label}
@@ -74,7 +78,7 @@ CheckInput.CheckBox = forwardRef(function CheckBox(
         ViewportTheme({ maxWidth: 28, maxHeight: 28 }),
         PaddingTheme({ padding: { all: 6 } }),
         StyleTheme({ borderRadius: 100, cursor: 'pointer' }),
-        { '&:hover': { backgroundColor: colors.ground200 } },
+        { '&:hover': { backgroundColor: colors.teal200 } },
       ]}
       htmlFor={id}
     >

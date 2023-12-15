@@ -40,12 +40,12 @@ export default function CheckBoxs({
       vertical={16}
       margin={{ top: 10 }}
       gap={14}
-      backgroundColor={colors.ground100}
+      backgroundColor={colors.teal100}
       borderRadius={borderRadius.s500}
     >
       {/* ----- 이용약관 ----- */}
       <Wrap>
-        <CheckInput label="이용약관 (필수)">
+        <CheckInput label="이용약관 (필수)" weight="medium">
           <CheckInput.CheckBox
             id="이용약관"
             checked={isValues.check1}
@@ -53,11 +53,11 @@ export default function CheckBoxs({
           />
         </CheckInput>
 
-        <Txt size={13} color={colors.grey500} css={{ paddingLeft: '30px' }}>
+        <Txt size={13} color={colors.grey200} css={{ paddingLeft: '30px' }}>
           서비스 이용약관에 동의합니다.&nbsp;
           <TxtSpan
             size={fontSize.s12}
-            color={colors.grey500}
+            color={colors.grey200}
             weight="medium"
             css={{ cursor: 'pointer' }}
             onClick={() => modalQueryRouter('이용약관')}
@@ -69,7 +69,7 @@ export default function CheckBoxs({
 
       {/* ----- 개인정보 처리방침 ----- */}
       <Wrap>
-        <CheckInput label="개인정보 처리방침 (필수)">
+        <CheckInput label="개인정보 처리방침 (필수)" weight="medium">
           <CheckInput.CheckBox
             id="개인정보처리방침"
             checked={isValues.check2}
@@ -77,11 +77,11 @@ export default function CheckBoxs({
           />
         </CheckInput>
 
-        <Txt size={13} color={colors.grey500} css={{ paddingLeft: '30px' }}>
+        <Txt size={13} color={colors.grey200} css={{ paddingLeft: '30px' }}>
           개인정보 처리방침에 동의합니다.&nbsp;
           <TxtSpan
             size={fontSize.s12}
-            color={colors.grey500}
+            color={colors.grey200}
             weight="medium"
             css={{ cursor: 'pointer' }}
             onClick={() => modalQueryRouter('개인정보처리방침')}
@@ -93,7 +93,7 @@ export default function CheckBoxs({
 
       {/* ----- 마케팅 수신동의 ----- */}
       <Wrap>
-        <CheckInput label="마케팅 수신동의">
+        <CheckInput label="마케팅 수신동의" weight="medium">
           <CheckInput.CheckBox
             id="마케팅 수신동의"
             checked={isValues.check3}
@@ -110,7 +110,7 @@ export default function CheckBoxs({
           />
         </CheckInput>
 
-        <Txt size={13} color={colors.grey500} css={{ paddingLeft: '30px' }}>
+        <Txt size={13} color={colors.grey200} css={{ paddingLeft: '30px' }}>
           이벤트 및 마케팅 소식을 알려드릴게요
         </Txt>
       </Wrap>

@@ -62,14 +62,14 @@ export function FlexTheme({
       direction === 'vertical'
         ? `${gap}px`
         : undefined || direction === 'horizontal'
-        ? `${crossGap}px`
-        : undefined,
+          ? `${crossGap}px`
+          : undefined,
     columnGap:
       direction === 'horizontal'
         ? `${gap}px`
         : undefined || direction === 'vertical'
-        ? `${crossGap}px`
-        : undefined,
+          ? `${crossGap}px`
+          : undefined,
     flexWrap: wrap,
   };
 }
@@ -286,7 +286,7 @@ export function FieldBoxTheme(shape: 'default' | 'box', error?: boolean | string
 // -------------------------------------
 export function GlobalInputTheme(): Interpolation<Theme> {
   return {
-    '::placeholder': { color: colors.grey300 },
+    '::placeholder': { color: '#cccccc' },
 
     "&[type='number']::-webkit-outer-spin-button, &[type='number']::-webkit-inner-spin-button": {
       WebkitAppearance: 'none',
@@ -295,7 +295,7 @@ export function GlobalInputTheme(): Interpolation<Theme> {
 
     '&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active':
       {
-        WebkitTextFillColor: colors.grey800,
+        WebkitTextFillColor: '#797979',
         WebkitBoxShadow: '0 0 0px 1000px transparent inset',
         boxShadow: '0 0 0px 1000px transparent inset',
         transition: 'background-color 5000s ease-in-out 0s',
@@ -303,7 +303,7 @@ export function GlobalInputTheme(): Interpolation<Theme> {
       },
 
     '&:autofill, &:autofill:hover, &:autofill:focus, &:autofill:active': {
-      WebkitTextFillColor: colors.grey800,
+      WebkitTextFillColor: '#797979',
       WebkitBoxShadow: '0 0 0px 1000px transparent inset',
       boxShadow: '0 0 0px 1000px transparent inset',
       transition: 'background-color 5000s ease-in-out 0s',

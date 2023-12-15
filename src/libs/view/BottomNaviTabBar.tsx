@@ -10,27 +10,30 @@ export default function BottomNaviTabBar() {
   const router: NextRouter = useRouter();
 
   return (
-    <BottomNavigationBar maxWidth={600} >
+    <BottomNavigationBar maxWidth={600}>
       <NavigationTab
         label="홈"
         href="/"
         css={{
-          color: router.pathname === '/' ? colors.keyColor : colors.grey300,
+          color: router.pathname === '/' ? colors.keyColor : colors.chiffon500,
         }}
       >
-        <HomeIcon width="100%" fill={router.pathname === '/' ? colors.keyColor : colors.grey300} />
+        <HomeIcon
+          width="100%"
+          fill={router.pathname === '/' ? colors.keyColor : colors.chiffon500}
+        />
       </NavigationTab>
 
       <NavigationTab
         label="메시지"
         href=""
         css={{
-          color: router.pathname === '/2' ? colors.keyColor : colors.grey300,
+          color: router.pathname === '/2' ? colors.keyColor : colors.chiffon500,
         }}
       >
         <MessageIcon
           width="100%"
-          fill={router.pathname === '/2' ? colors.keyColor : colors.grey300}
+          fill={router.pathname === '/2' ? colors.keyColor : colors.chiffon500}
         />
       </NavigationTab>
 
@@ -38,22 +41,25 @@ export default function BottomNaviTabBar() {
         label="메모"
         href=""
         css={{
-          color: router.pathname === '/3' ? colors.keyColor : colors.grey300,
+          color: router.pathname === '/3' ? colors.keyColor : colors.chiffon500,
         }}
       >
-        <CopyIcon width="100%" fill={router.pathname === '/3' ? colors.keyColor : colors.grey300} />
+        <CopyIcon
+          width="100%"
+          fill={router.pathname === '/3' ? colors.keyColor : colors.chiffon500}
+        />
       </NavigationTab>
 
       <NavigationTab
         label="프로필"
         href=""
         css={{
-          color: router.pathname === '/4' ? colors.keyColor : colors.grey300,
+          color: router.pathname === '/4' ? colors.keyColor : colors.chiffon500,
         }}
       >
         <ProfileIcon
           width="100%"
-          fill={router.pathname === '/4' ? colors.keyColor : colors.grey300}
+          fill={router.pathname === '/4' ? colors.keyColor : colors.chiffon500}
         />
       </NavigationTab>
 
@@ -61,12 +67,12 @@ export default function BottomNaviTabBar() {
         label="설정"
         href=""
         css={{
-          color: router.pathname === '/5' ? colors.keyColor : colors.grey300,
+          color: router.pathname === '/5' ? colors.keyColor : colors.chiffon500,
         }}
       >
         <SettingIcon
           width="100%"
-          fill={router.pathname === '/5' ? colors.keyColor : colors.grey300}
+          fill={router.pathname === '/5' ? colors.keyColor : colors.chiffon500}
         />
       </NavigationTab>
     </BottomNavigationBar>

@@ -1,4 +1,5 @@
-import React, { ChangeEvent, Suspense, lazy, useState } from 'react';
+import React, { ChangeEvent, Suspense, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { NextRouter, useRouter } from 'next/router';
 
 //libs
@@ -8,11 +9,11 @@ import { MQ, screenSize } from '@/libs/themes/_index';
 //components
 import SEO from '@/seo.config';
 
-const Comp1 = lazy(() => import('@/libs/components/home/Comp1'));
-const Comp2 = lazy(() => import('@/libs/components/home/Comp2'));
-const Comp3 = lazy(() => import('@/libs/components/home/Comp3'));
-const Comp4 = lazy(() => import('@/libs/components/home/Comp4'));
-const Comp5 = lazy(() => import('@/libs/components/home/Comp5'));
+const Comp1 = dynamic(() => import('@/libs/components/home/Comp1'), { suspense: true });
+const Comp2 = dynamic(() => import('@/libs/components/home/Comp2'), { suspense: true });
+const Comp3 = dynamic(() => import('@/libs/components/home/Comp3'), { suspense: true });
+const Comp4 = dynamic(() => import('@/libs/components/home/Comp4'), { suspense: true });
+const Comp5 = dynamic(() => import('@/libs/components/home/Comp5'), { suspense: true });
 
 //
 export default function Index() {

@@ -37,7 +37,7 @@ export default function Comp1() {
             key={i}
             width="auto"
             padding={{ vertical: 6, horizontal: 8 }}
-            border={{ solid: 1, color: colors.grey300 }}
+            border={{ solid: 1, color: colors.chiffon400 }}
             borderRadius={100}
           >
             <TxtSpan>{item}</TxtSpan>

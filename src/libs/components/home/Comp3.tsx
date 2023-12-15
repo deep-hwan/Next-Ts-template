@@ -9,7 +9,7 @@ export default function Comp3() {
         <Txt as="h2" size={18}>
           오직 개발에만 집중하세요
         </Txt>
-        <Txt color={colors.grey800}>당신의 생산성을 위해 모든 것을 준비해뒀어요 🧑‍💻</Txt>
+        <Txt color={colors.grey200}>당신의 생산성을 위해 모든 것을 준비해뒀어요 🧑‍💻</Txt>
       </Wrap>
 
       <DragScrollContainer>
@@ -43,14 +43,14 @@ export default function Comp3() {
               key={i}
               minWidth={190}
               padding={{ all: 16 }}
-              border={{ solid: 1, color: colors.grey300 }}
+              border={{ solid: 1, color: colors.chiffon400 }}
               borderRadius={16}
               gap={8}
             >
               <Txt size={16} as="strong">
                 {item.txt}
               </Txt>
-              <Txt size={13} color={colors.grey700} whiteSpace="pre-line">
+              <Txt size={13} color={colors.grey200} whiteSpace="pre-line">
                 {item.subTxt}
               </Txt>
             </Item>

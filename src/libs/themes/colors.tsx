@@ -6,30 +6,37 @@ export const colors = {
 
   none: 'transparent',
   white: '#ffffff',
+  black: '#111111',
 
-  black100: '#444444',
-  black200: '#222222',
-  black300: '#181818',
+  chiffon100: '#fafafa',
+  chiffon200: '#f6f6f6',
+  chiffon300: '#eeeeee',
+  chiffon400: '#e2e2e2',
+  chiffon500: '#cccccc',
+  chiffon600: '#bbbbbb',
+  chiffon700: '#aaaaaa',
 
-  grey000: '#fafafa',
-  grey100: '#f6f6f6',
-  grey200: '#eeeeee',
-  grey300: '#e2e2e2',
-  grey400: '#cccccc',
-  grey500: '#aaaaaa',
-  grey600: '#9DA2A7',
-  grey700: '#888888',
-  grey800: '#7a7a7a',
-  grey900: '#696969',
+  teal100: '#f8f9fc',
+  teal200: '#f5f7fc',
+  teal300: '#f3f5fc',
+  teal400: '#f4f6fc',
+  teal500: '#EEF4FD',
+
+  grey100: '#9DA2A7',
+  grey200: '#888888',
+  grey300: '#797979',
+  grey400: '#666666',
+  grey500: '#555555',
+  grey600: '#444444',
+  grey700: '#333333',
+  grey800: '#222222',
+  grey900: '#181818',
 
   red: '#ED5C5C',
   redBg: '#FFF2F2',
 
   blue: '#4788f4',
   blueBg: '#EEF4FD',
-
-  ground100: '#f8f9fc',
-  ground200: '#f5f7fc',
 
   green: '#00AB83',
 } as const;

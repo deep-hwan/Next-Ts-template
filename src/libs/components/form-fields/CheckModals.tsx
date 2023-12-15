@@ -55,7 +55,7 @@ export default function CheckModals({ dialogOnChange }: { dialogOnChange: () => 
         <Txt as="h6">{`마케팅 수신동의를\n하시겠어요?`}</Txt>
         <Spacing size={10} />
         <Txt
-          css={{ color: colors.grey600 }}
+          css={{ color: colors.grey200 }}
         >{`이벤트 및 다양한 소식을 꾸준히 알려드릴게요\n아래의 동의버튼을 눌러주세요!`}</Txt>
 
         <Spacing size={24} />

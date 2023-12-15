@@ -28,7 +28,7 @@ export default function Comp4() {
           <Txt as="h2" size={18}>
             {'네이티브 모달을\n웹에서도 사용해보세요'}
           </Txt>
-          <Txt color={colors.grey800}>
+          <Txt color={colors.grey200}>
             {'각 OS의 디자인 시스템을 고려하여\n웹에서도 유연한 UI 모달을 구현했어요'}
           </Txt>
 
@@ -36,7 +36,7 @@ export default function Comp4() {
         </Wrap>
 
         <Wrap
-          border={{ solid: 1, color: colors.grey300 }}
+          border={{ solid: 1, color: colors.chiffon400 }}
           align="center"
           padding={{ all: 16 }}
           borderRadius={16}
@@ -55,7 +55,7 @@ export default function Comp4() {
           <Txt as="h6" size={18}>
             다이아 로그
           </Txt>
-          <Txt size={14} color={colors.grey800}>
+          <Txt size={14} color={colors.grey200}>
             {'Android OS에서 영감을 받은\nDialog 모달 위젯이에요!'}
           </Txt>
           <Button margin={{ top: 10 }} onClick={() => setIsOpen(false)}>
@@ -70,7 +70,7 @@ export default function Comp4() {
           <Txt as="h6" size={18}>
             바텀 시트
           </Txt>
-          <Txt size={14} color={colors.grey800}>
+          <Txt size={14} color={colors.grey200}>
             {
               'IOS에서 영감을 받은 BottomSheet 모달 위젯이에요!\n바텀 시트는 모바일에서 위에서 아래로 터치를 통해 닫을 수도 있어요!'
             }
