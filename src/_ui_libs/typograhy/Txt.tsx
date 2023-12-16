@@ -188,15 +188,13 @@ export const Txt = forwardRef(
                 whiteSpace: ellipsis.ellipsis ? 'normal' : 'pre-line',
                 lineHeight,
               }),
-              ellipsis.ellipsis
-                ? {
-                    display: '-webkit-box',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    WebkitBoxOrient: 'vertical',
-                    WebkitLineClamp: ellipsis.line,
-                  }
-                : FlexTheme({ direction, gap, align: 'center' }),
+              ellipsis.ellipsis && {
+                display: '-webkit-box',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: ellipsis.line,
+              },
             ]}
             {...Props}
           >
@@ -219,15 +217,13 @@ export const Txt = forwardRef(
                 whiteSpace: ellipsis.ellipsis ? 'normal' : 'pre-line',
                 lineHeight,
               }),
-              ellipsis.ellipsis
-                ? {
-                    display: '-webkit-box',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    WebkitBoxOrient: 'vertical',
-                    WebkitLineClamp: ellipsis.line,
-                  }
-                : FlexTheme({ direction, gap, align: 'center' }),
+              ellipsis.ellipsis && {
+                display: '-webkit-box',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: ellipsis.line,
+              },
             ]}
             {...Props}
           >
