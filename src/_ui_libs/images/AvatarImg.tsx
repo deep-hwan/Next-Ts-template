@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { CSSObject } from '@emotion/react';
+import { Interpolation, Theme } from '@emotion/react';
 
 interface Props {
   ssr?: boolean;
@@ -11,7 +11,7 @@ interface Props {
   borderRadius?: number | string;
   priority?: boolean;
   onClick?: () => void;
-  css?: CSSObject;
+  css?: Interpolation<Theme>;
 }
 
 export function AvatarImg({

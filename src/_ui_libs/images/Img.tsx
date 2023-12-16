@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState, useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
-import { CSSObject } from '@emotion/react';
+import { Interpolation, Theme } from '@emotion/react';
 
 interface Props {
   ssr?: boolean;
@@ -19,7 +19,7 @@ interface Props {
   screenRatio?: { x?: number; y?: number };
   objectFit?: 'cover' | 'contain' | 'fill' | 'none' | undefined;
   borderRadius?: number | string;
-  css?: CSSObject;
+  css?: Interpolation<Theme>;
   onClick?: any;
 }
 
