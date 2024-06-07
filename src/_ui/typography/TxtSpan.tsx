@@ -18,8 +18,8 @@ export function TxtSpan(props: Props) {
     const [os, setOs] = useState<'window' | 'mac'>('window')
 
     useEffect(() => {
-        if (/Macintosh|iPhone|iPad|iPod/.test(navigator.userAgent)) setOs('mac')
-        else if (/Windows|Android/.test(navigator.userAgent)) setOs('window')
+        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mac')
+        else if (/Windows/.test(navigator.userAgent)) setOs('window')
         else setOs('window')
     }, [os])
 
