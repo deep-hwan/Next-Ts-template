@@ -29,6 +29,7 @@ interface Props
     href?: any
     opacity?: number
     disabled?: boolean
+    transitionTime?: number
 }
 
 export function TouchableOpacity(props: Props) {
@@ -59,6 +60,7 @@ export function TouchableOpacity(props: Props) {
         padding,
         margin,
         disabled,
+        transitionTime,
         ...rest
     } = props
 
@@ -105,7 +107,7 @@ export function TouchableOpacity(props: Props) {
                                   ? `${(txtSize + 1) / 16}rem`
                                   : '1rem',
                         color: txtColor,
-                        transition: '0.1s ease-in-out',
+                        transition: `${transitionTime ?? 0}s ease-in-out`,
                         backgroundColor,
                         borderRadius: borderRadius,
                         userSelect: 'none',
@@ -131,7 +133,7 @@ export function TouchableOpacity(props: Props) {
                         whiteSpace: 'nowrap',
                         fontSize: txtSize ? `${txtSize / 16}rem` : '0.938rem',
                         color: txtColor,
-                        transition: '0.1s ease-in-out',
+                        transition: `${transitionTime ?? 0}s ease-in-out`,
                         backgroundColor,
                         borderRadius: borderRadius,
                         userSelect: 'none',
@@ -157,7 +159,7 @@ export function TouchableOpacity(props: Props) {
                         whiteSpace: 'nowrap',
                         fontSize: txtSize ? `${txtSize / 16}rem` : '0.938rem',
                         color: txtColor,
-                        transition: '0.1s ease-in-out',
+                        transition: `${transitionTime ?? 0}s ease-in-out`,
                         backgroundColor,
                         borderRadius: borderRadius,
                         userSelect: 'none',
@@ -184,7 +186,7 @@ export function TouchableOpacity(props: Props) {
                         whiteSpace: 'nowrap',
                         fontSize: txtSize ? `${txtSize / 16}rem` : '0.938rem',
                         color: txtColor,
-                        transition: '0.1s ease-in-out',
+                        transition: `${transitionTime ?? 0}s ease-in-out`,
                         backgroundColor,
                         borderRadius: borderRadius,
                         userSelect: 'none',
@@ -211,7 +213,7 @@ export function TouchableOpacity(props: Props) {
                         whiteSpace: 'nowrap',
                         fontSize: txtSize ? `${txtSize / 16}rem` : '0.938rem',
                         color: txtColor,
-                        transition: '0.1s ease-in-out',
+                        transition: `${transitionTime ?? 0}s ease-in-out`,
                         backgroundColor,
                         borderRadius: borderRadius,
                         userSelect: 'none',

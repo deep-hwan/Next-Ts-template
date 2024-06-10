@@ -12,6 +12,7 @@ interface Props extends HTMLAttributes<HTMLElement>, SpaceType, CursorType {
     txtAlign?: 'start' | 'end' | 'center'
     weight?: 'lighter' | 'normal' | 'medium' | 'bold'
     underline?: boolean
+    transitionTime?: number
 }
 
 export function TxtSpan(props: Props) {
@@ -33,6 +34,7 @@ export function TxtSpan(props: Props) {
         txtAlign = 'start',
         padding = { all: 0 },
         margin = { all: 0 },
+        transitionTime,
         ...rest
     } = props
 
@@ -56,7 +58,7 @@ export function TxtSpan(props: Props) {
                 color,
                 lineHeight,
                 textAlign: txtAlign ?? 'start',
-                transition: '0.3s ease-in-out',
+                transition: `${transitionTime ?? 0}s ease-in-out`,
                 textDecoration: underline && 'underline',
                 ...spaceT,
                 ...cursorT,

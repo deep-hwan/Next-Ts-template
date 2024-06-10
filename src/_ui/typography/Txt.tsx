@@ -14,6 +14,7 @@ interface Props extends HTMLAttributes<HTMLElement>, SpaceType, CursorType {
     weight?: 'lighter' | 'normal' | 'medium' | 'bold'
     whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line'
     underline?: boolean
+    transitionTime?: number
 }
 
 export function Txt(props: Props) {
@@ -38,6 +39,7 @@ export function Txt(props: Props) {
         txtAlign = 'start',
         padding = { all: 0 },
         margin = { all: 0 },
+        transitionTime,
         ...rest
     } = props
 
@@ -69,7 +71,7 @@ export function Txt(props: Props) {
             lineHeight,
             textAlign: txtAlign ?? 'start',
             textDecoration: underline && 'underline',
-            transition: '0.3s ease-in-out',
+            transition: `${transitionTime ?? 0}s ease-in-out`,
             ...cursorT,
             ...(!ellipsis.ellipsis && spaceT),
             ...(ellipsis.ellipsis && ellipsisT),
