@@ -69,5 +69,9 @@ const nextConfig = {
             },
         ]
     },
+
+    experimental: {
+        scrollRestoration: false,
+    },
 }
 module.exports = withPWA(nextConfig)
