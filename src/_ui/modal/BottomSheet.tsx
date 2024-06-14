@@ -108,6 +108,7 @@ export function BottomSheet({
                     right: 0,
                 }}
                 transitionTime={0.3}
+                css={{ overscrollBehavior: 'contain' }}
             >
                 <V.Container
                     padding={{ top: 70 }}

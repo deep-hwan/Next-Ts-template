@@ -81,6 +81,7 @@ export function Dialog(props: Props) {
                     right: 0,
                 }}
                 transitionTime={0.3}
+                css={{ overscrollBehavior: 'contain' }}
             >
                 <V.Container
                     maxWidth={dialogSizes}
@@ -89,6 +90,7 @@ export function Dialog(props: Props) {
                     align="start"
                     borderRadius={20}
                     backgroundColor={THEME_VARIANT[theme].bg}
+                    css={{ overscrollBehavior: 'contain' }}
                     ref={ref}
                     {...rest}
                 >

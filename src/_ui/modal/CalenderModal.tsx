@@ -63,12 +63,14 @@ export function CalenderModal({
                     left: 0,
                 }}
                 transitionTime={0.3}
+                css={{ overscrollBehavior: 'contain' }}
             >
                 <V.Column
                     align="center"
                     crossAlign="center"
                     gap={12}
                     css={{
+                        overscrollBehavior: 'contain',
                         [MQ[3]]: {
                             height: '100%',
                             flexDirection: 'column-reverse',

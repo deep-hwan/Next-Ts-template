@@ -17,6 +17,7 @@ export const BlurLayer = memo(({ zIndex }: { zIndex?: number }) => {
                 bottom: 0,
                 left: 0,
                 right: 0,
+                overscrollBehavior: 'contain',
                 paddingTop: `max(0px, env(safe-area-inset-top))`,
                 paddingBottom: `max(0px, env(safe-area-inset-bottom))`,
                 paddingLeft: `max(0px, env(safe-area-inset-left))`,
