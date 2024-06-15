@@ -67,7 +67,6 @@ export function GlobalThemes({ children }: { children?: ReactNode }): JSX.Elemen
                     p {
                         margin: 0;
                         padding: 0;
-                        transition: 0.3s ease-in-out;
                     }
 
                     a {
