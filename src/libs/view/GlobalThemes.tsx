@@ -18,42 +18,34 @@ export function GlobalThemes({ children }: { children?: ReactNode }): JSX.Elemen
                         margin: 0;
                         padding: 0;
                         font-family: 'Noto Sans KR', sans-serif;
+                        font-optical-sizing: auto;
                         user-select: auto;
                         -webkit-touch-callout: none;
+                        -webkit-text-size-adjust: auto;
                     }
 
                     html {
-                        width: 100%;
-                        height: 100%;
-                        -webkit-text-size-adjust: 100%;
+                        margin: 0;
+                        padding: 0;
                     }
 
                     body {
                         display: block;
                         margin: 0;
+                        padding: 0;
                         width: 100%;
                         height: 100%;
                         text-rendering: optimizeLegibility;
                         overflow-x: hidden;
                         overflow-y: auto;
-                        -webkit-text-size-adjust: 100%;
-                        font-family: 'Noto Sans KR', sans-serif;
-                        font-optical-sizing: auto;
-                    }
-
-                    @supports (padding: max(0px)) {
-                        body {
-                            padding-top: env(safe-area-inset-top);
-                            padding-bottom: env(safe-area-inset-bottom);
-                            padding-left: env(safe-area-inset-left);
-                            padding-right: env(safe-area-inset-right);
-                        }
+                        word-break: keep-all;
+                        word-wrap: break-word;
                     }
 
                     @supports (-webkit-touch-callout: none) {
                         html,
                         body #layout {
-                            min-height: -webkit-fill-available;
+                            height: -webkit-fill-available;
                         }
                     }
 

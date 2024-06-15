@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react'
 import { NextRouter, useRouter } from 'next/router'
 
 // Components
-import { V } from '@/_ui'
 import Header from './Header'
 import BottomNaviTabBar from './BottomNaviTabBar'
 
@@ -14,21 +13,18 @@ export default function App({ children }: { children: ReactNode }): JSX.Element 
     const noneView = router.pathname === '/form-fields'
 
     return (
-        <V.Column height="100%" minHeight="100%" flex="1 auto" id="layout">
+        <div id="layout" {...(styleSheet as any)}>
             {!errPath && <Header />}
-            <main
-                css={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    flex: 1,
-                }}
-            >
+
+            <main id="main_layer" {...(styleSheet as any)}>
                 {children}
             </main>
+
             {!(errPath || noneView) && <BottomNaviTabBar />}
-        </V.Column>
+        </div>
     )
+}
+
+const styleSheet = {
+    css: { width: '100%', height: '100%', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' },
 }
