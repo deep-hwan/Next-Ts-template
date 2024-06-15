@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 
-const { SITE_URL } = require('@/_https')
+const SITE_URL = 'youer_site_url.com'
 
 module.exports = {
     siteUrl: SITE_URL, // .게시하는 site의 url
