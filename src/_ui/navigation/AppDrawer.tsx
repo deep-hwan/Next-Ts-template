@@ -58,7 +58,7 @@ export const AppDrawer = forwardRef((props: Props, ref?: ForwardedRef<HTMLDivEle
                     right: open ? '0' : '-100%',
                     background:
                         props.backgroundColor ??
-                        `linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 100%);`,
+                        `linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 100%);`,
                     backdropFilter: 'blur(4px)',
                     transition: '0.3s ease-in-out',
                     paddingTop: `max(0px, env(safe-area-inset-top))`,
