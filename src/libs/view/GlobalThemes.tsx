@@ -62,8 +62,10 @@ export function GlobalThemes({ children }: { children?: ReactNode }): JSX.Elemen
                     }
 
                     a {
+                        display: flex;
+                        align-items: center;
                         text-decoration: none;
-                        color: #444444;
+                        color: #4e4e51;
                         cursor: pointer;
                         white-space: nowrap;
                         transition: 0.3s ease-in-out;
@@ -71,18 +73,21 @@ export function GlobalThemes({ children }: { children?: ReactNode }): JSX.Elemen
 
                     ul,
                     li {
+                        display: flex;
                         list-style: none;
                         padding: 0;
                         margin: 0;
                     }
 
                     button {
+                        display: flex;
                         background-color: transparent;
                         outline: none;
                         border: none;
                         cursor: pointer;
                         font-size: 1rem;
                         width: auto;
+                        color: #4e4e51;
                         transition: all 0.3s ease-in-out;
                     }
 
