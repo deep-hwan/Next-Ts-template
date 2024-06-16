@@ -10,18 +10,17 @@ import { ScrollTheme } from '../_themes/scroll'
 interface Props {
     open: boolean
     onCancel: () => void
-    theme?: 'light' | 'dark'
     cancelTabIconActive?: boolean
     children: ReactNode
     backgroundColor?: string
-    cancelTabColor?: string
+    cancelIconColor?: string
 }
 
 // ---------------------------------------
 // -------------- AppDrawer --------------
 // ---------------------------------------
 export const AppDrawer = forwardRef((props: Props, ref?: ForwardedRef<HTMLDivElement>) => {
-    const { theme = 'light', open, onCancel, cancelTabIconActive = true } = props
+    const { open, onCancel, cancelTabIconActive = true, cancelIconColor } = props
     const drawerRef = useRef<HTMLDivElement>(null)
 
     const clickModalOutside = useCallback(
@@ -41,11 +40,6 @@ export const AppDrawer = forwardRef((props: Props, ref?: ForwardedRef<HTMLDivEle
         return () => document.removeEventListener('mousedown', clickModalOutside)
     })
 
-    const TYPE_VARIANTS = {
-        light: { backgroundColor: '#ffffff', iconFill: '#ccc' },
-        dark: { backgroundColor: '#151515', iconFill: '#888' },
-    }
-
     const scrollT = ScrollTheme({ scroll: { type: 'auto', bar: false } })
 
     return (
@@ -62,7 +56,10 @@ export const AppDrawer = forwardRef((props: Props, ref?: ForwardedRef<HTMLDivEle
                     top: 0,
                     bottom: 0,
                     right: open ? '0' : '-100%',
-                    background: props.backgroundColor ?? TYPE_VARIANTS[theme].backgroundColor,
+                    background:
+                        props.backgroundColor ??
+                        `linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 100%);`,
+                    backdropFilter: 'blur(4px)',
                     transition: '0.3s ease-in-out',
                     paddingTop: `max(0px, env(safe-area-inset-top))`,
                     paddingBottom: `max(0px, env(safe-area-inset-bottom))`,
@@ -78,9 +75,7 @@ export const AppDrawer = forwardRef((props: Props, ref?: ForwardedRef<HTMLDivEle
                     }}
                 >
                     {cancelTabIconActive ? (
-                        <IconTab onClick={() => onCancel()}>
-                            {CancelIcon({ fill: props.cancelTabColor ?? TYPE_VARIANTS[theme].iconFill })}
-                        </IconTab>
+                        <IconTab onClick={() => onCancel()}>{CancelIcon({ fill: cancelIconColor ?? '#ccc' })}</IconTab>
                     ) : (
                         ''
                     )}

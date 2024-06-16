@@ -66,6 +66,7 @@ const Textarea = forwardRef((props: EditorType, ref: ForwardedRef<HTMLTextAreaEl
                             maxHeight: autoRaise ? 100 : 'auto',
                             fontSize: sizes?.inputSize ?? 15,
                             padding: sizes?.padding ?? 13,
+                            lineHeight: 1.7,
                             overflow: rows >= 2 ? 'auto' : 'visible',
                             '::-webkit-scrollbar': {
                                 display: editorScroll ? 'flex' : rows >= 2 ? 'flex' : 'none' ?? 'none',
