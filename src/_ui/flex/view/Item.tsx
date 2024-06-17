@@ -89,10 +89,10 @@ const Item = forwardRef((props: Props, ref: ForwardedRef<HTMLLIElement>) => {
     const shadowT = ShadowTheme({ shadow: shadow })
     const cursorT = CursorTheme({ cursor: cursor, onClick: rest.onClick })
 
-    const [os, setOs] = useState<'window' | 'mac'>('window')
+    const [os, setOs] = useState<'window' | 'mobile'>('window')
 
     useEffect(() => {
-        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mac')
+        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mobile')
         else if (/Windows/.test(navigator.userAgent)) setOs('window')
         else setOs('window')
     }, [os])

@@ -80,154 +80,63 @@ export function TouchableOpacity(props: Props) {
 
     const active = {
         '&:disabled': { color: disabledColor ?? '#ccc', cursor: 'default' },
-        '&:active': { opacity: (!!props.onClick && touchOpacity) ?? 0.7 },
+        '&:active': { opacity: (!!props.onClick && touchOpacity) ?? 0.75 },
     }
 
-    const [os, setOs] = useState<'window' | 'mac'>('window')
+    const [os, setOs] = useState<'window' | 'mobile'>('window')
 
     useEffect(() => {
-        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mac')
+        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mobile')
         else if (/Windows/.test(navigator.userAgent)) setOs('window')
         else setOs('window')
     }, [os])
 
+    const styleSheets = {
+        ...viewT,
+        ...FlexT,
+        ...spaceT,
+        ...borderT,
+        ...cursorT,
+        ...active,
+        position: 'relative',
+        whiteSpace: 'nowrap',
+        fontSize: txtSize ? `${txtSize / 16}rem` : '0.875rem',
+        color: txtColor,
+        transition: `${transitionTime ?? 0}s ease-in-out`,
+        backgroundColor,
+        borderRadius: borderRadius,
+        userSelect: 'none',
+        opacity,
+    }
+
     return (
         <>
             {as === 'div' && (
-                <div
-                    css={{
-                        position: 'relative',
-                        whiteSpace: 'nowrap',
-                        fontSize:
-                            os === 'window'
-                                ? txtSize
-                                    ? `${txtSize / 16}rem`
-                                    : '0.938rem'
-                                : txtSize
-                                  ? `${(txtSize + 1) / 16}rem`
-                                  : '1rem',
-                        color: txtColor,
-                        transition: `${transitionTime ?? 0}s ease-in-out`,
-                        backgroundColor,
-                        borderRadius: borderRadius,
-                        userSelect: 'none',
-                        opacity,
-                        ...viewT,
-                        ...FlexT,
-                        ...spaceT,
-                        ...borderT,
-                        ...cursorT,
-
-                        ...active,
-                    }}
-                    {...rest}
-                >
+                <div css={styleSheets} {...rest}>
                     {props.children}
                 </div>
             )}
 
             {as === 'li' && (
-                <li
-                    css={{
-                        position: 'relative',
-                        whiteSpace: 'nowrap',
-                        fontSize: txtSize ? `${txtSize / 16}rem` : '0.938rem',
-                        color: txtColor,
-                        transition: `${transitionTime ?? 0}s ease-in-out`,
-                        backgroundColor,
-                        borderRadius: borderRadius,
-                        userSelect: 'none',
-                        opacity,
-                        ...viewT,
-                        ...FlexT,
-                        ...spaceT,
-                        ...borderT,
-                        ...cursorT,
-
-                        ...active,
-                    }}
-                    {...rest}
-                >
+                <li css={styleSheets} {...rest}>
                     {props.children}
                 </li>
             )}
 
             {as === 'span' && (
-                <span
-                    css={{
-                        position: 'relative',
-                        whiteSpace: 'nowrap',
-                        fontSize: txtSize ? `${txtSize / 16}rem` : '0.938rem',
-                        color: txtColor,
-                        transition: `${transitionTime ?? 0}s ease-in-out`,
-                        backgroundColor,
-                        borderRadius: borderRadius,
-                        userSelect: 'none',
-                        opacity,
-                        ...viewT,
-                        ...FlexT,
-                        ...spaceT,
-                        ...borderT,
-                        ...cursorT,
-
-                        ...active,
-                    }}
-                    {...rest}
-                >
+                <span css={styleSheets} {...rest}>
                     {props.children}
                 </span>
             )}
 
             {as === 'button' && (
-                <button
-                    disabled={disabled}
-                    css={{
-                        position: 'relative',
-                        whiteSpace: 'nowrap',
-                        fontSize: txtSize ? `${txtSize / 16}rem` : '0.938rem',
-                        color: txtColor,
-                        transition: `${transitionTime ?? 0}s ease-in-out`,
-                        backgroundColor,
-                        borderRadius: borderRadius,
-                        userSelect: 'none',
-                        opacity,
-                        ...viewT,
-                        ...FlexT,
-                        ...spaceT,
-                        ...borderT,
-                        ...cursorT,
-
-                        ...active,
-                    }}
-                    {...rest}
-                >
+                <button disabled={disabled} css={styleSheets} {...rest}>
                     {props.children}
                 </button>
             )}
 
             {as === 'a' && (
-                <Link
-                    href={props.href}
-                    css={{
-                        position: 'relative',
-                        whiteSpace: 'nowrap',
-                        fontSize: txtSize ? `${txtSize / 16}rem` : '0.938rem',
-                        color: txtColor,
-                        transition: `${transitionTime ?? 0}s ease-in-out`,
-                        backgroundColor,
-                        borderRadius: borderRadius,
-                        userSelect: 'none',
-                        opacity,
-                        ...viewT,
-                        ...FlexT,
-                        ...spaceT,
-                        ...borderT,
-                        ...cursorT,
-
-                        ...active,
-                    }}
-                    {...rest}
-                >
+                <Link href={props.href} css={styleSheets} {...rest}>
                     {props.children}
                 </Link>
             )}

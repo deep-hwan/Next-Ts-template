@@ -18,17 +18,17 @@ interface Props extends HTMLAttributes<HTMLElement>, SpaceType, CursorType {
 }
 
 export function Txt(props: Props) {
-    const [os, setOs] = useState<'window' | 'mac'>('window')
+    const [os, setOs] = useState<'window' | 'mobile'>('window')
 
     useEffect(() => {
-        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mac')
+        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mobile')
         else if (/Windows/.test(navigator.userAgent)) setOs('window')
         else setOs('window')
     }, [os])
 
     const {
         as = 'p',
-        color = '#444',
+        color = '#4e4e51',
         size,
         weight,
         whiteSpace = 'pre-line',
@@ -65,7 +65,7 @@ export function Txt(props: Props) {
     const asTypeTheme = ({ s, w }: { s: number; w: 'lighter' | 'normal' | 'medium' | 'bold' }) => {
         return {
             fontWeight: TYPOGRAPH_WEIGHT[w].fontWeight,
-            fontSize: os === 'window' ? (s ? `${s / 16}rem` : '0.938rem') : s ? `${(s + 1) / 16}rem` : '1rem',
+            fontSize: s ? `${s / 16}rem` : '0.938rem',
             whiteSpace: ellipsis.ellipsis ? 'normal' : whiteSpace,
             color,
             lineHeight,

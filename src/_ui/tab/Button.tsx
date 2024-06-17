@@ -71,19 +71,19 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props: Props, ref: F
         s: {
             minHeight: 'auto',
             padding: '10px 12px',
-            fontSize: os === 'window' ? `${12 / 16}rem` : `${13 / 16}rem`,
+            fontSize: `${12 / 16}rem`,
             borderRadius: 12,
         },
         m: {
             minHeight: 'auto',
             padding: '12px 14px',
-            fontSize: os === 'window' ? `${14 / 16}rem` : `${15 / 16}rem`,
+            fontSize: `${14 / 16}rem`,
             borderRadius: 14,
         },
         l: {
             minHeight: 56,
             padding: '14px 16px',
-            fontSize: os === 'window' ? `${15 / 16}rem` : `1rem`,
+            fontSize: `${15 / 16}rem`,
             borderRadius: 18,
         },
     }

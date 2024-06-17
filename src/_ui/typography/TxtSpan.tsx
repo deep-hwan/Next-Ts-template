@@ -16,10 +16,10 @@ interface Props extends HTMLAttributes<HTMLElement>, SpaceType, CursorType {
 }
 
 export function TxtSpan(props: Props) {
-    const [os, setOs] = useState<'window' | 'mac'>('window')
+    const [os, setOs] = useState<'window' | 'mobile'>('window')
 
     useEffect(() => {
-        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mac')
+        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mobile')
         else if (/Windows/.test(navigator.userAgent)) setOs('window')
         else setOs('window')
     }, [os])
@@ -52,8 +52,7 @@ export function TxtSpan(props: Props) {
         <span
             css={{
                 fontWeight: TYPOGRAPH_WEIGHT[weight ?? 'normal'].fontWeight,
-                fontSize:
-                    os === 'window' ? (size ? `${size / 16}rem` : '0.938rem') : size ? `${(size + 1) / 16}rem` : '1rem',
+                fontSize: size ? `${size / 16}rem` : '0.813rem',
                 whiteSpace: 'nowrap',
                 color,
                 lineHeight,
