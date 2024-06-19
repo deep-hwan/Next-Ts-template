@@ -1,45 +1,39 @@
 /** @jsxImportSource @emotion/react */
-import { HTMLAttributes, ReactNode, useEffect, useState } from 'react'
-import { SpaceTheme, SpaceType } from '../_themes/space'
-import { CursorTheme, CursorType } from '../_themes/cursor'
 
-interface Props extends HTMLAttributes<HTMLElement>, SpaceType, CursorType {
+import React, { ButtonHTMLAttributes, ReactNode, useEffect, useState } from 'react'
+import { CursorTheme, CursorType } from '../_themes/cursor'
+import { SpaceTheme, SpaceType } from '../_themes/space'
+
+interface Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>, SpaceType, CursorType {
     children: ReactNode
-    ellipsis?: { ellipsis?: boolean; line?: number; width?: number }
-    as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'strong' | 'b' | 'p'
     size?: number
     color?: string
+    disabledColor?: string
     lineHeight?: number
     txtAlign?: 'start' | 'end' | 'center'
     weight?: 'lighter' | 'normal' | 'medium' | 'bold'
     whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line'
     underline?: boolean
-    transitionTime?: number
 }
 
-export function Txt(props: Props) {
-    const [os, setOs] = useState<'window' | 'mobile'>('window')
+export function TxtTab(props: Props) {
+    const [os, setOs] = useState<'window' | 'mac'>('window')
 
     useEffect(() => {
-        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mobile')
+        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mac')
         else if (/Windows/.test(navigator.userAgent)) setOs('window')
         else setOs('window')
     }, [os])
 
     const {
-        as = 'p',
-        color = '#4e4e51',
-        size,
-        weight,
-        whiteSpace = 'pre-line',
         cursor,
+        color = '#4788f4',
+        size = 14,
+        padding,
+        margin,
+        weight = 'normal',
+        disabledColor,
         underline,
-        ellipsis = { ellipsis: false },
-        lineHeight,
-        txtAlign = 'start',
-        padding = { all: 0 },
-        margin = { all: 0 },
-        transitionTime,
         ...rest
     } = props
 
@@ -47,92 +41,32 @@ export function Txt(props: Props) {
         lighter: { fontWeight: os === 'window' ? '300' : '400' },
         normal: { fontWeight: 400 },
         medium: { fontWeight: os === 'window' ? '500' : '600' },
-        bold: { fontWeight: os === 'window' ? '700' : '700' },
+        bold: { fontWeight: os === 'window' ? '600' : '700' },
     } as const
 
-    const spaceT = SpaceTheme({ padding, margin })
-    const cursorT = CursorTheme({ cursor, onClick: props.onClick })
-
-    const ellipsisT = {
-        maxWidth: ellipsis.width ?? 'auto',
-        display: '-webkit-box',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        WebkitBoxOrient: 'vertical',
-        WebkitLineClamp: ellipsis.line,
-    } as any
-
-    const asTypeTheme = ({ s, w }: { s: number; w: 'lighter' | 'normal' | 'medium' | 'bold' }) => {
-        return {
-            fontWeight: TYPOGRAPH_WEIGHT[w].fontWeight,
-            fontSize: s ? `${s / 16}rem` : '0.938rem',
-            whiteSpace: ellipsis.ellipsis ? 'normal' : whiteSpace,
-            color,
-            lineHeight,
-            textAlign: txtAlign ?? 'start',
-            textDecoration: underline && 'underline',
-            transition: `${transitionTime ?? 0}s ease-in-out`,
-            ...cursorT,
-            ...(!ellipsis.ellipsis && spaceT),
-            ...(ellipsis.ellipsis && ellipsisT),
-        }
-    }
+    const spaceT = SpaceTheme({ padding, margin }) as any
+    const cursorT = CursorTheme({ cursor, onClick: props.onClick }) as any
 
     return (
-        <>
-            {as === 'h1' && (
-                <h1 css={asTypeTheme({ s: size ?? 52, w: weight ?? 'bold' })} {...rest}>
-                    {props.children}
-                </h1>
-            )}
+        <button
+            type="button"
+            css={{
+                whiteSpace: 'nowrap',
+                fontWeight: TYPOGRAPH_WEIGHT[weight].fontWeight,
+                fontSize: size ? `${size / 16}rem` : '0.938rem',
+                color,
+                textDecoration: underline && 'underline',
+                transition: '0.1s ease-in-out',
+                ...spaceT,
+                ...cursorT,
 
-            {as === 'h2' && (
-                <h2 css={asTypeTheme({ s: size ?? 44, w: weight ?? 'bold' })} {...rest}>
-                    {props.children}
-                </h2>
-            )}
+                '&:disabled': { color: disabledColor ?? '#ccc', cursor: 'default' },
 
-            {as === 'h3' && (
-                <h3 css={asTypeTheme({ s: size ?? 36, w: weight ?? 'bold' })} {...rest}>
-                    {props.children}
-                </h3>
-            )}
-
-            {as === 'h4' && (
-                <h4 css={asTypeTheme({ s: size ?? 32, w: weight ?? 'bold' })} {...rest}>
-                    {props.children}
-                </h4>
-            )}
-
-            {as === 'h5' && (
-                <h5 css={asTypeTheme({ s: size ?? 28, w: weight ?? 'bold' })} {...rest}>
-                    {props.children}
-                </h5>
-            )}
-
-            {as === 'h6' && (
-                <h6 css={asTypeTheme({ s: size ?? 26, w: weight ?? 'bold' })} {...rest}>
-                    {props.children}
-                </h6>
-            )}
-
-            {as === 'b' && (
-                <b css={asTypeTheme({ s: size ?? 20, w: weight ?? 'bold' })} {...rest}>
-                    {props.children}
-                </b>
-            )}
-
-            {as === 'strong' && (
-                <strong css={asTypeTheme({ s: size ?? 18, w: weight ?? 'medium' })} {...rest}>
-                    {props.children}
-                </strong>
-            )}
-
-            {as === 'p' && (
-                <p css={asTypeTheme({ s: size ?? 15, w: weight ?? 'normal' })} {...rest}>
-                    {props.children}
-                </p>
-            )}
-        </>
+                '&:active': { opacity: 0.7 },
+            }}
+            {...rest}
+        >
+            {props.children}
+        </button>
     )
 }

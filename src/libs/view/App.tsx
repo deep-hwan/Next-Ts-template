@@ -4,6 +4,7 @@ import { NextRouter, useRouter } from 'next/router'
 // Components
 import Header from './Header'
 import BottomNaviTabBar from './BottomNaviTabBar'
+import Drawer from './Drawer'
 
 //
 export default function App({ children }: { children: ReactNode }): JSX.Element {
@@ -13,18 +14,35 @@ export default function App({ children }: { children: ReactNode }): JSX.Element 
     const noneView = router.pathname === '/form-fields'
 
     return (
-        <div id="layout" {...(styleSheet as any)}>
+        <Layout>
             {!errPath && <Header />}
 
-            <main id="main_layer" {...(styleSheet as any)}>
-                {children}
-            </main>
+            <Main>{children}</Main>
 
             {!(errPath || noneView) && <BottomNaviTabBar />}
-        </div>
+
+            <Drawer />
+        </Layout>
     )
 }
 
+const Layout = ({ children }: { children: ReactNode }) => (
+    <div id="layout" css={{ ...styleSheet, minHeight: '100vh' }}>
+        {children}
+    </div>
+)
+
+const Main = ({ children }: { children: ReactNode }) => (
+    <main id="main_layer" css={styleSheet}>
+        {children}
+    </main>
+)
+
 const styleSheet = {
-    css: { width: '100%', height: '100%', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' },
-}
+    width: '100%',
+    height: '100%',
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+} as any

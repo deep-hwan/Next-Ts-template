@@ -10,7 +10,7 @@ import { useRecoilState } from 'recoil'
 import { appDrawerAtom } from '../atoms/app-atom'
 
 //
-export const DrawerMenus = () => {
+const Drawer = () => {
     const [isDrawer, setIsDrawer] = useRecoilState<boolean>(appDrawerAtom)
 
     return (
@@ -38,3 +38,5 @@ export const DrawerMenus = () => {
         </V.Container>
     )
 }
+
+export default Drawer

@@ -18,7 +18,6 @@ export function GlobalThemes({ children }: { children?: ReactNode }): JSX.Elemen
                         margin: 0;
                         padding: 0;
                         font-family: 'Noto Sans KR', sans-serif;
-                        font-optical-sizing: auto;
                         user-select: auto;
                         -webkit-touch-callout: none;
                         -webkit-text-size-adjust: auto;
@@ -44,7 +43,8 @@ export function GlobalThemes({ children }: { children?: ReactNode }): JSX.Elemen
 
                     @supports (-webkit-touch-callout: none) {
                         html,
-                        body #layout {
+                        body,
+                        #layout {
                             height: -webkit-fill-available;
                         }
                     }

@@ -1,9 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import Link from 'next/link'
 
-//components
-import { DrawerMenus } from './Drawer'
-
 //libs
 import { AppBar, IconTab, V } from '@/_ui'
 import { MQ } from '@/libs/themes'
@@ -70,9 +67,6 @@ export default function Header() {
                     </IconTab>
                 </V.Row>
             </AppBar>
-
-            {/* 드로어 메뉴 */}
-            <DrawerMenus />
         </>
     )
 }
