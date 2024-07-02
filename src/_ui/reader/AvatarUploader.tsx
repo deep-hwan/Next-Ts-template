@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import React, { useRef, ChangeEvent } from 'react'
+import React, { useRef } from 'react'
 import { Avatar } from 'react-image-cached-resizer'
-import { V } from '../flex/V'
+import { V, P } from '../index'
 import { LoadingSpinner } from '../loading/LoadingSpinner'
-import { P } from '../flex/P'
 
 // --------------------------------------------
 // -------------- Type Interface --------------
@@ -22,7 +21,7 @@ export function AvatarUploader({ size = 100, source, alt = '업로드 이미지'
     const uploadRef = useRef<HTMLInputElement>(null)
 
     return (
-        <V.Container maxWidth={size} minWidth={size} maxHeight={size} minHeight={size}>
+        <V.Column maxWidth={size} minWidth={size} maxHeight={size} minHeight={size}>
             {source ? (
                 <>
                     <Avatar source={source} alt={alt} size={size} onClick={() => uploadRef.current?.click()} />
@@ -43,7 +42,7 @@ export function AvatarUploader({ size = 100, source, alt = '업로드 이미지'
                     </P.Absolute>
                 </>
             ) : (
-                <V.Container
+                <V.Column
                     maxWidth={size}
                     minWidth={size}
                     maxHeight={size}
@@ -54,7 +53,7 @@ export function AvatarUploader({ size = 100, source, alt = '업로드 이미지'
                     align="center"
                 >
                     {loading ? <LoadingSpinner /> : <CameraIcon size={size} />}
-                </V.Container>
+                </V.Column>
             )}
 
             <input
@@ -76,7 +75,7 @@ export function AvatarUploader({ size = 100, source, alt = '업로드 이미지'
                     },
                 ]}
             />
-        </V.Container>
+        </V.Column>
     )
 }
 

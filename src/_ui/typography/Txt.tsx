@@ -1,9 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { HTMLAttributes, ReactNode, useEffect, useState } from 'react'
-import { SpaceTheme, SpaceType } from '../_themes/space'
-import { CursorTheme, CursorType } from '../_themes/cursor'
+import { FlexTypes } from '../flex/_theme/type'
+import { Themes } from '../flex/_theme'
 
-interface Props extends HTMLAttributes<HTMLElement>, SpaceType, CursorType {
+interface Props
+    extends HTMLAttributes<HTMLElement>,
+        Pick<FlexTypes, 'padding'>,
+        Pick<FlexTypes, 'margin'>,
+        Pick<FlexTypes, 'cursor'> {
     children: ReactNode
     ellipsis?: { ellipsis?: boolean; line?: number; width?: number }
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'strong' | 'b' | 'p'
@@ -50,9 +54,6 @@ export function Txt(props: Props) {
         bold: { fontWeight: os === 'window' ? '700' : '700' },
     } as const
 
-    const spaceT = SpaceTheme({ padding, margin })
-    const cursorT = CursorTheme({ cursor, onClick: props.onClick })
-
     const ellipsisT = {
         maxWidth: ellipsis.width ?? 'auto',
         display: '-webkit-box',
@@ -61,6 +62,8 @@ export function Txt(props: Props) {
         WebkitBoxOrient: 'vertical',
         WebkitLineClamp: ellipsis.line,
     } as any
+
+    const { Margin, Padding, Order } = Themes({ props })
 
     const asTypeTheme = ({ s, w }: { s: number; w: 'lighter' | 'normal' | 'medium' | 'bold' }) => {
         return {
@@ -72,8 +75,9 @@ export function Txt(props: Props) {
             textAlign: txtAlign ?? 'start',
             textDecoration: underline && 'underline',
             transition: `${transitionTime ?? 0}s ease-in-out`,
-            ...cursorT,
-            ...(!ellipsis.ellipsis && spaceT),
+            ...(Order as any),
+            ...(!ellipsis.ellipsis && (Padding as any)),
+            ...(!ellipsis.ellipsis && (Margin as any)),
             ...(ellipsis.ellipsis && ellipsisT),
         }
     }

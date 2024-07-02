@@ -1,81 +1,43 @@
 /** @jsxImportSource @emotion/react */
-
-import React, { HTMLAttributes, ReactNode, useEffect, useState } from 'react'
-import { CursorTheme, CursorType } from '../_themes/cursor'
-import { SpaceTheme, SpaceType } from '../_themes/space'
-import { ViewportTypes } from '../_themes/viewport'
-import { FlexTheme, FlexType } from '../_themes/flex'
+import React, { HTMLAttributes, useEffect, useState } from 'react'
 import Link from 'next/link'
-import { BorderTheme, BorderType } from '../_themes/border'
+import { FlexTypes } from '../flex/_theme/type'
+import { Interpolation, Theme } from '@emotion/react'
+import { Themes } from '../flex/_theme'
 
 interface Props
     extends Omit<
             HTMLAttributes<HTMLDivElement | HTMLLIElement | HTMLSpanElement | HTMLButtonElement | HTMLAnchorElement>,
             'color' | 'disabled'
         >,
-        ViewportTypes,
-        FlexType,
-        BorderType,
-        SpaceType,
-        CursorType {
+        Omit<FlexTypes, 'onClick' | 'flexReverse' | 'scroll'> {
     as?: 'div' | 'li' | 'span' | 'button' | 'a'
-    children: ReactNode
+    direction?: 'horizontal' | 'vertical'
     txtSize?: number
     txtColor?: string
     disabledColor?: string
-    touchOpacity?: number
-    backgroundColor?: string
-    borderRadius?: number
     href?: any
-    opacity?: number
     disabled?: boolean
-    transitionTime?: number
 }
 
 export function TouchableOpacity(props: Props) {
     const {
         as = 'div',
-        width,
-        minWidth,
-        maxWidth,
-        height,
-        minHeight,
-        maxHeight,
-        flex,
         direction = 'horizontal',
-        align = 'center',
-        crossAlign,
-        wrap,
-        gap,
-        crossGap,
-        border,
-        opacity,
-        cursor,
         txtColor = '#4788f4',
+        width,
         txtSize = 14,
         disabledColor,
         touchOpacity,
-        backgroundColor,
         borderRadius,
-        padding,
-        margin,
         disabled,
-        transitionTime,
+        transitionTime = 0.3,
         ...rest
     } = props
 
-    const spaceT = SpaceTheme({ padding, margin }) as any
-    const borderT = BorderTheme({ border })
-    const cursorT = CursorTheme({ cursor, onClick: props.onClick }) as any
-    const viewT = { width, height, minWidth, maxWidth, minHeight, maxHeight }
-    const FlexT = FlexTheme({
-        flex,
-        direction,
-        align: align ?? 'center',
-        crossAlign: crossAlign ?? 'center',
-        wrap,
-        gap,
-        crossGap,
+    const themes = Themes({
+        props,
+        direction: direction ? (direction === 'horizontal' ? 'row' : 'column') : 'row',
     })
 
     const active = {
@@ -92,22 +54,16 @@ export function TouchableOpacity(props: Props) {
     }, [os])
 
     const styleSheets = {
-        ...viewT,
-        ...FlexT,
-        ...spaceT,
-        ...borderT,
-        ...cursorT,
+        ...themes,
         ...active,
+        width: width ?? 'auto',
         position: 'relative',
         whiteSpace: 'nowrap',
         fontSize: txtSize ? `${txtSize / 16}rem` : '0.875rem',
         color: txtColor,
         transition: `${transitionTime ?? 0}s ease-in-out`,
-        backgroundColor,
-        borderRadius: borderRadius,
         userSelect: 'none',
-        opacity,
-    }
+    } as Interpolation<Theme>
 
     return (
         <>

@@ -5,6 +5,7 @@ import { NextRouter, useRouter } from 'next/router'
 import Header from './Header'
 import BottomNaviTabBar from './BottomNaviTabBar'
 import Drawer from './Drawer'
+import Footer from './Footer'
 
 //
 export default function App({ children }: { children: ReactNode }): JSX.Element {
@@ -18,6 +19,8 @@ export default function App({ children }: { children: ReactNode }): JSX.Element 
             {!errPath && <Header />}
 
             <Main>{children}</Main>
+
+            <Footer />
 
             {!(errPath || noneView) && <BottomNaviTabBar />}
 

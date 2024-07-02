@@ -80,7 +80,7 @@ export function CalenderModal({
                         },
                     }}
                 >
-                    <V.Container
+                    <V.Column
                         minWidth={300}
                         maxWidth={400}
                         borderRadius={24}
@@ -105,7 +105,7 @@ export function CalenderModal({
                             minDate={props.minDate}
                             {...props}
                         />
-                    </V.Container>
+                    </V.Column>
 
                     <IconTheme onClick={onCancel} />
                 </V.Column>

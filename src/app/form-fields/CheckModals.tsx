@@ -14,7 +14,7 @@ export default function CheckModals({ dialogOnChange }: { dialogOnChange: () => 
                 open={(router.query.modal === '개인정보처리방침' || router.query.modal === '이용약관') as boolean}
                 onCancel={() => router.push({}, undefined, { scroll: false })}
             >
-                <V.Container align="start" gap={20} padding={{ horizontal: 20, top: 40 }}>
+                <V.Column align="start" gap={20} padding={{ horizontal: 20, top: 40 }}>
                     <Txt as="h6">{router.query.modal}</Txt>
                     <Txt>
                         테스트 은(는) 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한
@@ -37,7 +37,7 @@ export default function CheckModals({ dialogOnChange }: { dialogOnChange: () => 
                         개인정보처리방침은 서비스 이용 가입시 적용됩니다. 제1조 (개인정보의 처리 목적) 테스트(Test)
                         이용약관 은(는) 다음의 목적을 위하여 개인정보를
                     </Txt>
-                </V.Container>
+                </V.Column>
             </BottomSheet>
 
             {/* ----- 모달 : 다이아로그 ----- */}

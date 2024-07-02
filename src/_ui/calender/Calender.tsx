@@ -108,7 +108,7 @@ export function Calendar({ minDate, maxDate, date, onClick, format = 'yyyy-mm-dd
                             const isSelected = selectedDate.getFullYear() === year
 
                             return (
-                                <V.Container align="center" crossAlign="center" onClick={() => selectYear(year)}>
+                                <V.Column align="center" crossAlign="center" onClick={() => selectYear(year)}>
                                     <div
                                         key={year}
                                         css={year_theme({
@@ -119,7 +119,7 @@ export function Calendar({ minDate, maxDate, date, onClick, format = 'yyyy-mm-dd
                                     >
                                         {year}년
                                     </div>
-                                </V.Container>
+                                </V.Column>
                             )
                         })}
                     </CalenderGrid>
@@ -144,7 +144,7 @@ export function Calendar({ minDate, maxDate, date, onClick, format = 'yyyy-mm-dd
                                 selectedDate.getMonth() === month && selectedDate.getFullYear() === currentYear
 
                             return (
-                                <V.Container
+                                <V.Column
                                     align="center"
                                     crossAlign="center"
                                     onClick={() => {
@@ -160,7 +160,7 @@ export function Calendar({ minDate, maxDate, date, onClick, format = 'yyyy-mm-dd
                                     <div key={month} css={mm_theme({ isToday, selectable, isSelectedMonth })}>
                                         {month + 1}월
                                     </div>
-                                </V.Container>
+                                </V.Column>
                             )
                         })}
                     </CalenderGrid>
@@ -192,7 +192,7 @@ export function Calendar({ minDate, maxDate, date, onClick, format = 'yyyy-mm-dd
                                 day === todayDate && currentMonth === todayMonth && currentYear === todayYear
 
                             return (
-                                <V.Container
+                                <V.Column
                                     align="center"
                                     crossAlign="center"
                                     onClick={() => selectable && day && selectDay(day)}
@@ -208,7 +208,7 @@ export function Calendar({ minDate, maxDate, date, onClick, format = 'yyyy-mm-dd
                                     >
                                         {day}
                                     </div>
-                                </V.Container>
+                                </V.Column>
                             )
                         })}
                     </CalenderGrid>

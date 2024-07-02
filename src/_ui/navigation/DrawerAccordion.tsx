@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import React, { ForwardedRef, ReactNode, forwardRef, useCallback, useEffect, useRef } from 'react'
-import { ScrollTheme } from '../_themes/scroll'
 
 interface Props {
     open: boolean
@@ -33,8 +32,6 @@ export const DrawerAccordion = forwardRef((props: Props, ref?: ForwardedRef<HTML
         dark: { backgroundColor: '#151515', iconFill: '#888' },
     }
 
-    const scrollT = ScrollTheme({ scroll: { type: 'auto', bar: false } })
-
     return (
         <>
             <div
@@ -56,7 +53,6 @@ export const DrawerAccordion = forwardRef((props: Props, ref?: ForwardedRef<HTML
                 <div
                     ref={ref}
                     css={{
-                        ...scrollT,
                         paddingTop: `max(0px, env(safe-area-inset-top))`,
                         paddingBottom: `max(0px, env(safe-area-inset-bottom))`,
                         paddingRight: `max(0px, env(safe-area-inset-right))`,
@@ -65,6 +61,8 @@ export const DrawerAccordion = forwardRef((props: Props, ref?: ForwardedRef<HTML
                         display: 'flex',
                         flexDirection: 'column',
                         zIndex: 10,
+                        overflowY: 'auto',
+                        '::-webkit-scrollbar': { display: 'none' },
                     }}
                 >
                     {props.children}

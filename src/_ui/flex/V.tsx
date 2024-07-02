@@ -1,6 +1,5 @@
 import React, { Children, ReactElement, cloneElement } from 'react'
 import { Section } from './view/Section'
-import { Container } from './view/Container'
 import { Column } from './view/Column'
 import { Row } from './view/Row'
 import { Form } from './view/Form'
@@ -15,7 +14,6 @@ export function V({ children }: { children: ReactElement }) {
 }
 
 V.Section = Section
-V.Container = Container
 V.Column = Column
 V.Row = Row
 V.Form = Form

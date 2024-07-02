@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React, { ChangeEvent, ReactNode, useRef } from 'react'
 import { LoadingSpinner } from '../loading/LoadingSpinner'
-import { ViewportTypes } from '../_themes/viewport'
 import { TxtSpan } from '../typography/TxtSpan'
 import { V, P } from '@/_ui'
 
@@ -13,7 +12,15 @@ interface Props {
     loading?: boolean
     source: string
     alt?: string
-    size?: ViewportTypes
+    size?: {
+        zIndex?: number
+        width?: 'auto' | '100%' | '100vw'
+        height?: 'auto' | '100%' | '100vh'
+        minWidth?: number | string
+        maxWidth?: number | string
+        minHeight?: number | string
+        maxHeight?: number | string
+    }
     ratio?: { x?: number; y?: number }
     borderRadius?: number
     backgroundColor?: string
@@ -59,7 +66,7 @@ export function ImageUploader(props: Props) {
     } as const
 
     return (
-        <V.Container
+        <V.Column
             width={width}
             minWidth={minWidth}
             maxWidth={maxWidth}
@@ -105,7 +112,7 @@ export function ImageUploader(props: Props) {
                     </>
                 </>
             ) : (
-                <V.Container
+                <V.Column
                     width="100%"
                     height="100%"
                     backgroundColor={backgroundColor ?? VARIANTS[theme].readBg}
@@ -119,7 +126,7 @@ export function ImageUploader(props: Props) {
                     ) : (
                         <>{props.children ?? <CameraIcon size={100} fill={VARIANTS[theme].cancelTabColor} />}</>
                     )}
-                </V.Container>
+                </V.Column>
             )}
 
             <input
@@ -131,7 +138,7 @@ export function ImageUploader(props: Props) {
                 onDrop={handleDrop}
                 css={themes.input}
             />
-        </V.Container>
+        </V.Column>
     )
 }
 

@@ -2,12 +2,11 @@
 import Link from 'next/link'
 
 //libs
-import { AppBar, IconTab, V } from '@/_ui'
+import { AppBar, TouchableOpacity, V } from '@/_ui'
 import { MQ } from '@/libs/themes'
-import FlatList from 'react-flatlist-ui'
 
 //assets
-import { ToastIcon } from '../assets/icon-stroke'
+import { ToastIcon } from '../../../libs/assets/icon-stroke'
 
 //atoms
 import { useRecoilState } from 'recoil'
@@ -31,20 +30,14 @@ export default function Header() {
                         <Logo />
                     </Link>
 
-                    <div css={{ [MQ[1]]: { display: 'none' } }}>
-                        <FlatList
-                            size={{ maxWidth: 300 }}
-                            direction="horizontal"
-                            itemGap={30}
-                            data={[
-                                { name: '메뉴1', path: '/404' },
-                                { name: '메뉴2', path: '/404' },
-                                { name: '메뉴3', path: '/404' },
-                                { name: '메뉴4', path: '/404' },
-                            ]}
-                            itemHorizontalCount={{ desktop: 4, tablet: 4, mobile: 4 }}
-                            keyExtractor={(i) => i}
-                            renderItem={(item) => (
+                    <V.Items maxWidth={300} direction="horizontal" gap={30} css={{ [MQ[1]]: { display: 'none' } }}>
+                        {[
+                            { name: '메뉴1', path: '/404' },
+                            { name: '메뉴2', path: '/404' },
+                            { name: '메뉴3', path: '/404' },
+                            { name: '메뉴4', path: '/404' },
+                        ].map((item) => (
+                            <V.Item>
                                 <Link
                                     href={item.path}
                                     css={{
@@ -55,16 +48,17 @@ export default function Header() {
                                 >
                                     {item.name}
                                 </Link>
-                            )}
-                        />
-                    </div>
+                            </V.Item>
+                        ))}
+                    </V.Items>
 
-                    <IconTab
+                    <TouchableOpacity
+                        padding={{ all: 5 }}
                         onClick={() => setIsDrawer(!isDrawer)}
                         css={{ display: 'none', [MQ[1]]: { display: 'flex' } }}
                     >
                         <ToastIcon fill="#666666" width="24px" height="24px" />
-                    </IconTab>
+                    </TouchableOpacity>
                 </V.Row>
             </AppBar>
         </>

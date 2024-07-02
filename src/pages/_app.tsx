@@ -7,8 +7,8 @@ import { RecoilRoot } from 'recoil'
 import { dehydrate, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 //libs
-import App from '@/libs/view/App'
-import { GlobalThemes } from '@/libs/view/GlobalThemes'
+import App from '@/app/_layout/components/App'
+import { GlobalThemes } from '@/libs/themes/GlobalThemes'
 
 //
 export default function MyApp({ Component, pageProps }: AppProps) {

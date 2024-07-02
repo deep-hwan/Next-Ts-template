@@ -12,7 +12,7 @@ export default function Comp5() {
 
     return (
         <>
-            <V.Container>
+            <V.Column>
                 <Txt as="h2" size={18}>
                     {'Form 기능을\n빠르게 만들고 싶을땐?'}
                 </Txt>
@@ -24,18 +24,15 @@ export default function Comp5() {
                 <Spacing size={18} />
 
                 <V.Row gap={10}>
-                    <Button
-                        as="m"
-                        onClick={() => router.push('/form-fields')}
-                        txtColor="#fff"
-                        buttonColor={colors.keyColor}
-                    >
+                    <Button as="m" width="auto" onClick={() => router.push('/form-fields')}>
                         지금 확인하기
                     </Button>
 
                     <Button
-                        variant="stroke"
                         as="m"
+                        width="auto"
+                        txtColor={colors.blue[200]}
+                        buttonColor={colors.pastel_blue[200]}
                         onClick={() =>
                             addToast({
                                 status: 'success',
@@ -47,7 +44,7 @@ export default function Comp5() {
                         Jenga Toast
                     </Button>
                 </V.Row>
-            </V.Container>
+            </V.Column>
         </>
     )
 }

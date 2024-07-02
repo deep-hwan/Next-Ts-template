@@ -36,9 +36,9 @@ const BottomTabNavigatorBase: React.ForwardRefRenderFunction<HTMLDivElement, Pro
             <>
                 {design === 'shape' && (
                     <P.BottomFixed zIndex={1000} height={100}>
-                        <V.Container align="center" padding={{ horizontal: 10 }} ref={ref}>
+                        <V.Column align="center" padding={{ horizontal: 10 }} ref={ref}>
                             <nav css={[NavTheme(design, maxWidth)]}>{childrenArray}</nav>
-                        </V.Container>
+                        </V.Column>
                     </P.BottomFixed>
                 )}
 
@@ -51,9 +51,9 @@ const BottomTabNavigatorBase: React.ForwardRefRenderFunction<HTMLDivElement, Pro
                         borderTop="1px solid #eee"
                     >
                         <V.ScrollDragHorizontal>
-                            <V.Container padding={{ top: 2 }} align="center" backgroundColor="#Fff" ref={ref}>
+                            <V.Column padding={{ top: 2 }} align="center" backgroundColor="#Fff" ref={ref}>
                                 <nav css={[NavTheme(design, maxWidth)]}>{childrenArray}</nav>
-                            </V.Container>
+                            </V.Column>
                         </V.ScrollDragHorizontal>
                     </P.BottomFixed>
                 )}
@@ -83,7 +83,7 @@ const Tab = forwardRef<HTMLAnchorElement, MenuProps>(({ children, href, label, b
                 minWidth={50}
                 maxWidth={50}
             >
-                <V.Container
+                <V.Column
                     width="auto"
                     maxHeight={26}
                     minHeight={26}
@@ -116,7 +116,7 @@ const Tab = forwardRef<HTMLAnchorElement, MenuProps>(({ children, href, label, b
                             backgroundColor={colors.red[500]}
                         />
                     )}
-                </V.Container>
+                </V.Column>
 
                 <TxtSpan size={12} css={{ [MQ[3]]: { fontSize: '0.68rem' } }} {...props}>
                     {label}

@@ -15,15 +15,12 @@ import { V } from './flex/V'
 
 //tab
 import { Button } from './tab/Button'
-import { IconTab } from './tab/IconTab'
 import { TouchableOpacity } from './tab/TouchableOpacity'
-import { TxtTab } from './tab/TxtTab'
 
 //input
 import { Input } from './Input/Input'
 import { Select } from './Input/Select'
 import { Option } from './Input/Option'
-import { ChatField } from './Input/ChatField'
 
 //reader
 import { AvatarUploader } from './reader/AvatarUploader'
@@ -68,13 +65,10 @@ export {
     BlurLayer,
     V,
     P,
-    IconTab,
     Button,
-    TxtTab,
     Txt,
     TxtSpan,
     Input,
-    ChatField,
     Select,
     Option,
     AvatarUploader,

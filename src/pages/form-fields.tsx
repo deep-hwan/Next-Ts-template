@@ -6,8 +6,8 @@ import { colors } from '@/libs/themes'
 
 //components
 import SEO from '@/seo.config'
-import Fields from '@/libs/components/form-fields/Fields'
-import Result from '@/libs/components/form-fields/Result'
+import Fields from '@/app/form-fields/Fields'
+import Result from '@/app/form-fields/Result'
 
 //
 export default function FormFields() {
@@ -18,7 +18,7 @@ export default function FormFields() {
             <SEO title="가입하기 템플릿" description="Form 개발할때 다양한 인풋들을 사용해보세요!" />
 
             <V.Section>
-                <V.Container maxWidth={560} padding={{ top: 40, bottom: 60, horizontal: 20 }}>
+                <V.Column maxWidth={560} padding={{ top: 40, bottom: 60, horizontal: 20 }}>
                     <Txt as="h1" size={24}>
                         {router.query.results
                             ? `최적화된 이미지\n위젯을 경험해봐요`
@@ -36,7 +36,7 @@ export default function FormFields() {
                     <Spacing size={30} />
 
                     {router.query.results ? <Result /> : <Fields />}
-                </V.Container>
+                </V.Column>
             </V.Section>
         </>
     )

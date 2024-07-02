@@ -5,7 +5,7 @@ import { colors } from '@/libs/themes'
 //
 export default function Comp3() {
     return (
-        <V.Container>
+        <V.Column>
             <Txt as="h2" size={18}>
                 오직 개발에만 집중하세요
             </Txt>
@@ -59,6 +59,6 @@ export default function Comp3() {
                     ))}
                 </V.Items>
             </V.ScrollDragHorizontal>
-        </V.Container>
+        </V.Column>
     )
 }

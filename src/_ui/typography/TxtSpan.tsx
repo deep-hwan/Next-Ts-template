@@ -1,9 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { HTMLAttributes, ReactNode, useEffect, useState } from 'react'
-import { SpaceTheme, SpaceType } from '../_themes/space'
-import { CursorTheme, CursorType } from '../_themes/cursor'
+import { Themes } from '../flex/_theme'
+import { FlexTypes } from '../flex/_theme/type'
 
-interface Props extends HTMLAttributes<HTMLElement>, SpaceType, CursorType {
+interface Props
+    extends HTMLAttributes<HTMLElement>,
+        Pick<FlexTypes, 'padding'>,
+        Pick<FlexTypes, 'margin'>,
+        Pick<FlexTypes, 'cursor'> {
     children: ReactNode
     ellipsis?: { ellipsis?: boolean; line?: number; width?: number }
     size?: number
@@ -45,8 +49,7 @@ export function TxtSpan(props: Props) {
         bold: { fontWeight: os === 'window' ? '600' : '700' },
     } as const
 
-    const spaceT = SpaceTheme({ padding, margin }) as any
-    const cursorT = CursorTheme({ cursor, onClick: props.onClick })
+    const { Margin, Padding, Order } = Themes({ props })
 
     return (
         <span
@@ -57,10 +60,10 @@ export function TxtSpan(props: Props) {
                 color,
                 lineHeight,
                 textAlign: txtAlign ?? 'start',
-                transition: `${transitionTime ?? 0}s ease-in-out`,
                 textDecoration: underline && 'underline',
-                ...spaceT,
-                ...cursorT,
+                ...(Padding as any),
+                ...(Margin as any),
+                ...(Order as any),
             }}
             {...rest}
         >

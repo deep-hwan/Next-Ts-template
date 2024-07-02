@@ -110,7 +110,7 @@ export function BottomSheet({
                 transitionTime={0.3}
                 css={{ overscrollBehavior: 'contain' }}
             >
-                <V.Container
+                <V.Column
                     padding={{ top: 70 }}
                     height="100%"
                     align="center"
@@ -129,7 +129,7 @@ export function BottomSheet({
                         css={[BoxTheme(open)]}
                         {...props}
                     >
-                        <V.Container
+                        <V.Column
                             padding={{ all: 10 }}
                             align="center"
                             crossAlign="center"
@@ -148,7 +148,7 @@ export function BottomSheet({
                             >
                                 {''}
                             </TouchableOpacity>
-                        </V.Container>
+                        </V.Column>
 
                         <V.Column
                             ref={viewRef}
@@ -159,7 +159,7 @@ export function BottomSheet({
                             {children}
                         </V.Column>
                     </V.Column>
-                </V.Container>
+                </V.Column>
             </P.Fixed>
         </>
     )

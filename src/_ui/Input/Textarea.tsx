@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { ForwardedRef, forwardRef, useCallback, useEffect, useState } from 'react'
 import { TxtSpan } from '../typography/TxtSpan'
-import { TxtTab, V } from '@/_ui'
+import { TouchableOpacity, V } from '@/_ui'
 import { useUid } from '@/libs/hooks'
 import { FieldContainer } from './container/FieldContainer'
 
@@ -66,7 +66,7 @@ const Textarea = forwardRef((props: EditorType, ref: ForwardedRef<HTMLTextAreaEl
                             maxHeight: autoRaise ? 100 : 'auto',
                             fontSize: sizes?.inputSize ?? 15,
                             padding: sizes?.padding ?? 13,
-                            lineHeight: 1.7,
+                            lineHeight: 1.6,
                             overflow: rows >= 2 ? 'auto' : 'visible',
                             '::-webkit-scrollbar': {
                                 display: editorScroll ? 'flex' : rows >= 2 ? 'flex' : 'none' ?? 'none',
@@ -90,19 +90,19 @@ const Textarea = forwardRef((props: EditorType, ref: ForwardedRef<HTMLTextAreaEl
 
                     {!!tab && (
                         <V.Column width="auto" minHeight={48} crossAlign="center">
-                            <TxtTab
+                            <TouchableOpacity
                                 onClick={() => tab.onClick && tab.onClick()}
                                 css={{
                                     fontSize: tab.size ?? 14,
                                     color: tab.color ?? '#4788f4',
                                     whiteSpace: 'nowrap',
-                                    padding: '8px 10px 8px 2px',
+                                    padding: '5px 10px 8px 2px',
                                     position: 'sticky',
                                 }}
                                 disabled={tab.disabled}
                             >
                                 {tab.name ?? '확인'}
-                            </TxtTab>
+                            </TouchableOpacity>
                         </V.Column>
                     )}
                 </V.Row>

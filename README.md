@@ -35,16 +35,16 @@ V2 버전으로 업데이트 되었으며, 모든 위젯이 업데이트 및 최
 -   next : 14.1.0
 -   typeScript : 5.3.3
 -   next-pwa : 5.6.9
--   next-seo : 6.4.0
+-   next-seo : 6.5.0
 -   next-sitemap: 4.2.3
--   next-auth : 4.24.5
--   axios : 1.6.7
+-   next-auth : 4.24.7
+-   axios : 1.7.2
 -   tanstack/react-query : 5.20.1
 -   recoil: 0.7.7
--   emotion : 11.11.2
--   sharp: 0.33.2
+-   emotion : 11.0.0
+-   sharp: 0.33.4
 -   plaiceholder: 3.0.0
--   react-cookie : 7.0.2
+-   react-cookie : 7.1.4
 -   react-image-cached-resizer : 1.3.6 (자체 배포/개발 패키지)
 -   react-flatlist-ui : 1.4.1 (자체 배포/개발 패키지)
 
@@ -83,7 +83,6 @@ V2 버전으로 업데이트 되었으며, 모든 위젯이 업데이트 및 최
 -   V : flex 기반의 view 위젯 컴포넌트
 
     -   Section : 섹션 레이아웃
-    -   Container : 상위 레이아웃
     -   Row : 가로 정렬 레이아웃 위젯
     -   Column : 세로 정렬 레이아웃 위젯
     -   Form : form 위젯
@@ -114,9 +113,7 @@ V2 버전으로 업데이트 되었으며, 모든 위젯이 업데이트 및 최
     -   NumbericField(통화화폐 단위 필드 ex_10,000)
     -   TextArea(에디터 필드)
     -   SearchField(검색 필드)
-
--   Select : select(label) 기능
-
+    -   Select : select(label) 기능
     -   Option : 옵션 기능
 
 **switch**
@@ -138,8 +135,6 @@ V2 버전으로 업데이트 되었으며, 모든 위젯이 업데이트 및 최
 **tab**
 
 -   Button : 타이틀 버튼 위젯
--   TxtTab : 텍스트 버튼 위젯
--   IconTab : 아이콘 탭을 커스텀 버튼 위젯
 -   TouchableOpacity : react-native 에서 제공되는 prassable 기능의 탭
 
 **typography**
@@ -186,21 +181,33 @@ V2 버전으로 업데이트 되었으며, 모든 위젯이 업데이트 및 최
 
 프론트 개발에 도움이 되는 커스텀 훅 입니다.
 
--   useCookie : set, get, remove를 사용하여 쿠키를 설정 및 읽을 수 있습니다.
+-   useCookie : set, get, remove를 사용하여 쿠키를 설정 및 읽을 수 있습니다
+
+-   useLocalStorage : set, get, remove를 사용하여 로컬스토리지를 설정 및 읽을 수 있습니다
+
+-   useInfiniteQueryObserver : react-query의 인피티니스크롤 hook을 사용합니다
+
+-   useIntersectionObserver : 무한 스크롤 기능을 사용할 때 사용되는 옵저버 훅입니다
+
+-   useObserver : 옵저버의 상태를 처리합니다
 
 -   useMoment : 날짜를 시각적으로 처리하는 훅입니다. (예\_ yyyy-mm-dd , yyyy.mm.dd, y전, 방금전 ...)
 
--   useClickOutSide : DOM 외부 요소를 클릭 시 처리되는 훅입니다\_ 모달 닫기 기능에 추천합니다.
+-   useClickOutSide : DOM 외부 요소를 클릭 시 처리되는 훅입니다\_ 모달 닫기 기능에 추천합니다
 
--   useRouteOnload: 해당 페이지에서 나갈 때 저장된 recoil 상태를 초기화 할때 사용하는 훅입니다.
+-   useRouteOnload: 해당 페이지에서 나갈 때 저장된 recoil 상태를 초기화 할때 사용하는 훅입니다
 
--   useIntersectionObserver : 무한 스크롤 기능을 사용할 때 사용되는 옵저버 훅입니다.
+-   useTanstackQuery : Tanstack-Query 라이브러리 hook을 관리합니다
 
--   useUid : 특정 자릿 수의 고유 id 값을 string 타입으로 생성할 수 있습니다.
+-   usePlatformOs : 사용중인 기기의 OS를 반환합니다
 
--   useStopSwipe : 웹뷰 및 PWA 터치 스와이프 뒤로가기 무효화 훅입니다
+-   useSafeArea : IOS기기의 status 영역을 포함하는 padding 값을 생성합니다
 
--   useTanstackQuery : Tanstack-Query 라이브러리 hook을 관리합니다.
+-   useStopSwipe : 모바일 기기에서 스와이프를 통해 뒤로가기를 막을 수 있습니다
+
+-   useUid : 임의의 문자열(id) 을 랜덤하게 생성합니다
+
+-   useViewportHeight : 현재 레이아웃의 높이값을 알 수 있습니다
 
 ---
 

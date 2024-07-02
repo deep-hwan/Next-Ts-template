@@ -1,50 +1,20 @@
 /** @jsxImportSource @emotion/react */
-import React, { ReactNode, ButtonHTMLAttributes, forwardRef, ForwardedRef, useState, useEffect } from 'react'
-import { colors } from '../../libs/themes/colors'
-import { ViewportTypes } from '../_themes/viewport'
-import { BorderTheme, BorderType } from '../_themes/border'
-import { SpaceTheme, SpaceType } from '../_themes/space'
-import { FlexTheme, FlexType } from '../_themes/flex'
-import { ShadowTheme, ShadowType } from '../_themes/boxShadow'
+import React, { ButtonHTMLAttributes, forwardRef, ForwardedRef, useState, useEffect } from 'react'
+import { FlexTypes } from '../flex/_theme/type'
+import { Themes } from '../flex/_theme'
+import { colors } from '@/libs/themes'
 
 interface Props
     extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
-        ViewportTypes,
-        Omit<FlexType, 'flex' | 'direction' | 'wrap'>,
-        SpaceType,
-        ShadowType,
-        BorderType {
-    children: ReactNode
+        Omit<FlexTypes, 'backgroundColor' | 'onClick' | 'transitionTime' | 'flexReverse' | 'reserse'> {
     as?: 's' | 'm' | 'l'
-    variant?: 'fill' | 'stroke'
     txtSize?: number
     txtColor?: string
     buttonColor?: string
-    borderRadius?: number | string
 }
 
 export const Button = forwardRef<HTMLButtonElement, Props>((props: Props, ref: ForwardedRef<HTMLButtonElement>) => {
-    const {
-        width,
-        minWidth,
-        maxWidth,
-        height,
-        minHeight,
-        maxHeight,
-        gap,
-        crossGap,
-        padding,
-        margin,
-        variant = 'fill',
-        as = 'l',
-        txtSize,
-        txtColor,
-        buttonColor,
-        border,
-        borderRadius,
-        shadow,
-        ...rest
-    } = props
+    const { as = 'l', txtSize, txtColor, buttonColor, borderRadius, ...rest } = props
 
     const [os, setOs] = useState<'window' | 'mac'>('window')
 
@@ -54,67 +24,42 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props: Props, ref: F
         else setOs('window')
     }, [os])
 
-    const TYPE_VARIANTS = {
-        fill: {
-            backgroundColor: buttonColor ?? colors.keyColor,
-            color: txtColor ?? '#fff',
-            border: '',
-        },
-        stroke: {
-            backgroundColor: 'transparent',
-            color: colors.keyColor,
-            border: BorderTheme({ border: { solid: 1, position: 'all', color: colors.keyColor } }),
-        },
-    }
-
     const TAB_SIZE = {
         s: {
             minHeight: 'auto',
-            padding: '10px 12px',
+            padding: '11px 16px',
             fontSize: `${12 / 16}rem`,
             borderRadius: 12,
         },
         m: {
             minHeight: 'auto',
-            padding: '12px 14px',
+            padding: '13px 18px',
             fontSize: `${14 / 16}rem`,
             borderRadius: 14,
         },
         l: {
             minHeight: 56,
-            padding: '14px 16px',
+            padding: '15px 20px',
             fontSize: `${15 / 16}rem`,
             borderRadius: 18,
         },
     }
 
-    const viewT = { width, height, minWidth, maxWidth, minHeight, maxHeight }
-    const FlexT = FlexTheme({
-        direction: 'horizontal',
-        align: 'center',
-        crossAlign: 'center',
-        gap,
-        crossGap,
-    })
-    const borderT = border ? BorderTheme({ border }) : (TYPE_VARIANTS[variant].border as any)
-    const paddingT = padding ? SpaceTheme({ padding }) : { padding: TAB_SIZE[as].padding }
-    const marginT = SpaceTheme({ margin })
-    const shadowT = ShadowTheme({ shadow })
+    const themes = Themes({ props, direction: 'row' })
 
     return (
         <button
             ref={ref}
             type={props.type ?? 'button'}
             css={{
-                ...FlexT,
-                ...marginT,
-                ...paddingT,
-                ...viewT,
-                ...shadowT,
-                ...borderT,
-                minHeight: minHeight ? minHeight : TAB_SIZE[as].minHeight,
-                backgroundColor: buttonColor ?? TYPE_VARIANTS[variant].backgroundColor,
-                color: txtColor ?? TYPE_VARIANTS[variant].color,
+                ...themes,
+                position: 'relative',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: props.padding ? props.padding : TAB_SIZE[as].padding,
+                minHeight: props?.minHeight ? props?.minHeight : TAB_SIZE[as].minHeight,
+                backgroundColor: buttonColor ?? colors.keyColor,
+                color: txtColor ?? '#FFF',
                 fontSize: txtSize ? txtSize : TAB_SIZE[as].fontSize,
                 borderRadius: borderRadius ? borderRadius : TAB_SIZE[as].borderRadius,
                 cursor: 'pointer',

@@ -1,8 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React, { ForwardedRef, ReactNode, forwardRef, useCallback, useEffect, useRef } from 'react'
-
-import { IconTab, BlurLayer } from '../index'
-import { ScrollTheme } from '../_themes/scroll'
+import { BlurLayer, TouchableOpacity } from '../index'
 
 // --------------------------------------------
 // -------------- Type Interface --------------
@@ -40,8 +38,6 @@ export const AppDrawer = forwardRef((props: Props, ref?: ForwardedRef<HTMLDivEle
         return () => document.removeEventListener('mousedown', clickModalOutside)
     })
 
-    const scrollT = ScrollTheme({ scroll: { type: 'auto', bar: false } })
-
     return (
         <>
             {open && <BlurLayer zIndex={1999} />}
@@ -70,12 +66,14 @@ export const AppDrawer = forwardRef((props: Props, ref?: ForwardedRef<HTMLDivEle
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'end',
-                        paddingTop: 4,
-                        paddingRight: `max(8px, env(safe-area-inset-right))`,
+                        paddingTop: 2,
+                        paddingRight: `max(5px, env(safe-area-inset-right))`,
                     }}
                 >
                     {cancelTabIconActive ? (
-                        <IconTab onClick={() => onCancel()}>{CancelIcon({ fill: cancelIconColor ?? '#ccc' })}</IconTab>
+                        <TouchableOpacity padding={{ all: 10 }} onClick={() => onCancel()}>
+                            {CancelIcon({ fill: cancelIconColor ?? '#ccc' })}
+                        </TouchableOpacity>
                     ) : (
                         ''
                     )}
@@ -84,7 +82,6 @@ export const AppDrawer = forwardRef((props: Props, ref?: ForwardedRef<HTMLDivEle
                 <div
                     ref={ref}
                     css={{
-                        ...scrollT,
                         paddingTop: `max(0px, env(safe-area-inset-top))`,
                         paddingBottom: `max(0px, env(safe-area-inset-bottom))`,
                         paddingRight: `max(0px, env(safe-area-inset-right))`,
@@ -93,7 +90,10 @@ export const AppDrawer = forwardRef((props: Props, ref?: ForwardedRef<HTMLDivEle
                         height: '100%',
                         display: 'flex',
                         flexDirection: 'column',
+                        flexWrap: 'nowrap',
                         zIndex: 10,
+                        overflowY: 'auto',
+                        '::-webkit-scrollbar': { display: 'none' },
                     }}
                 >
                     {props.children}

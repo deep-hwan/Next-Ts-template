@@ -12,7 +12,7 @@ export default function Error() {
         <>
             <SEO title="페이지를 찾을 수 없습니다" />
             <V.Section>
-                <V.Container
+                <V.Column
                     padding={{ horizontal: 26, bottom: 50 }}
                     crossAlign="center"
                     align="center"
@@ -37,7 +37,7 @@ export default function Error() {
                     >
                         뒤로가기
                     </Button>
-                </V.Container>
+                </V.Column>
             </V.Section>
         </>
     )

@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import React, { ReactNode, useCallback, useEffect, useRef, HTMLAttributes } from 'react'
 import { BlurLayer } from '../display/BlurLayer'
-import { IconTab } from '../tab/IconTab'
 import { P } from '../flex/P'
 import { V } from '../flex/V'
 import { MQ } from '@/libs/themes'
+import { TouchableOpacity } from '../tab/TouchableOpacity'
 
 interface Props extends HTMLAttributes<HTMLElement> {
     children: ReactNode
@@ -75,7 +75,7 @@ export const Modal = (props: Props) => {
                 transitionTime={0.3}
                 css={{ overscrollBehavior: 'contain', [MQ[2]]: { padding: '40px 0 0', justifyContent: 'start' } }}
             >
-                <V.Container
+                <V.Column
                     maxWidth={modalSize}
                     minWidth={320}
                     maxHeight={700}
@@ -96,15 +96,15 @@ export const Modal = (props: Props) => {
                     {showCancelTab && (
                         <P.Sticky width="100%" position={{ right: 0, left: 0, top: 0 }} zIndex={5}>
                             <V.Column align="end" padding={{ all: 6 }}>
-                                <IconTab onClick={onCancel}>
+                                <TouchableOpacity onClick={onCancel}>
                                     <CancelIcon fill={THEME_VARIANT[theme].cancelColor} />
-                                </IconTab>
+                                </TouchableOpacity>
                             </V.Column>
                         </P.Sticky>
                     )}
 
                     {props.children}
-                </V.Container>
+                </V.Column>
             </P.Fixed>
         </>
     )

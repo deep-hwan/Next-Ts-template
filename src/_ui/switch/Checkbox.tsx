@@ -1,14 +1,9 @@
-/** @jsxImportSource @emotion/react */
-import React, { ForwardedRef, InputHTMLAttributes, forwardRef, useState } from 'react'
-import { colors } from '../../libs/themes/colors'
-import { Txt } from '../typography/Txt'
-import { V } from '../flex/V'
+import { Txt, V } from '@/_ui'
+import { colors } from '@/libs/themes'
+import { Interpolation, Theme } from '@emotion/react'
+import { ForwardedRef, forwardRef, HTMLAttributes, useState } from 'react'
 
-//
-interface CheckProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-    checkSize?: number
-    size?: number
-    type?: 'checkbox' | 'radio'
+type Types = {
     themes?: {
         check?: {
             defaultColor?: string
@@ -28,96 +23,87 @@ interface CheckProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
             txtSize?: number
         }
     }
+
     label?: {
         title: string
         txt?: string
         txtOnClick?: any
     }
-}
 
-export const Checkbox = forwardRef(function Checkbox(props: CheckProps, ref: ForwardedRef<HTMLInputElement>) {
-    const uid = generateUUID()
+    labelActive?: boolean
+    value: boolean
+    disabled?: boolean
+    onClick?: any
+    css?: Interpolation<Theme>
+} & Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>
 
-    const { id, type = 'checkbox', disabled, checkSize = 16, label, themes, ...rest } = props
-
-    const { check: checkTheme, label: labelTheme } = themes ?? {}
-
+const Checkbox = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement> | undefined) => {
     const [hover, setHover] = useState(false)
 
-    return (
-        <V.Row align="start" gap={3} width="auto">
-            <label
-                onMouseEnter={() => setHover(true)}
-                onMouseLeave={() => setHover(false)}
-                css={{
-                    ...CheckLabelTheme,
-                    maxWidth: checkTheme?.checkSize ?? 16 + 10,
-                    maxHeight: checkTheme?.checkSize ?? 16 + 10,
-                    minWidth: checkTheme?.checkSize ?? 16 + 10,
-                    minHeight: checkTheme?.checkSize ?? 16 + 10,
-                    cursor: !disabled ? 'cursor' : 'default',
-                }}
-                htmlFor={id ?? uid}
-            >
-                <div
-                    css={{
-                        ...HBoxTheme,
-                        backgroundColor: checkTheme?.hoverColor ?? '#f2f2f2',
-                        transform: !disabled && hover ? 'scale(1)' : 'scale(0)',
-                    }}
-                />
-                <input
-                    ref={ref}
-                    type={type}
-                    css={{
-                        ...CheckThemes,
-                        zIndex: 1,
-                        width: checkSize,
-                        minWidth: checkSize,
-                        height: checkSize,
-                        minHeight: checkSize,
-                        backgroundColor: checkTheme?.defaultColor ?? '#e0e0e0',
-                        borderRadius: checkTheme?.borderRadius ?? 6,
-                        '&:checked': { backgroundColor: checkTheme?.checkColor ?? colors.keyColor },
-                        '&:disabled': {
-                            backgroundColor: checkTheme?.disabledColor ?? '#c8cada',
-                            border: `1px solid ${checkTheme?.borderColor ?? '#ccc'}`,
-                            cursor: 'default',
-                        },
-                    }}
-                    disabled={disabled}
-                    id={id ?? uid}
-                    {...rest}
-                />
-            </label>
+    const checkColors = () => {
+        if (props?.disabled) return props?.themes?.check?.disabledColor ?? '#bbb'
+        if (!!props?.value) return props?.themes?.check?.checkColor ?? colors.keyColor
+        return props?.themes?.check?.defaultColor ?? '#e2e2e2'
+    }
 
-            {!!label && (
-                <V.Column gap={4}>
-                    <label
-                        htmlFor={id ?? uid}
-                        onMouseEnter={() => setHover(true)}
-                        onMouseLeave={() => setHover(false)}
-                        css={{
-                            ...labelThemes,
-                            cursor: disabled ? 'default' : 'pointer',
-                        }}
+    const checkIconColors = () => {
+        if (props?.disabled) return props?.themes?.check?.disabledColor ?? '#999'
+        if (!!props?.value) return props?.themes?.check?.checkColor ?? '#fff'
+        return props?.themes?.check?.defaultColor ?? '#fff'
+    }
+
+    const handleOnClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        if (typeof props.onClick === 'function') props.onClick(event)
+    }
+
+    return (
+        <V.Row
+            align="start"
+            gap={10}
+            width="auto"
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            {...(props || {})}
+            ref={ref}
+        >
+            <div
+                css={{
+                    ...(props?.css as any),
+                    minWidth: props.themes?.check?.checkSize ?? 17,
+                    maxWidth: props.themes?.check?.checkSize ?? 17,
+                    minHeight: props.themes?.check?.checkSize ?? 17,
+                    maxHeight: props.themes?.check?.checkSize ?? 17,
+                    borderRadius: props.themes?.check?.borderRadius ?? 6,
+                    backgroundColor: checkColors(),
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: '0.2s ease-in-out',
+                    marginTop: 2.5,
+                }}
+                onClick={handleOnClick}
+            >
+                <CheckIcon size={props.themes?.check?.checkSize ?? 18 - 9} fill={checkIconColors()} />
+            </div>
+
+            {!!props?.label && (
+                <V.Column gap={4} css={{ opacity: props?.labelActive ? 1 : !!props.value ? 1 : 0.7 }}>
+                    <Txt
+                        weight={props?.themes?.label?.titleWeight ?? 'medium'}
+                        size={props?.themes?.label?.titleSize ?? 15}
+                        color={props?.themes?.label?.titleColor ?? '#555'}
+                        css={{ userSelect: 'none' }}
+                        onClick={handleOnClick}
                     >
-                        <Txt
-                            weight={labelTheme?.titleWeight ?? 'medium'}
-                            size={labelTheme?.titleSize ?? 14}
-                            color={labelTheme?.titleColor ?? '#555'}
-                            css={{ userSelect: 'none' }}
-                        >
-                            {label.title}
-                        </Txt>
-                    </label>
+                        {props?.label.title}
+                    </Txt>
 
                     <Txt
-                        size={labelTheme?.txtSize ?? 12}
-                        color={labelTheme?.txtColor ?? '#888'}
-                        onClick={label.txtOnClick}
+                        size={props?.themes?.label?.txtSize ?? 13}
+                        color={props?.themes?.label?.txtColor ?? '#888'}
+                        onClick={props?.label?.txtOnClick}
                     >
-                        {label.txt}
+                        {props?.label.txt}
                     </Txt>
                 </V.Column>
             )}
@@ -125,66 +111,20 @@ export const Checkbox = forwardRef(function Checkbox(props: CheckProps, ref: For
     )
 })
 
-const labelThemes: any = {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: 3,
-    userSelect: 'none',
-    paddingTop: 2,
-}
+export { Checkbox }
 
-const CheckLabelTheme: any = {
-    position: 'relative',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}
-
-const HBoxTheme: any = {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    transition: '0.3s ease-in-out',
-    borderRadius: 100,
-}
-
-const CheckThemes: any = {
-    zIndex: 1,
-    border: '0px solid gainsboro',
-    appearance: 'none',
-    userSelect: 'none',
-    transition: '0.2s ease-in-out',
-    backgroundImage:
-        "url('data:image/svg+xml,%3csvg viewBox=%220 0 16 16%22 fill=%22white%22 xmlns=%22http://www.w3.org/2000/svg%22%3e%3cpath d=%27M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z%27/%3e%3c/svg%3e')",
-
-    '&:checked': {
-        borderColor: 'transparent',
-        backgroundSize: '100% 100%',
-        backgroundPosition: '50%',
-        backgroundRepeat: 'no-repeat',
-        borderRadius: '5px',
-    },
-
-    '&:disabled': {
-        borderColor: 'transparent',
-        backgroundSize: '100% 100%',
-        backgroundPosition: '50%',
-        backgroundRepeat: 'no-repeat',
-        borderRadius: '5px',
-        cursor: 'default',
-    },
-}
-
-const generateUUID = () => {
-    let dt = new Date().getTime()
-    const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        const r = (dt + Math.random() * 16) % 16 | 0
-        dt = Math.floor(dt / 16)
-        return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
-    })
-    return uuid
-}
+const CheckIcon = ({ size, fill }: { size: any; fill: string }) => (
+    <svg width={size} height={size} viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_1025_25)">
+            <path
+                d="M9.02563 18.3333C8.5739 18.3333 8.1492 18.1573 7.82912 17.8377L0.495816 10.5043C0.176301 10.1846 0 9.75962 0 9.30763C0 8.85564 0.176301 8.43064 0.495816 8.111C0.815332 7.79135 1.24059 7.61548 1.69232 7.61548C2.14405 7.61548 2.56932 7.79135 2.88883 8.11087L9.02567 14.2477L19.1112 4.16225C19.4307 3.84261 19.8559 3.66674 20.3077 3.66674C20.7594 3.66674 21.1847 3.84261 21.5042 4.16213C21.8237 4.4819 22 4.9069 22 5.35893C22 5.81097 21.8237 6.23593 21.5042 6.55557L10.2221 17.8376C9.90211 18.1573 9.47736 18.3333 9.02563 18.3333Z"
+                fill={fill}
+            />
+        </g>
+        <defs>
+            <clipPath id="clip0_1025_25">
+                <rect width="22" height="22" fill="white" />
+            </clipPath>
+        </defs>
+    </svg>
+)

@@ -46,7 +46,7 @@ export default function Footer() {
 
                 <Spacing size={32} />
 
-                <V.Container>
+                <V.Column>
                     <TxtSpan size={14} weight="medium" color={colors.grey[500]}>
                         딥팩토리 디자인
                     </TxtSpan>
@@ -66,7 +66,7 @@ export default function Footer() {
                     <Txt size={13} color={colors.grey[300]}>
                         사업자등록번호 : 110-412-598896 | 통신판매등록번호 : 2023-서울영등포-0900호
                     </Txt>
-                </V.Container>
+                </V.Column>
             </V.Column>
         </footer>
     )

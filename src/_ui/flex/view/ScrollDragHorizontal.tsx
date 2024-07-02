@@ -1,66 +1,61 @@
 /** @jsxImportSource @emotion/react */
-import React, { useRef, useState, MouseEvent, HTMLAttributes, ReactNode } from 'react';
+import React, { useRef, useState, MouseEvent, HTMLAttributes, ReactNode } from 'react'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
-  maxWidth?: number;
-  gap?: number;
-  scrollBarActive?: boolean;
+    children: ReactNode
+    maxWidth?: number
+    gap?: number
+    scrollBarActive?: boolean
 }
 
-export const ScrollDragHorizontal = ({
-  children,
-  maxWidth,
-  gap,
-  scrollBarActive = false,
-  ...props
-}: Props) => {
-  const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [startX, setStartX] = useState<number>(0);
-  const [scrollLeft, setScrollLeft] = useState<number>(0);
-  const ref = useRef<HTMLDivElement | null>(null);
+export const ScrollDragHorizontal = ({ children, maxWidth, gap, scrollBarActive = false, ...props }: Props) => {
+    const [isDragging, setIsDragging] = useState<boolean>(false)
+    const [startX, setStartX] = useState<number>(0)
+    const [scrollLeft, setScrollLeft] = useState<number>(0)
+    const ref = useRef<HTMLDivElement | null>(null)
 
-  const startDrag = (e: MouseEvent<HTMLDivElement>) => {
-    setIsDragging(true);
-    setStartX(e.pageX - (ref.current?.offsetLeft || 0));
-    setScrollLeft(ref.current?.scrollLeft || 0);
-  };
-
-  const doDrag = (e: MouseEvent<HTMLDivElement>) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - (ref.current?.offsetLeft || 0);
-    const walk = x - startX;
-    if (ref.current) {
-      ref.current.scrollLeft = scrollLeft - walk;
+    const startDrag = (e: MouseEvent<HTMLDivElement>) => {
+        setIsDragging(true)
+        setStartX(e.pageX - (ref.current?.offsetLeft || 0))
+        setScrollLeft(ref.current?.scrollLeft || 0)
     }
-  };
 
-  const endDrag = () => setIsDragging(false);
+    const doDrag = (e: MouseEvent<HTMLDivElement>) => {
+        if (!isDragging) return
+        e.preventDefault()
+        const x = e.pageX - (ref.current?.offsetLeft || 0)
+        const walk = x - startX
+        if (ref.current) {
+            ref.current.scrollLeft = scrollLeft - walk
+        }
+    }
 
-  return (
-    <div
-      ref={ref}
-      onMouseDown={startDrag}
-      onMouseLeave={endDrag}
-      onMouseUp={endDrag}
-      onMouseMove={doDrag}
-      css={{
-        width: '100%',
-        maxWidth: `${maxWidth}px`,
-        columnGap: `${gap}px`,
-        display: 'flex',
-        overflowX: 'auto',
-        cursor: isDragging ? 'grabbing' : 'auto',
-        padding: '1px 0',
+    const endDrag = () => setIsDragging(false)
 
-        '&::-webkit-scrollbar': {
-          display: scrollBarActive ? 'flex' : 'none',
-        },
-      }}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-};
+    return (
+        <div
+            ref={ref}
+            onMouseDown={startDrag}
+            onMouseLeave={endDrag}
+            onMouseUp={endDrag}
+            onMouseMove={doDrag}
+            css={{
+                width: '100%',
+                maxWidth: `${maxWidth}px`,
+                columnGap: `${gap}px`,
+                display: 'flex',
+                overflowX: 'auto',
+                cursor: isDragging ? 'grabbing' : 'auto',
+                padding: '1px 0',
+                userSelect: 'none',
+
+                '&::-webkit-scrollbar': {
+                    display: scrollBarActive ? 'flex' : 'none',
+                },
+            }}
+            {...props}
+        >
+            {children}
+        </div>
+    )
+}

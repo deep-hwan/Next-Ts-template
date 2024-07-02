@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 //libs
 import { colors } from '@/libs/themes'
-import { V, Spacing, Txt, TxtSpan, TxtTab, Button, Dialog, BottomSheet, CalenderModal } from '@/_ui'
+import { V, Spacing, Txt, TxtSpan, TouchableOpacity, Button, Dialog, BottomSheet, CalenderModal } from '@/_ui'
 import { useMoment } from '@/libs/hooks'
 
 //
@@ -12,7 +12,7 @@ export default function Comp4() {
 
     return (
         <>
-            <V.Container>
+            <V.Column>
                 <Txt as="h2" size={18}>
                     {'네이티브 모달을\n웹에서도 사용해보세요'}
                 </Txt>
@@ -29,19 +29,19 @@ export default function Comp4() {
 
                 <Spacing size={20} />
 
-                <V.Container
+                <V.Column
                     border={{ solid: 1, color: colors.chiffon[500] }}
                     align="center"
                     padding={{ all: 16 }}
                     borderRadius={16}
                 >
                     <V.Row gap={20} align="center" crossAlign="center">
-                        <TxtTab onClick={() => setIsOpen('dialog')}>다이아 로그</TxtTab>
-                        <TxtTab onClick={() => setIsOpen('bottomSheet')}>바텀 시트</TxtTab>
-                        <TxtTab onClick={() => setIsOpen('calenderModal')}>켈린더 모달</TxtTab>
+                        <TouchableOpacity onClick={() => setIsOpen('dialog')}>다이아 로그</TouchableOpacity>
+                        <TouchableOpacity onClick={() => setIsOpen('bottomSheet')}>바텀 시트</TouchableOpacity>
+                        <TouchableOpacity onClick={() => setIsOpen('calenderModal')}>켈린더 모달</TouchableOpacity>
                     </V.Row>
-                </V.Container>
-            </V.Container>
+                </V.Column>
+            </V.Column>
 
             {/* 다이아로그 모달 */}
             <Dialog

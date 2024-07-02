@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useCallback, useEffect, useRef, HTMLAttributes, ReactNode } from 'react'
 
-import { Button, Txt, IconTab, BlurLayer, V, P } from '../index'
+import { Button, Txt, BlurLayer, V, P, TouchableOpacity } from '../index'
 import { colors } from 'src/libs/themes'
 
 interface Props extends HTMLAttributes<HTMLElement> {
@@ -83,7 +83,7 @@ export function Dialog(props: Props) {
                 transitionTime={0.3}
                 css={{ overscrollBehavior: 'contain' }}
             >
-                <V.Container
+                <V.Column
                     maxWidth={dialogSizes}
                     minWidth={320}
                     padding={{ horizontal: 18, top: 26, bottom: 16 }}
@@ -94,10 +94,10 @@ export function Dialog(props: Props) {
                     ref={ref}
                     {...rest}
                 >
-                    <P.Absolute position={{ top: 4, right: 4 }}>
-                        <IconTab onClick={onCancel}>
+                    <P.Absolute width="100%" crossAlign="end" position={{ top: 3, right: 3 }}>
+                        <TouchableOpacity padding={{ all: 8 }} onClick={onCancel}>
                             <CancelIcon fill={THEME_VARIANT[theme].cancelColor} />
-                        </IconTab>
+                        </TouchableOpacity>
                     </P.Absolute>
 
                     <V.Column>
@@ -129,7 +129,7 @@ export function Dialog(props: Props) {
                             </V.Row>
                         )}
                     </V.Column>
-                </V.Container>
+                </V.Column>
             </P.Fixed>
         </>
     )

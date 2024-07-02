@@ -8,10 +8,14 @@ interface Props {
     width?: number
     backgroundColor?: string
     borderBottom?: string
+    fixedLayout?: boolean
 }
 
 export const AppBar = forwardRef(
-    ({ children, serviceName, theme = 'light', width, ...props }: Props, ref?: ForwardedRef<HTMLDivElement>) => {
+    (
+        { children, serviceName, theme = 'light', width, fixedLayout = true, ...props }: Props,
+        ref?: ForwardedRef<HTMLDivElement>,
+    ) => {
         const [isActive, setIsActive] = useState<boolean>(false)
 
         useEffect(() => {
@@ -28,20 +32,23 @@ export const AppBar = forwardRef(
         }
 
         return (
-            <div
-                css={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: 60,
-                    minHeight: 60,
-                    maxHeight: 60,
-                    paddingTop: 'env(safe-area-inset-top)',
-                    paddingRight: 'env(safe-area-inset-right)',
-                    paddingLeft: 'env(safe-area-inset-left)',
-                    backgroundColor: props?.backgroundColor ?? TYPE_VARIANTS[theme].backgroundColor,
-                }}
-            >
+            <>
+                {!!fixedLayout && (
+                    <div
+                        css={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            width: '100%',
+                            height: 60,
+                            minHeight: 60,
+                            maxHeight: 60,
+                            paddingTop: 'env(safe-area-inset-top)',
+                            paddingRight: 'env(safe-area-inset-right)',
+                            paddingLeft: 'env(safe-area-inset-left)',
+                            backgroundColor: props?.backgroundColor ?? TYPE_VARIANTS[theme].backgroundColor,
+                        }}
+                    />
+                )}
                 <header
                     ref={ref}
                     css={{
@@ -80,7 +87,7 @@ export const AppBar = forwardRef(
                         {children}
                     </nav>
                 </header>
-            </div>
+            </>
         )
     },
 )

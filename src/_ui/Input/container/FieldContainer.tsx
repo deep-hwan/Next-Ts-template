@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import React, { ReactNode, useState } from 'react'
-import { GlobalInputTheme } from '../../_themes/input'
+import { GlobalInputTheme } from './input'
 import { css } from '@emotion/react'
 import { V } from '../../flex/V'
-import { TxtTab } from '../../tab/TxtTab'
+import { TouchableOpacity } from '@/_ui/tab/TouchableOpacity'
 
 type Types = {
     children: ReactNode
@@ -81,7 +81,7 @@ function FieldContainer(props: Types) {
                     minWidth: sizes?.minWidth,
                     maxWidth: sizes?.maxWidth,
                     height: sizes?.height ?? '100%',
-                    minHeight: sizes?.minHeight,
+                    minHeight: sizes?.minHeight ?? 50,
                     maxHeight: sizes?.maxHeight,
                     borderRadius: !sizes?.borderBottom ? sizes?.borderRadius ?? 14 : 0,
                     backgroundColor: backgroundColor(),
@@ -130,7 +130,7 @@ function FieldContainer(props: Types) {
             {children}
 
             {!!tab && (
-                <TxtTab
+                <TouchableOpacity
                     id={tabId}
                     onClick={() => tab.onClick && tab.onClick()}
                     css={{
@@ -143,7 +143,7 @@ function FieldContainer(props: Types) {
                     disabled={tab.disabled}
                 >
                     {tab.name ?? '확인'}
-                </TxtTab>
+                </TouchableOpacity>
             )}
 
             {!!edge && (
