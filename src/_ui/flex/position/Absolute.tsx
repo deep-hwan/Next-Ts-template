@@ -27,7 +27,7 @@ const Absolute = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) =>
             css={{
                 ...theme,
 
-                width: 'auot',
+                width: props.width ?? 'auto',
                 position: 'absolute',
                 top: props?.position.top,
                 bottom: props?.position.bottom,
