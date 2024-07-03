@@ -26,7 +26,7 @@ const Fixed = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
             ref={ref}
             css={{
                 ...theme,
-                width: 'auot',
+                width: props.width ?? 'auto',
                 position: 'fixed',
                 top: props?.position.top,
                 bottom: props?.position.bottom,
