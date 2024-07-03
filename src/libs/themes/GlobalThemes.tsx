@@ -37,8 +37,9 @@ export function GlobalThemes({ children }: { children?: ReactNode }): JSX.Elemen
                         text-rendering: optimizeLegibility;
                         overflow-x: hidden;
                         overflow-y: auto;
-                        word-break: keep-all;
+                        word-break: break-all;
                         word-wrap: break-word;
+                        overflow-wrap: break-word;
                     }
 
                     @supports (-webkit-touch-callout: none) {
