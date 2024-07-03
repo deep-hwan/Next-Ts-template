@@ -26,7 +26,7 @@ const Sticky = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
             ref={ref}
             css={{
                 ...theme,
-                width: 'auot',
+                width: props.width ?? 'auto',
                 position: 'sticky',
                 top: props?.position.top,
                 bottom: props?.position.bottom,
