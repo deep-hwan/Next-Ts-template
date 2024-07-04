@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next'
 import { getServerSideSitemap, ISitemapField } from 'next-sitemap'
 import fs from 'fs'
-import { SITE_URL } from '@/libs/api'
+import { SITE_URL } from '@/libs/apis'
 
 interface SitemapUrl {
     loc: string

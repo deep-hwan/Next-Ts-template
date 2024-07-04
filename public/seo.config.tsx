@@ -1,4 +1,4 @@
-import { SITE_URL } from '@/libs/api'
+import { SITE_URL } from '@/libs/apis'
 import { NextSeo, NextSeoProps } from 'next-seo'
 
 interface SEOProps extends NextSeoProps {

@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const { SITE_URL } = require('@/libs/api')
+const { SITE_URL } = require('@/libs/apis')
 const SITEMAP_PATH = path.resolve(__dirname, '../public/sitemap.xml')
 
 // 예시입니다
