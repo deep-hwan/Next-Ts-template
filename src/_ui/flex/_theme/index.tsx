@@ -2,7 +2,7 @@ import React from 'react'
 import { FlexTypes } from './type'
 import { Interpolation, Theme } from '@emotion/react'
 
-export function Themes({ direction = 'column', props }: { direction?: 'row' | 'column'; props: FlexTypes }) {
+export function Themes({ direction = 'vertical', props }: { direction?: 'horizontal' | 'vertical'; props: FlexTypes }) {
     //
     //
     const Size = {
@@ -17,13 +17,13 @@ export function Themes({ direction = 'column', props }: { direction?: 'row' | 'c
     //
     //
     const FLEX_VARIANTS = {
-        row: {
+        horizontal: {
             flexDirection: props?.flexReverse ? 'row-reverse' : 'row',
             align: props?.align ?? 'stretch',
             rowGap: props?.crossGap,
             columnGap: props?.gap,
         },
-        column: {
+        vertical: {
             flexDirection: props?.flexReverse ? 'column-reverse' : 'column',
             align: props?.align ?? 'start',
             rowGap: props?.gap,
@@ -98,6 +98,16 @@ export function Themes({ direction = 'column', props }: { direction?: 'row' | 'c
 
     //
     //
+    const Order = {
+        zIndex: props?.zIndex,
+        cursor: props?.onClick ? 'pointer' : props?.cursor,
+        userSelect: props?.onClick && 'none',
+        transition: `${props?.transitionTime ?? 0}s ease-in-out`,
+        opacity: props.opacity,
+    } as Interpolation<Theme>
+
+    //
+    //
     const Scroll = {
         overflow: props?.scroll?.type ?? 'visible',
 
@@ -123,31 +133,21 @@ export function Themes({ direction = 'column', props }: { direction?: 'row' | 'c
         },
     }
 
-    //
-    //
-    const Order = {
-        zIndex: props?.zIndex,
-        cursor: props?.onClick ? 'pointer' : props?.cursor,
-        userSelect: props?.onClick && 'none',
-        transition: `${props?.transitionTime ?? 0}s ease-in-out`,
-        opacity: props.opacity,
-    } as Interpolation<Theme>
-
     return {
         Size,
         Flex,
-        Theme,
-        Order,
         Padding,
         Margin,
+        Theme,
+        Order,
         Scroll,
 
         ...(Size as any),
         ...(Flex as any),
-        ...(Theme as any),
-        ...(Order as any),
         ...(Padding as any),
         ...(Margin as any),
+        ...(Theme as any),
+        ...(Order as any),
         ...(Scroll as any),
     }
 }

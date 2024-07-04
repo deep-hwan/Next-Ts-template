@@ -5,7 +5,6 @@ import { FlexTypes } from '../_theme/type'
 
 interface Props extends HTMLAttributes<HTMLUListElement | HTMLOListElement>, Omit<FlexTypes, 'onClick'> {
     as?: 'ul' | 'ol'
-    direction?: 'horizontal' | 'vertical'
 }
 
 const Items = forwardRef(
@@ -15,7 +14,7 @@ const Items = forwardRef(
     ) => {
         const themes = Themes({
             props,
-            direction: direction ? (direction === 'horizontal' ? 'row' : 'column') : 'row',
+            direction: direction ?? 'horizontal',
         })
 
         const csss = { ...themes, position: 'relative' }

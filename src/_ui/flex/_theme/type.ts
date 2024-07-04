@@ -16,6 +16,7 @@ type Size = {
 type Flex = {
     flex?: number | string
     flexReverse?: boolean
+    direction?: 'horizontal' | 'vertical'
     align?: 'start' | 'end' | 'center' | 'stretch' | 'baseline'
     crossAlign?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
     alignContent?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch'
@@ -27,44 +28,6 @@ type Flex = {
     gap?: number
     crossGap?: number
     order?: number
-}
-
-//
-//
-type Theme = {
-    backgroundColor?: string
-    background?: string
-    backgroundRepeat?: 'repeat-x' | 'repeat-y' | 'repeat' | 'space' | 'round' | 'no-repeat'
-    backgroundSize?: 'contain' | 'cover' | string
-    backgroundPosition?: 'top' | 'bottom' | 'center' | 'left' | 'right' | 'string'
-    backgroundClip?: 'border-box' | 'padding-box' | 'content-box' | 'initial' | 'inherit'
-    backgroundImageUrl?: string
-    border?: {
-        solid: number
-        position?: 'all' | 'left' | 'right' | 'top' | 'bottom'
-        color?: string
-    }
-    borderRadius?: number | string
-    shadow?: {
-        x?: number
-        y?: number
-        blur?: number
-        color?: string
-    }
-    scroll?: {
-        type?: 'visible' | 'auto' | 'scroll' | 'hidden'
-        bar?: boolean
-    }
-}
-
-//
-//
-type Order = {
-    zIndex?: number
-    transitionTime?: number
-    cursor?: 'default' | 'grab' | 'pointer' | 'zoom'
-    opacity?: number
-    touchOpacity?: number
 }
 
 //
@@ -93,7 +56,50 @@ type Space = {
 
 //
 //
-export interface FlexTypes extends Flex, Size, Theme, Order, Space {
+type Theme = {
+    backgroundColor?: string
+    background?: string
+    backgroundRepeat?: 'repeat-x' | 'repeat-y' | 'repeat' | 'space' | 'round' | 'no-repeat'
+    backgroundSize?: 'contain' | 'cover' | string
+    backgroundPosition?: 'top' | 'bottom' | 'center' | 'left' | 'right' | 'string'
+    backgroundClip?: 'border-box' | 'padding-box' | 'content-box' | 'initial' | 'inherit'
+    backgroundImageUrl?: string
+    border?: {
+        solid: number
+        position?: 'all' | 'left' | 'right' | 'top' | 'bottom'
+        color?: string
+    }
+    borderRadius?: number | string
+    shadow?: {
+        x?: number
+        y?: number
+        blur?: number
+        color?: string
+    }
+}
+
+//
+//
+type Order = {
+    zIndex?: number
+    transitionTime?: number
+    cursor?: 'default' | 'grab' | 'pointer' | 'zoom'
+    opacity?: number
+    touchOpacity?: number
+}
+
+//
+//
+type Scroll = {
+    scroll?: {
+        type?: 'visible' | 'auto' | 'scroll' | 'hidden'
+        bar?: boolean
+    }
+}
+
+//
+//
+export interface FlexTypes extends Flex, Size, Theme, Order, Space, Scroll {
     onClick?: any
     children?: ReactNode
 }

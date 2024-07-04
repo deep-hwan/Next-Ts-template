@@ -6,7 +6,7 @@ import { Themes } from '../_theme'
 type Types = FlexTypes & HTMLAttributes<HTMLDivElement>
 
 const Row = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
-    const themes = Themes({ props, direction: 'row' })
+    const themes = Themes({ props, direction: 'horizontal' })
 
     return (
         <div

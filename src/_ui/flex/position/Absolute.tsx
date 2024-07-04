@@ -4,7 +4,6 @@ import { FlexTypes } from '../_theme/type'
 import { Themes } from '../_theme'
 
 type Types = {
-    direction?: 'horizontal' | 'vertical'
     position: {
         top?: string | number
         bottom?: string | number
@@ -18,7 +17,7 @@ type Types = {
 const Absolute = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
     const theme = Themes({
         props,
-        direction: props.direction ? (props.direction === 'horizontal' ? 'row' : 'column') : 'row',
+        direction: props.direction ?? 'horizontal',
     })
 
     return (

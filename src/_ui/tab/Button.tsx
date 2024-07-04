@@ -6,7 +6,20 @@ import { colors } from '@/libs/themes'
 
 interface Props
     extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
-        Omit<FlexTypes, 'backgroundColor' | 'onClick' | 'transitionTime' | 'flexReverse' | 'reserse'> {
+        Omit<
+            FlexTypes,
+            | 'backgroundColor'
+            | 'onClick'
+            | 'transitionTime'
+            | 'flexReverse'
+            | 'reserse'
+            | 'align'
+            | 'crossAlign'
+            | 'cursor'
+            | 'touchOpacity'
+            | 'transitionTime'
+            | 'scroll'
+        > {
     as?: 's' | 'm' | 'l'
     txtSize?: number
     txtColor?: string
@@ -45,14 +58,19 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props: Props, ref: F
         },
     }
 
-    const themes = Themes({ props, direction: 'row' })
+    const { Size, Flex, Padding, Margin, Theme, Order } = Themes({ props, direction: 'horizontal' })
 
     return (
         <button
             ref={ref}
             type={props.type ?? 'button'}
             css={{
-                ...themes,
+                ...Size,
+                ...Flex,
+                ...Padding,
+                ...Margin,
+                ...Theme,
+                ...Order,
                 position: 'relative',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -69,7 +87,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props: Props, ref: F
 
                 '&:disabled': { backgroundColor: '#ccc', color: '#fff', transform: 'scale(1)' },
                 '&:hover': { filter: 'saturate(90%)', boxShadow: 'none' },
-                '&:active': { transform: 'scale(0.98)', opacity: 0.9, boxShadow: 'none' },
+                '&:active': { transform: 'scale(0.98)', opacity: 0.75, boxShadow: 'none' },
             }}
             {...rest}
         >

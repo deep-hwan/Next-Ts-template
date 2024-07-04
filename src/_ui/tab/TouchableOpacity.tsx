@@ -35,9 +35,9 @@ export function TouchableOpacity(props: Props) {
         ...rest
     } = props
 
-    const themes = Themes({
+    const { Size, Flex, Padding, Margin, Theme, Order } = Themes({
         props,
-        direction: direction ? (direction === 'horizontal' ? 'row' : 'column') : 'row',
+        direction: direction ?? 'horizontal',
     })
 
     const active = {
@@ -54,10 +54,17 @@ export function TouchableOpacity(props: Props) {
     }, [os])
 
     const styleSheets = {
-        ...themes,
+        ...Size,
+        ...Flex,
+        ...Padding,
+        ...Margin,
+        ...Theme,
+        ...Order,
         ...active,
         width: width ?? 'auto',
         position: 'relative',
+        alignItems: rest.align ?? 'center',
+        justifyContent: rest.crossAlign ?? 'center',
         whiteSpace: 'nowrap',
         fontSize: txtSize ? `${txtSize / 16}rem` : '0.875rem',
         color: txtColor,
