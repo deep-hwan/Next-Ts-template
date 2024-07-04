@@ -8,7 +8,7 @@ import { dehydrate, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/
 
 //libs
 import App from '@/app/_layout/components/App'
-import { GlobalThemes } from '@/libs/themes/GlobalThemes'
+import { GlobalThemes } from '@/app/_layout/components/GlobalThemes'
 
 //
 export default function MyApp({ Component, pageProps }: AppProps) {
