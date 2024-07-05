@@ -15,6 +15,8 @@ interface Props
     direction?: 'horizontal' | 'vertical'
     txtSize?: number
     txtColor?: string
+    txtAlign?: 'start' | 'end' | 'center'
+    txtWeight?: 'lighter' | 'normal' | 'medium' | 'bold'
     disabledColor?: string
     href?: any
     disabled?: boolean
@@ -31,6 +33,8 @@ export function TouchableOpacity(props: Props) {
         touchOpacity,
         borderRadius,
         disabled,
+        txtAlign,
+        txtWeight,
         transitionTime = 0.3,
         ...rest
     } = props
@@ -53,6 +57,13 @@ export function TouchableOpacity(props: Props) {
         else setOs('window')
     }, [os])
 
+    const TYPOGRAPH_WEIGHT = {
+        lighter: { fontWeight: os === 'window' ? '300' : '400' },
+        normal: { fontWeight: 400 },
+        medium: { fontWeight: os === 'window' ? '500' : '600' },
+        bold: { fontWeight: os === 'window' ? '700' : '700' },
+    } as const
+
     const styleSheets = {
         ...Size,
         ...Flex,
@@ -68,6 +79,8 @@ export function TouchableOpacity(props: Props) {
         whiteSpace: 'nowrap',
         fontSize: txtSize ? `${txtSize / 16}rem` : '0.875rem',
         color: txtColor,
+        fontWeight: TYPOGRAPH_WEIGHT[txtWeight ?? 'normal'].fontWeight,
+        textAlign: txtAlign,
         transition: `${transitionTime ?? 0}s ease-in-out`,
         userSelect: 'none',
     } as Interpolation<Theme>
