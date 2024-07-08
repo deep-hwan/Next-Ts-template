@@ -19,38 +19,34 @@ export default function Header() {
     return (
         <>
             <AppBar width={1200} serviceName="서비스명">
-                <V.Row
-                    align="center"
-                    height="100%"
-                    crossAlign="space-between"
-                    padding={{ left: 20, right: 15 }}
-                    css={{ transition: '0s' }}
-                >
+                <V.Row align="center" height="100%" crossAlign="space-between" padding={{ left: 20, right: 15 }}>
                     <Link href="/" css={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <Logo />
                     </Link>
 
-                    <V.Items maxWidth={300} direction="horizontal" gap={30} css={{ [MQ[1]]: { display: 'none' } }}>
-                        {[
-                            { name: '메뉴1', path: '/404' },
-                            { name: '메뉴2', path: '/404' },
-                            { name: '메뉴3', path: '/404' },
-                            { name: '메뉴4', path: '/404' },
-                        ].map((item) => (
-                            <V.Item>
-                                <Link
-                                    href={item.path}
-                                    css={{
-                                        padding: 8,
-                                        fontSize: 15,
-                                        '&:hover': { backgroundColor: '#f7f7f7', borderRadius: 12 },
-                                    }}
-                                >
-                                    {item.name}
-                                </Link>
-                            </V.Item>
-                        ))}
-                    </V.Items>
+                    <nav>
+                        <V.Items maxWidth={300} direction="horizontal" gap={30} css={{ [MQ[1]]: { display: 'none' } }}>
+                            {[
+                                { name: '메뉴1', path: '/404' },
+                                { name: '메뉴2', path: '/404' },
+                                { name: '메뉴3', path: '/404' },
+                                { name: '메뉴4', path: '/404' },
+                            ].map((item) => (
+                                <V.Item>
+                                    <Link
+                                        href={item.path}
+                                        css={{
+                                            padding: 8,
+                                            fontSize: 15,
+                                            '&:hover': { backgroundColor: '#f7f7f7', borderRadius: 12 },
+                                        }}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                </V.Item>
+                            ))}
+                        </V.Items>
+                    </nav>
 
                     <TouchableOpacity
                         padding={{ all: 5 }}

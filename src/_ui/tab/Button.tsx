@@ -62,6 +62,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props: Props, ref: F
 
     return (
         <button
+            className="button"
             ref={ref}
             type={props.type ?? 'button'}
             css={{

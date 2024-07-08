@@ -88,31 +88,31 @@ export function TouchableOpacity(props: Props) {
     return (
         <>
             {as === 'div' && (
-                <div css={styleSheets} {...rest}>
+                <div className="TouchableOpacity" css={styleSheets} {...rest}>
                     {props.children}
                 </div>
             )}
 
             {as === 'li' && (
-                <li css={styleSheets} {...rest}>
+                <li className="TouchableOpacity" css={styleSheets} {...rest}>
                     {props.children}
                 </li>
             )}
 
             {as === 'span' && (
-                <span css={styleSheets} {...rest}>
+                <span className="TouchableOpacity" css={styleSheets} {...rest}>
                     {props.children}
                 </span>
             )}
 
             {as === 'button' && (
-                <button disabled={disabled} css={styleSheets} {...rest}>
+                <button className="TouchableOpacity" disabled={disabled} css={styleSheets} {...rest}>
                     {props.children}
                 </button>
             )}
 
             {as === 'a' && (
-                <Link href={props.href} css={styleSheets} {...rest}>
+                <Link className="TouchableOpacity" href={props.href} css={styleSheets} {...rest}>
                     {props.children}
                 </Link>
             )}

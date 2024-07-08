@@ -9,11 +9,90 @@ interface Props extends HTMLAttributes<HTMLUListElement | HTMLOListElement>, Omi
 
 const Items = forwardRef(
     (
-        { as = 'ul', direction = 'vertical', ...props }: Props,
+        {
+            as = 'ul',
+            direction = 'vertical',
+            width,
+            minWidth,
+            maxWidth,
+            height,
+            minHeight,
+            maxHeight,
+            flex,
+            flexReverse,
+            align,
+            crossAlign,
+            alignContent,
+            alignSelf,
+            wrap,
+            basis,
+            grow,
+            shrink,
+            gap,
+            crossGap,
+            order,
+            padding,
+            margin,
+            backgroundColor,
+            background,
+            backgroundRepeat,
+            backgroundSize,
+            backgroundPosition,
+            backgroundClip,
+            backgroundImageUrl,
+            border,
+            borderRadius,
+            shadow,
+            zIndex,
+            transitionTime,
+            cursor,
+            opacity,
+            touchOpacity,
+            ...props
+        }: Props,
         ref: ForwardedRef<HTMLUListElement | HTMLOListElement>,
     ) => {
+        const themes_props = {
+            width,
+            minWidth,
+            maxWidth,
+            height,
+            minHeight,
+            maxHeight,
+            flex,
+            flexReverse,
+            align,
+            crossAlign,
+            alignContent,
+            alignSelf,
+            wrap,
+            basis,
+            grow,
+            shrink,
+            gap,
+            crossGap,
+            order,
+            padding,
+            margin,
+            backgroundColor,
+            background,
+            backgroundRepeat,
+            backgroundSize,
+            backgroundPosition,
+            backgroundClip,
+            backgroundImageUrl,
+            border,
+            borderRadius,
+            shadow,
+            zIndex,
+            transitionTime,
+            cursor,
+            opacity,
+            touchOpacity,
+        }
+
         const themes = Themes({
-            props,
+            props: themes_props,
             direction: direction ?? 'horizontal',
         })
 
@@ -21,14 +100,14 @@ const Items = forwardRef(
 
         if (as === 'ul')
             return (
-                <ul ref={ref} css={csss} {...props}>
+                <ul className="items" ref={ref} css={csss} {...props}>
                     {props.children}
                 </ul>
             )
 
         if (as === 'ol')
             return (
-                <ol ref={ref as HTMLOListElement | any} css={csss} {...props}>
+                <ol className="items" ref={ref as HTMLOListElement | any} css={csss} {...props}>
                     {props.children}
                 </ol>
             )

@@ -73,7 +73,7 @@ export const Modal = (props: Props) => {
                 align="center"
                 crossAlign="center"
                 transitionTime={0.3}
-                css={{ overscrollBehavior: 'contain', [MQ[2]]: { padding: '40px 0 0', justifyContent: 'start' } }}
+                css={{ overscrollBehavior: 'contain', [MQ[2]]: { padding: '40px 0 0' } }}
             >
                 <V.Column
                     maxWidth={modalSize}

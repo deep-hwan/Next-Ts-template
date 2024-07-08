@@ -27,7 +27,7 @@ const Drawer = () => {
                         { name: '메뉴8', path: '/404' },
                     ].map((item) => (
                         <V.Item>
-                            <Link href={item?.path} css={{ width: '100%' }}>
+                            <Link href={item?.path} css={{ width: '100%' }} onClick={() => setIsDrawer(false)}>
                                 <TouchableOpacity align="center" padding={{ all: 15 }} borderRadius={14}>
                                     <Txt>{item.name}</Txt>
                                 </TouchableOpacity>

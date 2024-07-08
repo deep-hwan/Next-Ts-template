@@ -17,6 +17,42 @@ interface Props extends Omit<HTMLAttributes<HTMLLIElement>, 'onClick'>, FlexType
 const Item = forwardRef(
     (
         {
+            width,
+            minWidth,
+            maxWidth,
+            height,
+            minHeight,
+            maxHeight,
+            flex,
+            flexReverse,
+            align,
+            crossAlign,
+            alignContent,
+            alignSelf,
+            wrap,
+            basis,
+            grow,
+            shrink,
+            gap,
+            crossGap,
+            order,
+            padding,
+            margin,
+            backgroundColor,
+            background,
+            backgroundRepeat,
+            backgroundSize,
+            backgroundPosition,
+            backgroundClip,
+            backgroundImageUrl,
+            border,
+            borderRadius,
+            shadow,
+            zIndex,
+            transitionTime,
+            cursor,
+            opacity,
+            touchOpacity,
             txtWeight,
             txtSize = 15,
             txtColor,
@@ -29,7 +65,46 @@ const Item = forwardRef(
         }: Props,
         ref: ForwardedRef<HTMLLIElement>,
     ) => {
-        const themes = Themes({ props })
+        const themes_props = {
+            width,
+            minWidth,
+            maxWidth,
+            height,
+            minHeight,
+            maxHeight,
+            flex,
+            flexReverse,
+            align,
+            crossAlign,
+            alignContent,
+            alignSelf,
+            wrap,
+            basis,
+            grow,
+            shrink,
+            gap,
+            crossGap,
+            order,
+            padding,
+            margin,
+            backgroundColor,
+            background,
+            backgroundRepeat,
+            backgroundSize,
+            backgroundPosition,
+            backgroundClip,
+            backgroundImageUrl,
+            border,
+            borderRadius,
+            shadow,
+            zIndex,
+            transitionTime,
+            cursor,
+            opacity,
+            touchOpacity,
+        }
+
+        const themes = Themes({ props: themes_props })
 
         const [os, setOs] = useState<'window' | 'mobile'>('window')
 
@@ -57,6 +132,7 @@ const Item = forwardRef(
 
         return (
             <li
+                className="item"
                 ref={ref}
                 css={{
                     ...themes,

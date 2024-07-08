@@ -53,6 +53,7 @@ export function TxtSpan(props: Props) {
 
     return (
         <span
+            className="txtSpan"
             css={{
                 fontWeight: TYPOGRAPH_WEIGHT[weight ?? 'normal'].fontWeight,
                 fontSize: size ? `${size / 16}rem` : '0.813rem',

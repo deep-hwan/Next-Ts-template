@@ -73,7 +73,7 @@ export function Dialog(props: Props) {
                 crossAlign="center"
                 width="100%"
                 height="100%"
-                padding={{ all: 20 }}
+                padding={{ horizontal: 20, top: 20, bottom: 40 }}
                 position={{
                     top: open ? 0 : ('120%' as any),
                     bottom: 0,

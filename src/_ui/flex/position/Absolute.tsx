@@ -15,13 +15,93 @@ type Types = {
     HTMLAttributes<HTMLDivElement>
 
 const Absolute = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
+    const {
+        width,
+        minWidth,
+        maxWidth,
+        height,
+        minHeight,
+        maxHeight,
+        flex,
+        flexReverse,
+        align,
+        crossAlign,
+        alignContent,
+        alignSelf,
+        wrap,
+        basis,
+        grow,
+        shrink,
+        gap,
+        crossGap,
+        order,
+        padding,
+        margin,
+        backgroundColor,
+        background,
+        backgroundRepeat,
+        backgroundSize,
+        backgroundPosition,
+        backgroundClip,
+        backgroundImageUrl,
+        border,
+        borderRadius,
+        shadow,
+        zIndex,
+        transitionTime,
+        cursor,
+        opacity,
+        touchOpacity,
+        ...rest
+    } = props
+
+    const themes_props = {
+        width,
+        minWidth,
+        maxWidth,
+        height,
+        minHeight,
+        maxHeight,
+        flex,
+        flexReverse,
+        align,
+        crossAlign,
+        alignContent,
+        alignSelf,
+        wrap,
+        basis,
+        grow,
+        shrink,
+        gap,
+        crossGap,
+        order,
+        padding,
+        margin,
+        backgroundColor,
+        background,
+        backgroundRepeat,
+        backgroundSize,
+        backgroundPosition,
+        backgroundClip,
+        backgroundImageUrl,
+        border,
+        borderRadius,
+        shadow,
+        zIndex,
+        transitionTime,
+        cursor,
+        opacity,
+        touchOpacity,
+    }
+
     const theme = Themes({
-        props,
+        props: themes_props,
         direction: props.direction ?? 'horizontal',
     })
 
     return (
         <div
+            className="absolute"
             ref={ref}
             css={{
                 ...theme,
@@ -35,7 +115,7 @@ const Absolute = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) =>
 
                 transform: `translate(${props?.axis?.x ?? 0}, ${props?.axis?.y ?? 0})`,
             }}
-            {...props}
+            {...rest}
         >
             {props.children}
         </div>
