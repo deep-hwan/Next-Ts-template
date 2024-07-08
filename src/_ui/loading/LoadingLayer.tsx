@@ -2,8 +2,9 @@
 import { Interpolation, Theme } from '@emotion/react'
 import { keyframes } from '@emotion/react'
 import { BlurLayer } from '../display/BlurLayer'
+import { useEffect } from 'react'
 
-export function LoadingLayer({ size = 48 }: { size?: number }) {
+export function LoadingLayer({ size = 48, open }: { size?: number; open?: boolean }) {
     const rotation = keyframes`
   0% {
     transform: rotate(0deg);
@@ -21,6 +22,11 @@ export function LoadingLayer({ size = 48 }: { size?: number }) {
     transform: scale(1);
   }
 `
+
+    useEffect(() => {
+        if (open) document.body.style.overflowY = 'hidden'
+        else document.body.style.overflowY = 'auto'
+    }, [open])
 
     return (
         <>

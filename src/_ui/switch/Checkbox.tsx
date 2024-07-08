@@ -80,6 +80,7 @@ const Checkbox = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement> | u
                     justifyContent: 'center',
                     transition: '0.2s ease-in-out',
                     marginTop: 2.5,
+                    cursor: !props?.disabled && 'pointer',
                 }}
                 onClick={handleOnClick}
             >

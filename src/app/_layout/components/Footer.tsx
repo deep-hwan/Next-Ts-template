@@ -46,27 +46,23 @@ export default function Footer() {
 
                 <Spacing size={32} />
 
-                <V.Column>
-                    <TxtSpan size={14} weight="medium" color={colors.grey[500]}>
+                <address id="address" css={{ fontStyle: 'normal', fontSize: 13, color: '#888' }}>
+                    <Txt as="strong" size={14} weight="medium" color={colors.grey[500]}>
                         딥팩토리 디자인
-                    </TxtSpan>
-
+                    </Txt>
                     <Spacing size={14} />
-
-                    <Txt size={13} color={colors.grey[300]}>
-                        이메일 : deep@deepcomu.com | 연락처 : 0507-0178-1277
-                    </Txt>
+                    <V.Row gap={8}>
+                        <a href="mailto:deep@deepcomu.com" css={{ color: '#888' }}>
+                            이메일 : deep@deepcomu.com
+                        </a>
+                        <span>|</span>
+                        <a href="tel:07040077561" css={{ color: '#888' }}>
+                            연락처 : 070-4007-7561
+                        </a>
+                    </V.Row>
                     <Spacing size={4} />
-
-                    <Txt size={13} color={colors.grey[300]}>
-                        주소 : 서울특별시 영등포구 영중로 15 타임스퀘어 오피스A동 20층
-                    </Txt>
-                    <Spacing size={4} />
-
-                    <Txt size={13} color={colors.grey[300]}>
-                        사업자등록번호 : 110-412-598896 | 통신판매등록번호 : 2023-서울영등포-0900호
-                    </Txt>
-                </V.Column>
+                    주소 : 서울특별시 동작구 시흥대로 606 오피스동 354호
+                </address>
             </V.Column>
         </footer>
     )
