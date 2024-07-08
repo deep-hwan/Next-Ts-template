@@ -12,7 +12,8 @@ export default function Document() {
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="robots" content="index, follow" />
                 <meta name="msapplication-TileColor" content="#4788f4"></meta>
-                <link rel="icon" href="/favicon.ico" />
+
+                <link rel="shortcut icon" href="/favicon.ico" />
                 <link rel="manifest" href="/manifest.json" />
                 <link
                     href="/assets/splashscreens/iphone5_splash.png"

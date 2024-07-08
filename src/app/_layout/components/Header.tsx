@@ -32,9 +32,10 @@ export default function Header() {
                                 { name: '메뉴3', path: '/404' },
                                 { name: '메뉴4', path: '/404' },
                             ].map((item) => (
-                                <V.Item>
+                                <V.Item key={item.name} itemType="http://schema.org/Organization">
                                     <Link
                                         href={item.path}
+                                        itemProp="url name"
                                         css={{
                                             padding: 8,
                                             fontSize: 15,

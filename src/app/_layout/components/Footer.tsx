@@ -46,8 +46,13 @@ export default function Footer() {
 
                 <Spacing size={32} />
 
-                <address id="address" css={{ fontStyle: 'normal', fontSize: 13, color: '#888' }}>
-                    <Txt as="strong" size={14} weight="medium" color={colors.grey[500]}>
+                <address
+                    id="address"
+                    itemScope
+                    itemType="https://schema.org/Organization"
+                    css={{ fontStyle: 'normal', fontSize: 13, color: '#888' }}
+                >
+                    <Txt itemProp="name" as="strong" size={14} weight="medium" color={colors.grey[500]}>
                         딥팩토리 디자인
                     </Txt>
                     <Spacing size={14} />
@@ -61,7 +66,12 @@ export default function Footer() {
                         </a>
                     </V.Row>
                     <Spacing size={4} />
-                    주소 : 서울특별시 동작구 시흥대로 606 오피스동 354호
+
+                    <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                        주소 : <span itemProp="addressRegion">서울특별시</span>{' '}
+                        <span itemProp="addressLocality">동작구</span>{' '}
+                        <span itemProp="streetAddress">시흥대로 606 오피스동 354호</span>
+                    </span>
                 </address>
             </V.Column>
         </footer>
