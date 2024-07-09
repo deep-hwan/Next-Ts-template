@@ -41,6 +41,7 @@ const Form = forwardRef((props: FlexTypes & HTMLAttributes<HTMLFormElement>, ref
         cursor,
         opacity,
         touchOpacity,
+        scroll,
         ...rest
     } = props
 
@@ -81,6 +82,7 @@ const Form = forwardRef((props: FlexTypes & HTMLAttributes<HTMLFormElement>, ref
         cursor,
         opacity,
         touchOpacity,
+        scroll,
     }
 
     const themes = Themes({ props: themes_props })

@@ -52,6 +52,7 @@ const Sticky = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
         cursor,
         opacity,
         touchOpacity,
+        scroll,
         ...rest
     } = props
 

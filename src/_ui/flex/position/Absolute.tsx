@@ -52,6 +52,7 @@ const Absolute = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) =>
         cursor,
         opacity,
         touchOpacity,
+        scroll,
         ...rest
     } = props
 
@@ -92,6 +93,7 @@ const Absolute = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) =>
         cursor,
         opacity,
         touchOpacity,
+        scroll,
     }
 
     const theme = Themes({

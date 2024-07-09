@@ -43,6 +43,7 @@ const Row = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
         cursor,
         opacity,
         touchOpacity,
+        scroll,
         ...rest
     } = props
 
@@ -83,6 +84,7 @@ const Row = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
         cursor,
         opacity,
         touchOpacity,
+        scroll,
     }
 
     const themes = Themes({ props: themes_props, direction: 'horizontal' })

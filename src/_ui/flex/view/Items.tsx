@@ -48,6 +48,7 @@ const Items = forwardRef(
             cursor,
             opacity,
             touchOpacity,
+            scroll,
             ...props
         }: Props,
         ref: ForwardedRef<HTMLUListElement | HTMLOListElement>,
@@ -89,6 +90,7 @@ const Items = forwardRef(
             cursor,
             opacity,
             touchOpacity,
+            scroll,
         }
 
         const themes = Themes({

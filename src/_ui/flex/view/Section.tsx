@@ -39,6 +39,7 @@ const Section = forwardRef((props: Types, ref: ForwardedRef<HTMLElement>) => {
         zIndex,
         transitionTime,
         opacity,
+        scroll,
         ...rest
     } = props
 

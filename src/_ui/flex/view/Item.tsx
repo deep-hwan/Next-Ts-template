@@ -61,6 +61,7 @@ const Item = forwardRef(
             lineHeight,
             underline,
             ellipsis = { ellipsis: false },
+            scroll,
             ...props
         }: Props,
         ref: ForwardedRef<HTMLLIElement>,
@@ -102,6 +103,7 @@ const Item = forwardRef(
             cursor,
             opacity,
             touchOpacity,
+            scroll,
         }
 
         const themes = Themes({ props: themes_props })
