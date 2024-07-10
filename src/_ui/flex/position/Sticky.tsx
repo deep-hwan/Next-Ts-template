@@ -16,6 +16,8 @@ type Types = {
 
 const Sticky = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
     const {
+        position,
+        direction,
         width,
         minWidth,
         maxWidth,
@@ -106,18 +108,19 @@ const Sticky = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
             ref={ref}
             css={{
                 ...theme,
-                width: props.width ?? 'auto',
-                position: 'sticky',
-                top: props?.position.top,
-                bottom: props?.position.bottom,
-                left: props?.position.left,
-                right: props?.position.right,
 
-                transform: `translate(${props?.axis?.x ?? 0}, ${props?.axis?.y ?? 0})`,
+                width: width ?? 'auto',
+                position: 'absolute',
+                top: position.top,
+                bottom: position.bottom,
+                left: position.left,
+                right: position.right,
+
+                transform: `translate(${rest?.axis?.x ?? 0}, ${rest?.axis?.y ?? 0})`,
             }}
             {...rest}
         >
-            {props.children}
+            {rest.children}
         </div>
     )
 })

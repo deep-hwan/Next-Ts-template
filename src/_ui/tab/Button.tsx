@@ -11,6 +11,7 @@ interface Props
             | 'backgroundColor'
             | 'onClick'
             | 'transitionTime'
+            | 'direction'
             | 'flexReverse'
             | 'reserse'
             | 'align'
@@ -27,7 +28,42 @@ interface Props
 }
 
 export const Button = forwardRef<HTMLButtonElement, Props>((props: Props, ref: ForwardedRef<HTMLButtonElement>) => {
-    const { as = 'l', txtSize, txtColor, buttonColor, borderRadius, ...rest } = props
+    const {
+        as = 'l',
+        txtSize,
+        txtColor,
+        buttonColor,
+        width,
+        minWidth,
+        maxWidth,
+        height,
+        minHeight,
+        maxHeight,
+        flex,
+        alignContent,
+        alignSelf,
+        wrap,
+        basis,
+        grow,
+        shrink,
+        gap,
+        crossGap,
+        order,
+        padding,
+        margin,
+        background,
+        backgroundRepeat,
+        backgroundSize,
+        backgroundPosition,
+        backgroundClip,
+        backgroundImageUrl,
+        border,
+        borderRadius,
+        shadow,
+        zIndex,
+        opacity,
+        ...rest
+    } = props
 
     const [os, setOs] = useState<'window' | 'mac'>('window')
 

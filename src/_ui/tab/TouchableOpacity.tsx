@@ -19,6 +19,7 @@ interface Props
     txtWeight?: 'lighter' | 'normal' | 'medium' | 'bold'
     disabledColor?: string
     href?: any
+    target?: '_blank' | '_self' | '_parent' | '_top'
     disabled?: boolean
 }
 
@@ -27,15 +28,46 @@ export function TouchableOpacity(props: Props) {
         as = 'div',
         direction = 'horizontal',
         txtColor = '#4788f4',
-        width,
         txtSize = 14,
         disabledColor,
-        touchOpacity,
-        borderRadius,
         disabled,
         txtAlign,
         txtWeight,
+        width,
+        minWidth,
+        maxWidth,
+        height,
+        minHeight,
+        maxHeight,
+        flex,
+        align,
+        crossAlign,
+        alignContent,
+        alignSelf,
+        wrap,
+        basis,
+        grow,
+        shrink,
+        gap,
+        crossGap,
+        order,
+        padding,
+        margin,
+        backgroundColor,
+        background,
+        backgroundRepeat,
+        backgroundSize,
+        backgroundPosition,
+        backgroundClip,
+        backgroundImageUrl,
+        border,
+        borderRadius,
+        shadow,
+        zIndex,
         transitionTime = 0.3,
+        cursor,
+        opacity,
+        touchOpacity,
         ...rest
     } = props
 
@@ -74,8 +106,8 @@ export function TouchableOpacity(props: Props) {
         ...active,
         width: width ?? 'auto',
         position: 'relative',
-        alignItems: rest.align ?? 'center',
-        justifyContent: rest.crossAlign ?? 'center',
+        alignItems: align ?? 'center',
+        justifyContent: crossAlign ?? 'center',
         whiteSpace: 'nowrap',
         fontSize: txtSize ? `${txtSize / 16}rem` : '0.875rem',
         color: txtColor,

@@ -45,7 +45,7 @@ export const AppBar = forwardRef(
                             paddingTop: 'env(safe-area-inset-top)',
                             paddingRight: 'env(safe-area-inset-right)',
                             paddingLeft: 'env(safe-area-inset-left)',
-                            backgroundColor: props?.backgroundColor ?? TYPE_VARIANTS[theme].backgroundColor,
+                            backgroundColor: 'transparent',
                         }}
                     />
                 )}
@@ -69,6 +69,7 @@ export const AppBar = forwardRef(
                         paddingLeft: 'env(safe-area-inset-left)',
                         backgroundColor: props?.backgroundColor ?? TYPE_VARIANTS[theme].backgroundColor,
                         borderBottom: props?.borderBottom ?? isActive ? `1px solid ${TYPE_VARIANTS[theme].color}` : '',
+                        transition: '0.3s ease-in-out',
                     }}
                     {...props}
                 >
@@ -93,7 +94,7 @@ export const AppBar = forwardRef(
 )
 
 // 서비스명
-function ServiceName({ children }: { children: ReactNode }) {
+export function ServiceName({ children }: { children: ReactNode }) {
     return (
         <strong
             aria-hidden="true"

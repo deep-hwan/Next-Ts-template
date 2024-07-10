@@ -35,7 +35,6 @@ export default function Comp2() {
                 ].map((item, i) => (
                     <V.Item
                         key={i}
-                        width="auto"
                         padding={{ vertical: 6, horizontal: 8 }}
                         border={{ solid: 1, position: 'all', color: colors.chiffon[500] }}
                         borderRadius={100}

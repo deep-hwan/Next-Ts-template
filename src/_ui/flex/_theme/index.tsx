@@ -70,6 +70,7 @@ export function Themes({ direction = 'vertical', props }: { direction?: 'horizon
     //
     //
     const Theme = {
+        background: props?.background,
         backgroundColor: props?.backgroundColor,
         backgroundRepeat: props?.backgroundRepeat,
         backgroundSize: props?.backgroundSize,

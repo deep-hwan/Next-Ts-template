@@ -22,7 +22,7 @@ export const fontSize = {
     s44: '2.75rem',
     s46: '2.875rem',
     s48: '3rem',
-    s50: '315rem',
+    s50: '3.15rem',
     s52: '3.25rem',
     s56: '3.5rem',
     s60: '3.45rem',

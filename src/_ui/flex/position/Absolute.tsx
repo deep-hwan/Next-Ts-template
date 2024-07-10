@@ -16,6 +16,8 @@ type Types = {
 
 const Absolute = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
     const {
+        position,
+        direction,
         width,
         minWidth,
         maxWidth,
@@ -53,6 +55,7 @@ const Absolute = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) =>
         opacity,
         touchOpacity,
         scroll,
+
         ...rest
     } = props
 
@@ -98,7 +101,7 @@ const Absolute = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) =>
 
     const theme = Themes({
         props: themes_props,
-        direction: props.direction ?? 'horizontal',
+        direction: direction ?? 'horizontal',
     })
 
     return (
@@ -108,18 +111,18 @@ const Absolute = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) =>
             css={{
                 ...theme,
 
-                width: props.width ?? 'auto',
+                width: width ?? 'auto',
                 position: 'absolute',
-                top: props?.position.top,
-                bottom: props?.position.bottom,
-                left: props?.position.left,
-                right: props?.position.right,
+                top: position.top,
+                bottom: position.bottom,
+                left: position.left,
+                right: position.right,
 
-                transform: `translate(${props?.axis?.x ?? 0}, ${props?.axis?.y ?? 0})`,
+                transform: `translate(${rest?.axis?.x ?? 0}, ${rest?.axis?.y ?? 0})`,
             }}
             {...rest}
         >
-            {props.children}
+            {rest.children}
         </div>
     )
 })

@@ -23,16 +23,17 @@ export default function Error() {
                     <Txt as="h4" css={{ [MQ[3]]: { fontSize: fontSize.s26 } }}>
                         페이지를 찾을 수 없습니다
                     </Txt>
-                    <Spacing size={12} />
-                    <Txt as="p" css={{ color: colors.grey[400] }}>
+                    <Spacing size={14} />
+                    <Txt as="p" size={16} css={{ color: colors.grey[400] }}>
                         아래 버튼을 통해 이전페이지로 이동하세요
                     </Txt>
 
-                    <Spacing size={24} />
+                    <Spacing size={34} />
                     <Button
+                        maxWidth={200}
                         buttonColor={colors.keyColor}
                         txtColor={colors.white}
-                        borderRadius={14}
+                        borderRadius={100}
                         onClick={() => router.back()}
                     >
                         뒤로가기

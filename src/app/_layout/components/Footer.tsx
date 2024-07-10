@@ -30,7 +30,7 @@ export default function Footer() {
             <V.Column maxWidth={1080}>
                 <V.Items direction="horizontal" gap={30} crossGap={16} css={{ [MQ[3]]: { flexDirection: 'column' } }}>
                     {menusLust?.map((item: MenuItem, i: number) => (
-                        <V.Item width="auto" padding={{ vertical: 5 }} key={i}>
+                        <V.Item padding={{ vertical: 5 }} key={i}>
                             <Link
                                 href={item.path}
                                 css={{

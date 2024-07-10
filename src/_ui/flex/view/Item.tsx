@@ -17,7 +17,7 @@ interface Props extends Omit<HTMLAttributes<HTMLLIElement>, 'onClick'>, FlexType
 const Item = forwardRef(
     (
         {
-            width,
+            width = 'auto',
             minWidth,
             maxWidth,
             height,
