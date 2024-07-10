@@ -110,7 +110,7 @@ const Sticky = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
                 ...theme,
 
                 width: width ?? 'auto',
-                position: 'absolute',
+                position: 'sticky',
                 top: position.top,
                 bottom: position.bottom,
                 left: position.left,
