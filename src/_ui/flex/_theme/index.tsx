@@ -72,9 +72,9 @@ export function Themes({ direction = 'vertical', props }: { direction?: 'horizon
     const Theme = {
         background: props?.background,
         backgroundColor: props?.backgroundColor,
-        backgroundRepeat: props?.backgroundRepeat,
-        backgroundSize: props?.backgroundSize,
-        backgroundPosition: props?.backgroundPosition,
+        backgroundRepeat: props?.backgroundRepeat ?? 'no-repeat',
+        backgroundSize: props?.backgroundSize ?? 'cover',
+        backgroundPosition: props?.backgroundPosition ?? 'center',
         backgroundClip: props?.backgroundClip,
         backgroundImage: `url(${props?.backgroundImageUrl})`,
         border:
