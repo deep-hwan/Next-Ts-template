@@ -10,6 +10,7 @@ import { useSafeArea } from './useSafeArea'
 import { useLocalStorage } from './useLocalStorage'
 import { useViewportHeight } from './useViewportHeight'
 import { usePlatformOs } from './usePlatformOs'
+import { useMediaQuery } from './useMediaQuery'
 
 export {
     useEffect,
@@ -27,4 +28,5 @@ export {
     useLocalStorage,
     useViewportHeight,
     usePlatformOs,
+    useMediaQuery,
 }

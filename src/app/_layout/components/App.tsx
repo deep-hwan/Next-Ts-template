@@ -20,7 +20,7 @@ export default function App({ children }: { children: ReactNode }): JSX.Element 
 
             <Main>{children}</Main>
 
-            <Footer />
+            {!errPath && <Footer />}
 
             {!(errPath || noneView) && <BottomNaviTabBar />}
 
