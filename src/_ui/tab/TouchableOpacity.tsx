@@ -78,7 +78,7 @@ export function TouchableOpacity(props: Props) {
 
     const active = {
         '&:disabled': { color: disabledColor ?? '#ccc', cursor: 'default' },
-        '&:active': { opacity: (!!props.onClick && touchOpacity) ?? 0.75 },
+        '&:active': { opacity: !!props.onClick && (touchOpacity ?? 0.7) },
     }
 
     const [os, setOs] = useState<'window' | 'mobile'>('window')
