@@ -21,6 +21,23 @@ interface Props
     href?: any
     target?: '_blank' | '_self' | '_parent' | '_top'
     disabled?: boolean
+    hover?: {
+        txtColor?: string
+        backgroundColor?: string
+        background?: string
+        border?: {
+            solid: number
+            position?: 'all' | 'left' | 'right' | 'top' | 'bottom'
+            color?: string
+        }
+        borderRadius?: number | string
+        shadow?: {
+            x?: number
+            y?: number
+            blur?: number
+            color?: string
+        }
+    }
 }
 
 export function TouchableOpacity(props: Props) {
@@ -68,6 +85,7 @@ export function TouchableOpacity(props: Props) {
         cursor,
         opacity,
         touchOpacity,
+        hover,
         ...rest
     } = props
 
@@ -79,6 +97,34 @@ export function TouchableOpacity(props: Props) {
     const active = {
         '&:disabled': { color: disabledColor ?? '#ccc', cursor: 'default' },
         '&:active': { opacity: !!props.onClick && (touchOpacity ?? 0.7) },
+        '&:hover': {
+            background: hover?.background,
+            backgroundColor: hover?.backgroundColor,
+            border:
+                !hover?.border?.position || hover?.border?.position === 'all'
+                    ? `${hover?.border?.solid}px solid ${hover?.border?.color}`
+                    : undefined,
+            borderBottom:
+                hover?.border?.position === 'bottom'
+                    ? `${hover?.border?.solid}px solid ${hover?.border?.color}`
+                    : undefined,
+            borderTop:
+                hover?.border?.position === 'top'
+                    ? `${hover?.border?.solid}px solid ${hover?.border?.color}`
+                    : undefined,
+            borderRight:
+                hover?.border?.position === 'right'
+                    ? `${hover?.border?.solid}px solid ${hover?.border?.color}`
+                    : undefined,
+            borderLeft:
+                hover?.border?.position === 'left'
+                    ? `${hover?.border?.solid}px solid ${hover?.border?.color}`
+                    : undefined,
+            borderRadius: hover?.borderRadius,
+            boxShadow: hover?.shadow
+                ? `${hover?.shadow?.x}px ${hover?.shadow?.y}px ${hover?.shadow?.blur}px ${hover?.shadow?.color}`
+                : undefined,
+        },
     }
 
     const [os, setOs] = useState<'window' | 'mobile'>('window')
