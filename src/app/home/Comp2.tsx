@@ -35,11 +35,11 @@ export default function Comp2() {
                 ].map((item, i) => (
                     <V.Item
                         key={i}
-                        padding={{ vertical: 6, horizontal: 8 }}
+                        padding={{ vertical: 6, horizontal: 10 }}
                         border={{ solid: 1, position: 'all', color: colors.chiffon[500] }}
                         borderRadius={100}
-                        txtColor="#666"
-                        txtSize={14}
+                        txtColor="#797979"
+                        txtSize={13}
                     >
                         {item}
                     </V.Item>

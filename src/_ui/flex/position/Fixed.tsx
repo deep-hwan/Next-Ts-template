@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react'
-import { FlexTypes } from '../_theme/type'
-import { Themes } from '../_theme'
+import { UI_EXTRACT_PROPS, UITypes } from '../../_theme/_UIKit'
 
 type Types = {
     position: {
@@ -11,96 +10,15 @@ type Types = {
         right?: string | number
     }
     axis?: { x?: string | number; y?: string | number }
-} & FlexTypes &
+} & UITypes &
     HTMLAttributes<HTMLDivElement>
 
 const Fixed = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
-    const {
-        position,
-        direction,
-        width,
-        minWidth,
-        maxWidth,
-        height,
-        minHeight,
-        maxHeight,
-        flex,
-        flexReverse,
-        align,
-        crossAlign,
-        alignContent,
-        alignSelf,
-        wrap,
-        basis,
-        grow,
-        shrink,
-        gap,
-        crossGap,
-        order,
-        padding,
-        margin,
-        backgroundColor,
-        background,
-        backgroundRepeat,
-        backgroundSize,
-        backgroundPosition,
-        backgroundClip,
-        backgroundImageUrl,
-        border,
-        borderRadius,
-        shadow,
-        zIndex,
-        transitionTime,
-        cursor,
-        opacity,
-        touchOpacity,
-        scroll,
-        ...rest
-    } = props
+    const { position, axis, ...restProps } = props
 
-    const themes_props = {
-        width,
-        minWidth,
-        maxWidth,
-        height,
-        minHeight,
-        maxHeight,
-        flex,
-        flexReverse,
-        align,
-        crossAlign,
-        alignContent,
-        alignSelf,
-        wrap,
-        basis,
-        grow,
-        shrink,
-        gap,
-        crossGap,
-        order,
-        padding,
-        margin,
-        backgroundColor,
-        background,
-        backgroundRepeat,
-        backgroundSize,
-        backgroundPosition,
-        backgroundClip,
-        backgroundImageUrl,
-        border,
-        borderRadius,
-        shadow,
-        zIndex,
-        transitionTime,
-        cursor,
-        opacity,
-        touchOpacity,
-        scroll,
-    }
-
-    const theme = Themes({
-        props: themes_props,
-        direction: props.direction ?? 'horizontal',
+    const { styleProps: themes, otherProps } = UI_EXTRACT_PROPS({
+        ...restProps,
+        direction: 'horizontal',
     })
 
     return (
@@ -108,19 +26,18 @@ const Fixed = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement>) => {
             className="fixed"
             ref={ref}
             css={{
-                ...theme,
-                width: width ?? 'auto',
+                ...themes,
                 position: 'fixed',
                 top: position.top,
                 bottom: position.bottom,
                 left: position.left,
                 right: position.right,
 
-                transform: `translate(${rest?.axis?.x ?? 0}, ${rest?.axis?.y ?? 0})`,
+                transform: `translate(${axis?.x ?? 0}, ${axis?.y ?? 0})`,
             }}
-            {...rest}
+            {...otherProps}
         >
-            {rest.children}
+            {otherProps.children}
         </div>
     )
 })

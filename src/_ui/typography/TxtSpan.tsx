@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { HTMLAttributes, ReactNode, useEffect, useState } from 'react'
-import { Themes } from '../flex/_theme'
-import { FlexTypes } from '../flex/_theme/type'
+import { Themes } from '../_theme'
+import { UITypes } from '../_theme/_UIKit'
 
 interface Props
     extends HTMLAttributes<HTMLElement>,
-        Pick<FlexTypes, 'padding'>,
-        Pick<FlexTypes, 'margin'>,
-        Pick<FlexTypes, 'cursor'> {
+        Pick<UITypes, 'padding'>,
+        Pick<UITypes, 'margin'>,
+        Pick<UITypes, 'cursor'> {
     children: ReactNode
     ellipsis?: { ellipsis?: boolean; line?: number; width?: number }
     size?: number

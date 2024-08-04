@@ -1,119 +1,34 @@
 /** @jsxImportSource @emotion/react */
+import { UI_EXTRACT_PROPS, UITypes } from '@/_ui/_theme/_UIKit'
 import React, { ForwardedRef, HTMLAttributes, forwardRef } from 'react'
-import { Themes } from '../_theme'
-import { FlexTypes } from '../_theme/type'
 
-interface Props extends HTMLAttributes<HTMLUListElement | HTMLOListElement>, Omit<FlexTypes, 'onClick'> {
+interface Props extends HTMLAttributes<HTMLUListElement | HTMLOListElement>, Omit<UITypes, 'onClick'> {
     as?: 'ul' | 'ol'
 }
 
-const Items = forwardRef(
-    (
-        {
-            as = 'ul',
-            direction = 'vertical',
-            width,
-            minWidth,
-            maxWidth,
-            height,
-            minHeight,
-            maxHeight,
-            flex,
-            flexReverse,
-            align,
-            crossAlign,
-            alignContent,
-            alignSelf,
-            wrap,
-            basis,
-            grow,
-            shrink,
-            gap,
-            crossGap,
-            order,
-            padding,
-            margin,
-            backgroundColor,
-            background,
-            backgroundRepeat,
-            backgroundSize,
-            backgroundPosition,
-            backgroundClip,
-            backgroundImageUrl,
-            border,
-            borderRadius,
-            shadow,
-            zIndex,
-            transitionTime,
-            cursor,
-            opacity,
-            touchOpacity,
-            scroll,
-            ...props
-        }: Props,
-        ref: ForwardedRef<HTMLUListElement | HTMLOListElement>,
-    ) => {
-        const themes_props = {
-            width,
-            minWidth,
-            maxWidth,
-            height,
-            minHeight,
-            maxHeight,
-            flex,
-            flexReverse,
-            align,
-            crossAlign,
-            alignContent,
-            alignSelf,
-            wrap,
-            basis,
-            grow,
-            shrink,
-            gap,
-            crossGap,
-            order,
-            padding,
-            margin,
-            backgroundColor,
-            background,
-            backgroundRepeat,
-            backgroundSize,
-            backgroundPosition,
-            backgroundClip,
-            backgroundImageUrl,
-            border,
-            borderRadius,
-            shadow,
-            zIndex,
-            transitionTime,
-            cursor,
-            opacity,
-            touchOpacity,
-            scroll,
-        }
+const Items = forwardRef((props: Props, ref: ForwardedRef<HTMLUListElement | HTMLOListElement>) => {
+    const { as = 'ul', ...restProps } = props
+    const { styleProps, otherProps } = UI_EXTRACT_PROPS({
+        ...restProps,
+        width: props.width ?? '100%',
+        direction: restProps.direction ?? 'vertical',
+    })
 
-        const themes = Themes({
-            props: themes_props,
-            direction: direction ?? 'horizontal',
-        })
+    const csss = { ...styleProps, position: 'relative' }
 
-        const csss = { ...themes, position: 'relative' }
+    if (as === 'ul')
+        return (
+            <ul className="items" ref={ref} css={csss} {...otherProps}>
+                {restProps.children}
+            </ul>
+        )
 
-        if (as === 'ul')
-            return (
-                <ul className="items" ref={ref} css={csss} {...props}>
-                    {props.children}
-                </ul>
-            )
-
-        if (as === 'ol')
-            return (
-                <ol className="items" ref={ref as HTMLOListElement | any} css={csss} {...props}>
-                    {props.children}
-                </ol>
-            )
-    },
-)
+    if (as === 'ol')
+        return (
+            <ol className="items" ref={ref as HTMLOListElement | any} css={csss} {...otherProps}>
+                {restProps.children}
+            </ol>
+        )
+})
 
 export { Items }

@@ -36,7 +36,9 @@ export default function Comp4() {
                     borderRadius={16}
                 >
                     <V.Row gap={20} align="center" crossAlign="center">
-                        <TouchableOpacity onClick={() => setIsOpen('dialog')}>다이아 로그</TouchableOpacity>
+                        <TouchableOpacity hover={{ backgroundColor: '#000' }} onClick={() => setIsOpen('dialog')}>
+                            다이아 로그
+                        </TouchableOpacity>
                         <TouchableOpacity onClick={() => setIsOpen('bottomSheet')}>바텀 시트</TouchableOpacity>
                         <TouchableOpacity onClick={() => setIsOpen('calenderModal')}>켈린더 모달</TouchableOpacity>
                     </V.Row>

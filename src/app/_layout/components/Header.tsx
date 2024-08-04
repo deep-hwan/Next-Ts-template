@@ -24,8 +24,8 @@ export default function Header() {
                         <Logo />
                     </Link>
 
-                    <nav>
-                        <V.Items maxWidth={300} direction="horizontal" gap={30} css={{ [MQ[1]]: { display: 'none' } }}>
+                    <nav css={{ [MQ[1]]: { display: 'none' } }}>
+                        <V.Items maxWidth={300} direction="horizontal" gap={30}>
                             {[
                                 { name: '메뉴1', path: '/404' },
                                 { name: '메뉴2', path: '/404' },

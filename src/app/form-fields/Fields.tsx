@@ -71,7 +71,7 @@ export default function Fields() {
             {isLoading && <LoadingLayer />}
 
             <V.Column gap={30}>
-                <V.Form gap={22} onSubmit={handleOnSubmit} align="center">
+                <V.Form gap={22} onSubmit={handleOnSubmit} align="center" transitionTime={0.3}>
                     {/* ----- 프로필 사진 업로드 : ProfileUploadBox ----- */}
                     <AvatarUploader
                         size={120}

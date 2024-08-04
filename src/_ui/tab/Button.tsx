@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import React, { ButtonHTMLAttributes, forwardRef, ForwardedRef, useState, useEffect } from 'react'
-import { FlexTypes } from '../flex/_theme/type'
-import { Themes } from '../flex/_theme'
+import { UITypes } from '../_theme/_UIKit'
+import { Themes } from '../_theme'
 import { colors } from '@/libs/themes'
 
 interface Props
     extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
         Omit<
-            FlexTypes,
+            UITypes,
             | 'backgroundColor'
             | 'onClick'
             | 'transitionTime'

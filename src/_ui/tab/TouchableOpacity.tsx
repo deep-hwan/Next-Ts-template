@@ -1,196 +1,56 @@
 /** @jsxImportSource @emotion/react */
-import React, { HTMLAttributes, useEffect, useState } from 'react'
+import React, { HTMLAttributes } from 'react'
 import Link from 'next/link'
-import { FlexTypes } from '../flex/_theme/type'
 import { Interpolation, Theme } from '@emotion/react'
-import { Themes } from '../flex/_theme'
+import { TAB_EXTRACT_PROPS, TabType } from '../_theme/tab'
 
-interface Props
-    extends Omit<
-            HTMLAttributes<HTMLDivElement | HTMLLIElement | HTMLSpanElement | HTMLButtonElement | HTMLAnchorElement>,
-            'color' | 'disabled'
-        >,
-        Omit<FlexTypes, 'onClick' | 'flexReverse' | 'scroll'> {
+type AttriType = Omit<
+    HTMLAttributes<HTMLDivElement | HTMLLIElement | HTMLSpanElement | HTMLButtonElement | HTMLAnchorElement>,
+    'color' | 'disabled'
+>
+
+type Types = {
     as?: 'div' | 'li' | 'span' | 'button' | 'a'
-    direction?: 'horizontal' | 'vertical'
-    txtSize?: number
-    txtColor?: string
-    txtAlign?: 'start' | 'end' | 'center'
-    txtWeight?: 'lighter' | 'normal' | 'medium' | 'bold'
-    disabledColor?: string
     href?: any
     target?: '_blank' | '_self' | '_parent' | '_top'
     disabled?: boolean
-    hover?: {
-        txtColor?: string
-        backgroundColor?: string
-        background?: string
-        border?: {
-            solid: number
-            position?: 'all' | 'left' | 'right' | 'top' | 'bottom'
-            color?: string
-        }
-        borderRadius?: number | string
-        shadow?: {
-            x?: number
-            y?: number
-            blur?: number
-            color?: string
-        }
-    }
-}
+} & AttriType &
+    TabType
 
-export function TouchableOpacity(props: Props) {
-    const {
-        as = 'div',
-        direction = 'horizontal',
-        txtColor = '#4788f4',
-        txtSize = 14,
-        disabledColor,
-        disabled,
-        txtAlign,
-        txtWeight,
-        width,
-        minWidth,
-        maxWidth,
-        height,
-        minHeight,
-        maxHeight,
-        flex,
-        align,
-        crossAlign,
-        alignContent,
-        alignSelf,
-        wrap,
-        basis,
-        grow,
-        shrink,
-        gap,
-        crossGap,
-        order,
-        padding,
-        margin,
-        backgroundColor,
-        background,
-        backgroundRepeat,
-        backgroundSize,
-        backgroundPosition,
-        backgroundClip,
-        backgroundImageUrl,
-        border,
-        borderRadius,
-        shadow,
-        zIndex,
-        transitionTime = 0.3,
-        cursor,
-        opacity,
-        touchOpacity,
-        hover,
-        ...rest
-    } = props
+//
+export function TouchableOpacity(props: Types) {
+    const { as = 'div', disabled, ...restProps } = props
 
-    const { Size, Flex, Padding, Margin, Theme, Order } = Themes({
-        props,
-        direction: direction ?? 'horizontal',
-    })
-
-    const active = {
-        '&:disabled': { color: disabledColor ?? '#ccc', cursor: 'default' },
-        '&:active': { opacity: !!props.onClick && (touchOpacity ?? 0.7) },
-        '&:hover': {
-            background: hover?.background,
-            backgroundColor: hover?.backgroundColor,
-            border:
-                !hover?.border?.position || hover?.border?.position === 'all'
-                    ? `${hover?.border?.solid}px solid ${hover?.border?.color}`
-                    : undefined,
-            borderBottom:
-                hover?.border?.position === 'bottom'
-                    ? `${hover?.border?.solid}px solid ${hover?.border?.color}`
-                    : undefined,
-            borderTop:
-                hover?.border?.position === 'top'
-                    ? `${hover?.border?.solid}px solid ${hover?.border?.color}`
-                    : undefined,
-            borderRight:
-                hover?.border?.position === 'right'
-                    ? `${hover?.border?.solid}px solid ${hover?.border?.color}`
-                    : undefined,
-            borderLeft:
-                hover?.border?.position === 'left'
-                    ? `${hover?.border?.solid}px solid ${hover?.border?.color}`
-                    : undefined,
-            borderRadius: hover?.borderRadius,
-            boxShadow: hover?.shadow
-                ? `${hover?.shadow?.x}px ${hover?.shadow?.y}px ${hover?.shadow?.blur}px ${hover?.shadow?.color}`
-                : undefined,
-        },
-    }
-
-    const [os, setOs] = useState<'window' | 'mobile'>('window')
-
-    useEffect(() => {
-        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mobile')
-        else if (/Windows/.test(navigator.userAgent)) setOs('window')
-        else setOs('window')
-    }, [os])
-
-    const TYPOGRAPH_WEIGHT = {
-        lighter: { fontWeight: os === 'window' ? '300' : '400' },
-        normal: { fontWeight: 400 },
-        medium: { fontWeight: os === 'window' ? '500' : '600' },
-        bold: { fontWeight: os === 'window' ? '700' : '700' },
-    } as const
-
-    const styleSheets = {
-        ...Size,
-        ...Flex,
-        ...Padding,
-        ...Margin,
-        ...Theme,
-        ...Order,
-        ...active,
-        width: width ?? 'auto',
-        position: 'relative',
-        alignItems: align ?? 'center',
-        justifyContent: crossAlign ?? 'center',
-        whiteSpace: 'nowrap',
-        fontSize: txtSize ? `${txtSize / 16}rem` : '0.875rem',
-        color: txtColor,
-        fontWeight: TYPOGRAPH_WEIGHT[txtWeight ?? 'normal'].fontWeight,
-        textAlign: txtAlign,
-        transition: `${transitionTime ?? 0}s ease-in-out`,
-        userSelect: 'none',
-    } as Interpolation<Theme>
+    const { styleProps: styleSheets, otherProps } = TAB_EXTRACT_PROPS(restProps)
 
     return (
         <>
             {as === 'div' && (
-                <div className="TouchableOpacity" css={styleSheets} {...rest}>
+                <div className="TouchableOpacity" css={styleSheets} {...otherProps}>
                     {props.children}
                 </div>
             )}
 
             {as === 'li' && (
-                <li className="TouchableOpacity" css={styleSheets} {...rest}>
+                <li className="TouchableOpacity" css={styleSheets} {...otherProps}>
                     {props.children}
                 </li>
             )}
 
             {as === 'span' && (
-                <span className="TouchableOpacity" css={styleSheets} {...rest}>
+                <span className="TouchableOpacity" css={styleSheets} {...otherProps}>
                     {props.children}
                 </span>
             )}
 
             {as === 'button' && (
-                <button className="TouchableOpacity" disabled={disabled} css={styleSheets} {...rest}>
+                <button className="TouchableOpacity" disabled={disabled} css={styleSheets} {...otherProps}>
                     {props.children}
                 </button>
             )}
 
             {as === 'a' && (
-                <Link className="TouchableOpacity" href={props.href} css={styleSheets} {...rest}>
+                <Link className="TouchableOpacity" href={props.href} css={styleSheets} {...otherProps}>
                     {props.children}
                 </Link>
             )}

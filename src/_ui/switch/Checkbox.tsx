@@ -35,6 +35,7 @@ type Types = {
     disabled?: boolean
     onClick?: any
     css?: Interpolation<Theme>
+    children: never[]
 } & Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>
 
 const Checkbox = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement> | undefined) => {

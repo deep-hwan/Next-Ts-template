@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import React, { ForwardedRef, HTMLAttributes, forwardRef, useEffect, useState } from 'react'
-import { Themes } from '../_theme'
-import { FlexTypes } from '../_theme/type'
+import { UI_EXTRACT_PROPS, UITypes } from '../../_theme/_UIKit'
 
-interface Props extends Omit<HTMLAttributes<HTMLLIElement>, 'onClick'>, FlexTypes {
+interface Props extends Omit<HTMLAttributes<HTMLLIElement>, 'onClick'>, UITypes {
     txtSize?: number
     txtColor?: string
     lineHeight?: number
@@ -17,42 +16,6 @@ interface Props extends Omit<HTMLAttributes<HTMLLIElement>, 'onClick'>, FlexType
 const Item = forwardRef(
     (
         {
-            width = 'auto',
-            minWidth,
-            maxWidth,
-            height,
-            minHeight,
-            maxHeight,
-            flex,
-            flexReverse,
-            align,
-            crossAlign,
-            alignContent,
-            alignSelf,
-            wrap,
-            basis,
-            grow,
-            shrink,
-            gap,
-            crossGap,
-            order,
-            padding,
-            margin,
-            backgroundColor,
-            background,
-            backgroundRepeat,
-            backgroundSize,
-            backgroundPosition,
-            backgroundClip,
-            backgroundImageUrl,
-            border,
-            borderRadius,
-            shadow,
-            zIndex,
-            transitionTime,
-            cursor,
-            opacity,
-            touchOpacity,
             txtWeight,
             txtSize = 15,
             txtColor,
@@ -61,66 +24,28 @@ const Item = forwardRef(
             lineHeight,
             underline,
             ellipsis = { ellipsis: false },
-            scroll,
-            ...props
+            ...restProps
         }: Props,
         ref: ForwardedRef<HTMLLIElement>,
     ) => {
-        const themes_props = {
-            width,
-            minWidth,
-            maxWidth,
-            height,
-            minHeight,
-            maxHeight,
-            flex,
-            flexReverse,
-            align,
-            crossAlign,
-            alignContent,
-            alignSelf,
-            wrap,
-            basis,
-            grow,
-            shrink,
-            gap,
-            crossGap,
-            order,
-            padding,
-            margin,
-            backgroundColor,
-            background,
-            backgroundRepeat,
-            backgroundSize,
-            backgroundPosition,
-            backgroundClip,
-            backgroundImageUrl,
-            border,
-            borderRadius,
-            shadow,
-            zIndex,
-            transitionTime,
-            cursor,
-            opacity,
-            touchOpacity,
-            scroll,
-        }
+        const { styleProps: themes, otherProps } = UI_EXTRACT_PROPS({
+            ...restProps,
+            direction: restProps.direction ?? 'vertical',
+        })
 
-        const themes = Themes({ props: themes_props })
-
-        const [os, setOs] = useState<'window' | 'mobile'>('window')
+        const [os, setOs] = useState<'desktop' | 'mobile'>('desktop')
 
         useEffect(() => {
             if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mobile')
-            else if (/Windows/.test(navigator.userAgent)) setOs('window')
-            else setOs('window')
+            else if (/desktops/.test(navigator.userAgent)) setOs('desktop')
+            else setOs('desktop')
         }, [os])
 
         const TYPOGRAPH_WEIGHT = {
-            lighter: { fontWeight: os === 'window' ? '300' : '400' },
+            lighter: { fontWeight: os === 'desktop' ? '300' : '400' },
             normal: { fontWeight: 400 },
-            medium: { fontWeight: os === 'window' ? '500' : '600' },
-            bold: { fontWeight: os === 'window' ? '600' : '700' },
+            medium: { fontWeight: os === 'desktop' ? '500' : '600' },
+            bold: { fontWeight: os === 'desktop' ? '600' : '700' },
         } as const
 
         const ellipsisT = {
@@ -151,9 +76,9 @@ const Item = forwardRef(
                     ...(!ellipsis.ellipsis && (themes.Margin as any)),
                     ...(ellipsis.ellipsis && ellipsisT),
                 }}
-                {...props}
+                {...otherProps}
             >
-                {props.children}
+                {otherProps.children}
             </li>
         )
     },

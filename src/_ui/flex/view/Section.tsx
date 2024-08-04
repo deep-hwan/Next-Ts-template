@@ -1,96 +1,26 @@
 /** @jsxImportSource @emotion/react */
 import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react'
-import { FlexTypes } from '../_theme/type'
-import { Themes } from '../_theme'
+import { UI_EXTRACT_PROPS, UITypes } from '../../_theme/_UIKit'
 
-type Types = Omit<FlexTypes, 'direction' | 'flex' | 'align' | 'height' | 'touchOpacity' | 'cursor'> &
+type Types = Omit<UITypes, 'direction' | 'flex' | 'align' | 'height' | 'touchOpacity' | 'cursor' | 'hover' | 'active'> &
     HTMLAttributes<HTMLElement>
 
 const Section = forwardRef((props: Types, ref: ForwardedRef<HTMLElement>) => {
-    const {
-        width,
-        minWidth,
-        maxWidth,
-        minHeight,
-        maxHeight,
-        flexReverse,
-        crossAlign,
-        alignContent,
-        alignSelf,
-        wrap,
-        basis,
-        grow,
-        shrink,
-        gap,
-        crossGap,
-        order,
-        padding,
-        margin,
-        backgroundColor,
-        background,
-        backgroundRepeat,
-        backgroundSize,
-        backgroundPosition,
-        backgroundClip,
-        backgroundImageUrl,
-        border,
-        borderRadius,
-        shadow,
-        zIndex,
-        transitionTime,
-        opacity,
-        scroll,
-        ...rest
-    } = props
-
-    const themes_props = {
-        width,
-        minWidth,
-        maxWidth,
-        minHeight,
-        maxHeight,
-        flexReverse,
-        crossAlign,
-        alignContent,
-        alignSelf,
-        wrap,
-        basis,
-        grow,
-        shrink,
-        gap,
-        crossGap,
-        order,
-        padding,
-        margin,
-        backgroundColor,
-        background,
-        backgroundRepeat,
-        backgroundSize,
-        backgroundPosition,
-        backgroundClip,
-        backgroundImageUrl,
-        border,
-        borderRadius,
-        shadow,
-        zIndex,
-        transitionTime,
-        opacity,
-    }
-
-    const themes = Themes({ props: themes_props })
+    const { styleProps, otherProps } = UI_EXTRACT_PROPS(props)
 
     return (
         <section
             ref={ref}
             css={{
-                ...themes,
+                ...styleProps,
                 flex: 1,
                 flexDirection: 'column',
                 alignItems: 'center',
+                width: '100%',
                 height: '100%',
                 position: 'relative',
             }}
-            {...rest}
+            {...otherProps}
         >
             {props.children}
         </section>

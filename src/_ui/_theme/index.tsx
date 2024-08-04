@@ -1,8 +1,7 @@
-import React from 'react'
-import { FlexTypes } from './type'
+import { UITypes } from './_UIKit'
 import { Interpolation, Theme } from '@emotion/react'
 
-export function Themes({ direction = 'vertical', props }: { direction?: 'horizontal' | 'vertical'; props: FlexTypes }) {
+export function Themes({ direction = 'vertical', props }: { direction?: 'horizontal' | 'vertical'; props: UITypes }) {
     //
     //
     const Size = {
@@ -113,7 +112,7 @@ export function Themes({ direction = 'vertical', props }: { direction?: 'horizon
         overflow: props?.scroll?.type ?? 'visible',
 
         '::-webkit-scrollbar': {
-            display: props?.scroll?.bar ? 'flex' : 'none' ?? 'none',
+            display: props?.scroll?.bar ? 'flex' : 'none',
             width: '4px',
             height: '4px',
         },

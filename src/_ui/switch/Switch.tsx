@@ -10,6 +10,7 @@ type Type = {
     active: boolean
     width?: number
     height?: number
+    children: never[]
 }
 
 //
@@ -22,7 +23,6 @@ const Switch = forwardRef((props: Type, ref: ForwardedRef<HTMLElement | HTMLDivE
             backgroundColor="#eee"
             borderRadius={100}
             onClick={() => props.onClick && props.onClick()}
-            touchOpacity={1}
         >
             <P.Absolute
                 ref={ref}
