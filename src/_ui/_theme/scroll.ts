@@ -10,7 +10,7 @@ export type ScrollType = {
     }
 }
 
-export const Scroll = (props: ScrollType) => {
+export const ScrollTheme = (props: ScrollType) => {
     return {
         overflowX: props?.scroll?.x,
         overflowY: props?.scroll?.y,

@@ -12,7 +12,7 @@ interface Props
             | 'onClick'
             | 'transitionTime'
             | 'direction'
-            | 'flexReverse'
+            | 'reverse'
             | 'reserse'
             | 'align'
             | 'crossAlign'

@@ -1,12 +1,12 @@
 import { ReactNode } from 'react'
-import { Layer, layerKeys, LayerType } from './layer'
-import { Flex, flexKeys, FlexType } from './flex'
-import { Border, borderKeys, BorderTypes } from './border'
-import { layoutKeys, LayoutSize, LayoutSizeType } from './layoutSize'
-import { Margin, Padding, spaceKeys, SpaceType } from './space'
-import { scollKeys, Scroll, ScrollType } from './scroll'
+import { LayerTheme, layerKeys, LayerType } from './layer'
+import { FlexTheme, flexKeys, FlexType } from './flex'
+import { BorderTheme, borderKeys, BorderTypes } from './border'
+import { layoutKeys, LayoutSizeTheme, LayoutSizeType } from './layoutSize'
+import { MarginTheme, PaddingTheme, spaceKeys, SpaceType } from './space'
+import { scollKeys, ScrollTheme, ScrollType } from './scroll'
 import { MediaQuery, mediaQueryKeys, MediaQueryType } from './mediaQuery'
-import { Active, ActiveType, Hover, hoverActiveKeys, HoverType } from './hoverActive'
+import { ActiveTheme, ActiveType, HoverTheme, hoverActiveKeys, HoverType } from './hoverActive'
 
 //
 export interface UITypes
@@ -35,16 +35,16 @@ export const stylePropKeys = [
 
 //
 export const UI_EXTRACT_PROPS = (props: UITypes & { [key: string]: any }) => {
-    const layoutSize = LayoutSize(props)
-    const layer = Layer(props)
-    const flex = Flex(props)
-    const padding = Padding(props)
-    const margin = Margin(props)
-    const border = Border(props)
-    const scroll = Scroll(props)
+    const layoutSize = LayoutSizeTheme(props)
+    const layer = LayerTheme(props)
+    const flex = FlexTheme(props)
+    const padding = PaddingTheme(props)
+    const margin = MarginTheme(props)
+    const border = BorderTheme(props)
+    const scroll = ScrollTheme(props)
     const mediaQuery = MediaQuery(props)
-    const active = Active(props)
-    const hover = Hover(props)
+    const active = ActiveTheme(props)
+    const hover = HoverTheme(props)
 
     const styleProps: any = {}
     const otherProps: any = {}

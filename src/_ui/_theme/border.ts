@@ -5,29 +5,24 @@ export type BorderTypes = {
     border?: {
         solid: number
         position?: 'all' | 'left' | 'right' | 'top' | 'bottom'
-        color?: string
+        color: string
+        shape?: 'solid' | 'dotted' | 'dashed' | 'double' | 'outset' | 'inset' | 'groove' | 'ridge'
     }
     borderRadius?: number | string
 }
 
 //
-export const Border = (props: BorderTypes) => {
+export const BorderTheme = (props: BorderTypes) => {
+    const { border, borderRadius } = props
+    const { solid, position = 'all', color = '#ee2e2e2', shape = 'solid' } = border ?? {}
+
     return {
-        border:
-            !props?.border?.position || props?.border?.position === 'all'
-                ? `${props?.border?.solid}px solid ${props?.border?.color}`
-                : undefined,
-        borderBottom:
-            props?.border?.position === 'bottom'
-                ? `${props?.border?.solid}px solid ${props?.border?.color}`
-                : undefined,
-        borderTop:
-            props?.border?.position === 'top' ? `${props?.border?.solid}px solid ${props?.border?.color}` : undefined,
-        borderRight:
-            props?.border?.position === 'right' ? `${props?.border?.solid}px solid ${props?.border?.color}` : undefined,
-        borderLeft:
-            props?.border?.position === 'left' ? `${props?.border?.solid}px solid ${props?.border?.color}` : undefined,
-        borderRadius: props?.borderRadius,
+        border: !!solid && position === 'all' ? `${solid}px ${shape} ${color}` : undefined,
+        borderBottom: position === 'bottom' ? `${solid}px ${shape} ${color}` : undefined,
+        borderTop: position === 'top' ? `${solid}px ${shape} ${color}` : undefined,
+        borderRight: position === 'right' ? `${solid}px ${shape} ${color}` : undefined,
+        borderLeft: position === 'left' ? `${solid}px ${shape} ${color}` : undefined,
+        borderRadius: borderRadius,
     } as Interpolation<Theme>
 }
 

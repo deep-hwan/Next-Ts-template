@@ -20,9 +20,10 @@ export type LayerType = {
     cursor?: 'default' | 'grab' | 'pointer' | 'zoom'
     opacity?: number
     onClick?: any
+    userSelect?: 'none' | 'auto' | 'text' | 'contain' | 'all'
 }
 
-export const Layer = (props: LayerType) => {
+export const LayerTheme = (props: LayerType) => {
     return {
         background: props?.background,
         backgroundColor: props?.backgroundColor,
@@ -34,10 +35,10 @@ export const Layer = (props: LayerType) => {
         boxShadow: props?.shadow
             ? `${props?.shadow?.x}px ${props?.shadow?.y}px ${props?.shadow?.blur}px ${props?.shadow?.color}`
             : undefined,
-        filter: `blur(${props.filter})`,
+        filter: !!props.filter && `blur(${props.filter})`,
         zIndex: props?.zIndex,
         cursor: props?.onClick ? 'pointer' : props?.cursor,
-        userSelect: props?.onClick && 'none',
+        userSelect: props.userSelect ? props.userSelect : props?.onClick && 'none',
         transition: props?.transitionTime && `${props?.transitionTime}s ease-in-out`,
         opacity: props.opacity,
     } as Interpolation<Theme>
@@ -54,7 +55,8 @@ export const layerKeys = [
     'filter',
     'shadow',
     'zIndex',
-    'transitionTime',
     'cursor',
+    'userSelect',
+    'transitionTime',
     'opacity',
 ]

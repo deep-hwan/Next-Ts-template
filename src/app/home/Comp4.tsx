@@ -36,7 +36,11 @@ export default function Comp4() {
                     borderRadius={16}
                 >
                     <V.Row gap={20} align="center" crossAlign="center">
-                        <TouchableOpacity hover={{ backgroundColor: '#000' }} onClick={() => setIsOpen('dialog')}>
+                        <TouchableOpacity
+                            mediaQuery={{ s1080: { hover: { backgroundColor: 'blue' } } }}
+                            hover={{ backgroundColor: '#000' }}
+                            onClick={() => setIsOpen('dialog')}
+                        >
                             다이아 로그
                         </TouchableOpacity>
                         <TouchableOpacity onClick={() => setIsOpen('bottomSheet')}>바텀 시트</TouchableOpacity>

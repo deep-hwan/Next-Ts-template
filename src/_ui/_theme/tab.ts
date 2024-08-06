@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 import { Interpolation, Theme } from '@emotion/react'
 import { stylePropKeys, UITypes } from './_UIKit'
-import { Active, ActiveType, Hover, HoverType } from './hoverActive'
+import { ActiveTheme, ActiveType, HoverTheme, HoverType } from './hoverActive'
 import { MediaQuery, MediaQueryType } from './mediaQuery'
-import { LayoutSize } from './layoutSize'
-import { Layer } from './layer'
-import { Flex } from './flex'
-import { Margin, Padding } from './space'
-import { Border } from './border'
+import { LayoutSizeTheme } from './layoutSize'
+import { LayerTheme } from './layer'
+import { FlexTheme } from './flex'
+import { MarginTheme, PaddingTheme } from './space'
+import { BorderTheme } from './border'
 
-type RemoveType = 'onClick' | 'flexReverse' | 'scroll'
+type RemoveType = 'onClick' | 'reverse' | 'scroll' | 'userSelect' | 'transitionTime'
 
 type TypoType = {
     txtSize?: number
@@ -18,11 +18,28 @@ type TypoType = {
     txtWeight?: 'lighter' | 'normal' | 'medium' | 'bold'
 }
 
-export type TabType = Omit<UITypes, RemoveType> &
-    Omit<HoverType, RemoveType> &
-    Omit<ActiveType, RemoveType> &
-    Omit<MediaQueryType, RemoveType> &
-    TypoType
+type UITypesWithoutRemoveType = Omit<UITypes, RemoveType>
+
+type CleanedHoverType = {
+    hover?: UITypesWithoutRemoveType
+}
+
+type CleanedActiveType = {
+    active?: UITypesWithoutRemoveType
+}
+
+type CleanedMediaQueryType = {
+    mediaQuery?: {
+        s1440?: UITypesWithoutRemoveType
+        s1280?: UITypesWithoutRemoveType
+        s1080?: UITypesWithoutRemoveType
+        s768?: UITypesWithoutRemoveType
+        s600?: UITypesWithoutRemoveType
+        s428?: UITypesWithoutRemoveType
+    }
+}
+
+export type TabType = UITypesWithoutRemoveType & CleanedHoverType & CleanedActiveType & CleanedMediaQueryType & TypoType
 
 //
 export const TAB_EXTRACT_PROPS = (props: TabType & { [key: string]: any }) => {
@@ -40,15 +57,15 @@ export const TAB_EXTRACT_PROPS = (props: TabType & { [key: string]: any }) => {
         crossAlign: props.crossAlign ?? 'center',
     }
 
-    const layoutSize = LayoutSize(props)
-    const layer = Layer({ ...props, transitionTime: props.transitionTime ?? 0.3 })
-    const flex = Flex({ ...props, ...aligns })
-    const padding = Padding(props)
-    const margin = Margin(props)
-    const border = Border(props)
+    const layoutSize = LayoutSizeTheme(props)
+    const layer = LayerTheme({ ...props, transitionTime: props.transitionTime ?? 0.3 })
+    const flex = FlexTheme({ ...props, ...aligns })
+    const padding = PaddingTheme(props)
+    const margin = MarginTheme(props)
+    const border = BorderTheme(props)
     const mediaQuery = MediaQuery({ ...props })
-    const active = Active({ ...props, active: { opacity: 0.5 } })
-    const hover = Hover({ ...props })
+    const active = ActiveTheme({ ...props, active: { opacity: 0.5 } })
+    const hover = HoverTheme({ ...props })
 
     const styleProps: any = {}
     const otherProps: any = {}
@@ -70,6 +87,7 @@ export const TAB_EXTRACT_PROPS = (props: TabType & { [key: string]: any }) => {
         color: props.txtColor ?? '#4788f4',
         fontWeight: TYPOGRAPH_WEIGHT[props.txtWeight ?? 'normal'].fontWeight,
         textAlign: props.txtAlign ?? 'center',
+        transition: '0.3s ease-in-out',
     }
 
     return {

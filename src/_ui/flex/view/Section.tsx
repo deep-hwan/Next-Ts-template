@@ -2,7 +2,10 @@
 import React, { ForwardedRef, forwardRef, HTMLAttributes } from 'react'
 import { UI_EXTRACT_PROPS, UITypes } from '../../_theme/_UIKit'
 
-type Types = Omit<UITypes, 'direction' | 'flex' | 'align' | 'height' | 'touchOpacity' | 'cursor' | 'hover' | 'active'> &
+type Types = Omit<
+    UITypes,
+    'direction' | 'flex' | 'align' | 'height' | 'cursor' | 'onClick' | 'hover' | 'active' | 'userSelect'
+> &
     HTMLAttributes<HTMLElement>
 
 const Section = forwardRef((props: Types, ref: ForwardedRef<HTMLElement>) => {

@@ -153,7 +153,7 @@ export function BottomSheet({
                         <V.Column
                             ref={viewRef}
                             height="100%"
-                            scroll={{ type: 'auto', bar: true }}
+                            scroll={{ y: 'auto', bar: true }}
                             css={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
                         >
                             {children}

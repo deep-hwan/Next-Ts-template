@@ -17,13 +17,13 @@ export function Themes({ direction = 'vertical', props }: { direction?: 'horizon
     //
     const FLEX_VARIANTS = {
         horizontal: {
-            flexDirection: props?.flexReverse ? 'row-reverse' : 'row',
+            flexDirection: props?.reverse ? 'row-reverse' : 'row',
             align: props?.align ?? 'stretch',
             rowGap: props?.crossGap,
             columnGap: props?.gap,
         },
         vertical: {
-            flexDirection: props?.flexReverse ? 'column-reverse' : 'column',
+            flexDirection: props?.reverse ? 'column-reverse' : 'column',
             align: props?.align ?? 'start',
             rowGap: props?.gap,
             columnGap: props?.crossGap,

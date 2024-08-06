@@ -11,7 +11,7 @@ export type LayoutSizeType = {
 }
 
 //
-export const LayoutSize = (props: LayoutSizeType) => {
+export const LayoutSizeTheme = (props: LayoutSizeType) => {
     return {
         width: props?.width,
         minWidth: props?.minWidth,

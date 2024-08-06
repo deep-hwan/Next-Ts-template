@@ -24,7 +24,7 @@ export type SpaceType = {
 }
 
 //
-export const Padding = (props: SpaceType) => {
+export const PaddingTheme = (props: SpaceType) => {
     return {
         paddingTop: props?.padding?.all || props?.padding?.vertical || props?.padding?.top,
         paddingBottom: props?.padding?.all || props?.padding?.vertical || props?.padding?.bottom,
@@ -34,7 +34,7 @@ export const Padding = (props: SpaceType) => {
 }
 
 //
-export const Margin = (props: SpaceType) => {
+export const MarginTheme = (props: SpaceType) => {
     return {
         marginTop: props?.margin?.all || props?.margin?.vertical || props?.margin?.top,
         marginBottom: props?.margin?.all || props?.margin?.vertical || props?.margin?.bottom,

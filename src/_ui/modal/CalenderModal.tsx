@@ -87,7 +87,7 @@ export function CalenderModal({
                         backgroundColor={THEME_VARIANT[theme].bg}
                         padding={{ horizontal: 5, vertical: 20 }}
                         shadow={{ x: 0, y: 0, blur: 20, color: 'rgba(0,0,0,0.1)' }}
-                        scroll={{ type: 'auto', bar: true }}
+                        scroll={{ y: 'auto', bar: true }}
                         ref={ref}
                         css={{
                             [MQ[3]]: {

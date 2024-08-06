@@ -4,7 +4,7 @@ import { Interpolation, Theme } from '@emotion/react'
 export type FlexType = {
     display?: 'none' | 'flex' | 'inline' | 'inline-block' | 'block'
     flex?: number | string
-    flexReverse?: boolean
+    reverse?: boolean
     direction?: 'horizontal' | 'vertical'
     align?: 'start' | 'end' | 'center' | 'stretch' | 'baseline'
     crossAlign?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
@@ -20,16 +20,16 @@ export type FlexType = {
 }
 
 //
-export const Flex = ({ direction, ...props }: FlexType) => {
+export const FlexTheme = ({ direction, ...props }: FlexType) => {
     const FLEX_VARIANTS = {
         horizontal: {
-            flexDirection: props?.flexReverse ? 'row-reverse' : 'row',
+            flexDirection: props?.reverse ? 'row-reverse' : 'row',
             align: props?.align,
             rowGap: props?.crossGap,
             columnGap: props?.gap,
         },
         vertical: {
-            flexDirection: props?.flexReverse ? 'column-reverse' : 'column',
+            flexDirection: props?.reverse ? 'column-reverse' : 'column',
             align: props?.align,
             rowGap: props?.gap,
             columnGap: props?.crossGap,
@@ -57,7 +57,7 @@ export const flexKeys = [
     'display',
     'flex',
     'direction',
-    'flexReverse',
+    'reverse',
     'align',
     'crossAlign',
     'alignContent',
