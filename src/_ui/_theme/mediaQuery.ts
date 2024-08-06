@@ -7,16 +7,19 @@ import { LayoutSizeTheme } from './layoutSize'
 import { MarginTheme, PaddingTheme } from './space'
 import { ScrollTheme } from './scroll'
 import { ActiveTheme, HoverTheme } from './hoverActive'
+import { TabTypoTheme } from './tab'
+
+type ExtendUITypes = Omit<UITypes, 'mediaQuery' | 'children'>
 
 //
 export type MediaQueryType = {
     mediaQuery?: {
-        s1440?: UITypes
-        s1280?: UITypes
-        s1080?: UITypes
-        s768?: UITypes
-        s600?: UITypes
-        s428?: UITypes
+        s1440?: ExtendUITypes
+        s1280?: ExtendUITypes
+        s1080?: ExtendUITypes
+        s768?: ExtendUITypes
+        s600?: ExtendUITypes
+        s428?: ExtendUITypes
     }
 }
 
@@ -36,6 +39,7 @@ export const MediaQuery = (props: MediaQueryType) => {
                 ...(ScrollTheme(props.mediaQuery.s1440) as any),
                 ...(ActiveTheme(props.mediaQuery.s1440) as any),
                 ...(HoverTheme(props.mediaQuery.s1440) as any),
+                ...TabTypoTheme(props.mediaQuery.s1440 as any),
             },
         }),
         ...(props.mediaQuery?.s1280 && {
@@ -49,6 +53,7 @@ export const MediaQuery = (props: MediaQueryType) => {
                 ...(ScrollTheme(props.mediaQuery.s1280) as any),
                 ...(ActiveTheme(props.mediaQuery.s1280) as any),
                 ...(HoverTheme(props.mediaQuery.s1280) as any),
+                ...TabTypoTheme(props.mediaQuery.s1280 as any),
             },
         }),
         ...(props.mediaQuery?.s1080 && {
@@ -62,6 +67,7 @@ export const MediaQuery = (props: MediaQueryType) => {
                 ...(ScrollTheme(props.mediaQuery.s1080) as any),
                 ...(ActiveTheme(props.mediaQuery.s1080) as any),
                 ...(HoverTheme(props.mediaQuery.s1080) as any),
+                ...TabTypoTheme(props.mediaQuery.s1080 as any),
             },
         }),
         ...(props.mediaQuery?.s768 && {
@@ -75,6 +81,7 @@ export const MediaQuery = (props: MediaQueryType) => {
                 ...(ScrollTheme(props.mediaQuery.s768) as any),
                 ...(ActiveTheme(props.mediaQuery.s768) as any),
                 ...(HoverTheme(props.mediaQuery.s768) as any),
+                ...TabTypoTheme(props.mediaQuery.s768 as any),
             },
         }),
         ...(props.mediaQuery?.s600 && {
@@ -88,6 +95,7 @@ export const MediaQuery = (props: MediaQueryType) => {
                 ...(ScrollTheme(props.mediaQuery.s600) as any),
                 ...(ActiveTheme(props.mediaQuery.s600) as any),
                 ...(HoverTheme(props.mediaQuery.s600) as any),
+                ...TabTypoTheme(props.mediaQuery.s600 as any),
             },
         }),
         ...(props.mediaQuery?.s428 && {
@@ -101,6 +109,7 @@ export const MediaQuery = (props: MediaQueryType) => {
                 ...(ScrollTheme(props.mediaQuery.s428) as any),
                 ...(ActiveTheme(props.mediaQuery.s428) as any),
                 ...(HoverTheme(props.mediaQuery.s428) as any),
+                ...TabTypoTheme(props.mediaQuery.s428 as any),
             },
         }),
     }

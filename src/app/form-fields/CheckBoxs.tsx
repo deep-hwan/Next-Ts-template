@@ -45,7 +45,7 @@ export default function CheckBoxs({
             {/* ----- 이용약관 ----- */}
             <Checkbox
                 id="이용약관"
-                value={isValues.check1}
+                checked={isValues.check1}
                 onClick={() => handleCheckOnChange('check1')}
                 label={{
                     title: '이용약관 (필수)',
@@ -58,7 +58,7 @@ export default function CheckBoxs({
             {/* ----- 개인정보 처리방침 ----- */}
             <Checkbox
                 id="개인정보 처리방침"
-                value={isValues.check2}
+                checked={isValues.check2}
                 onClick={() => handleCheckOnChange('check2')}
                 label={{
                     title: '개인정보 처리방침 (필수)',
@@ -71,7 +71,7 @@ export default function CheckBoxs({
             {/* ----- 마케팅 수신동의 ----- */}
             <Checkbox
                 id="3"
-                value={isValues.check3}
+                checked={isValues.check3}
                 onClick={() => {
                     if (isValues.check3) handleCheckOnChange('check3')
                     if (!isValues.check3) modalQueryRouter('마케팅수신동의')

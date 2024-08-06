@@ -10,7 +10,7 @@ const Items = forwardRef((props: Props, ref: ForwardedRef<HTMLUListElement | HTM
     const { as = 'ul', ...restProps } = props
     const { styleProps, otherProps } = UI_EXTRACT_PROPS({
         ...restProps,
-        width: props.width ?? '100%',
+        width: restProps.width ?? '100%',
         direction: restProps.direction ?? 'vertical',
     })
 

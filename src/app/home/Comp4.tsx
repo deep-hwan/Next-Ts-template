@@ -13,9 +13,7 @@ export default function Comp4() {
     return (
         <>
             <V.Column>
-                <Txt as="h2" size={18}>
-                    {'네이티브 모달을\n웹에서도 사용해보세요'}
-                </Txt>
+                <Txt as="h2" size={18} children={'네이티브 모달을\n웹에서도 사용해보세요'} />
 
                 <Spacing size={8} />
 
@@ -36,13 +34,7 @@ export default function Comp4() {
                     borderRadius={16}
                 >
                     <V.Row gap={20} align="center" crossAlign="center">
-                        <TouchableOpacity
-                            mediaQuery={{ s1080: { hover: { backgroundColor: 'blue' } } }}
-                            hover={{ backgroundColor: '#000' }}
-                            onClick={() => setIsOpen('dialog')}
-                        >
-                            다이아 로그
-                        </TouchableOpacity>
+                        <TouchableOpacity onClick={() => setIsOpen('dialog')}>다이아 로그</TouchableOpacity>
                         <TouchableOpacity onClick={() => setIsOpen('bottomSheet')}>바텀 시트</TouchableOpacity>
                         <TouchableOpacity onClick={() => setIsOpen('calenderModal')}>켈린더 모달</TouchableOpacity>
                     </V.Row>

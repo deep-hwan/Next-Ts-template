@@ -31,11 +31,11 @@ type Types = {
     }
 
     labelActive?: boolean
-    value: boolean
+    checked: boolean
     disabled?: boolean
     onClick?: any
     css?: Interpolation<Theme>
-    children: never[]
+    children?: never[]
 } & Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>
 
 const Checkbox = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement> | undefined) => {
@@ -43,13 +43,13 @@ const Checkbox = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement> | u
 
     const checkColors = () => {
         if (props?.disabled) return props?.themes?.check?.disabledColor ?? '#bbb'
-        if (!!props?.value) return props?.themes?.check?.checkColor ?? colors.keyColor
+        if (!!props?.checked) return props?.themes?.check?.checkColor ?? colors.keyColor
         return props?.themes?.check?.defaultColor ?? '#e2e2e2'
     }
 
     const checkIconColors = () => {
         if (props?.disabled) return props?.themes?.check?.disabledColor ?? '#999'
-        if (!!props?.value) return props?.themes?.check?.checkColor ?? '#fff'
+        if (!!props?.checked) return props?.themes?.check?.checkColor ?? '#fff'
         return props?.themes?.check?.defaultColor ?? '#fff'
     }
 
@@ -89,7 +89,7 @@ const Checkbox = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement> | u
             </div>
 
             {!!props?.label && (
-                <V.Column gap={4} css={{ opacity: props?.labelActive ? 1 : !!props.value ? 1 : 0.7 }}>
+                <V.Column gap={4} css={{ opacity: props?.labelActive ? 1 : !!props.checked ? 1 : 0.7 }}>
                     <Txt
                         weight={props?.themes?.label?.titleWeight ?? 'medium'}
                         size={props?.themes?.label?.titleSize ?? 15}

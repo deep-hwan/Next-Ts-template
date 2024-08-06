@@ -18,7 +18,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
     tabs?:
         | {
               name: string
-              buttonColor?: string
+              backgroundColor?: string
               txtColor?: string
               onClick?: () => void
               disabled?: boolean
@@ -119,7 +119,7 @@ export function Dialog(props: Props) {
                                         width="100%"
                                         type="button"
                                         onClick={() => item.onClick()}
-                                        buttonColor={item?.buttonColor ?? colors.keyColor}
+                                        backgroundColor={item?.backgroundColor ?? colors.keyColor}
                                         txtColor={item?.txtColor ?? '#fff'}
                                         disabled={item?.disabled}
                                     >

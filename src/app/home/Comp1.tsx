@@ -12,7 +12,7 @@ export default function Comp1() {
                     alt="템플릿"
                     size={40}
                 />
-                <V.Column gap={3} align="start">
+                <V.Column gap={3} align="start" transitionTime={0.3} backgroundColor="#fff">
                     <Txt as="strong" size={17} weight="bold">
                         위젯 템플릿
                     </Txt>

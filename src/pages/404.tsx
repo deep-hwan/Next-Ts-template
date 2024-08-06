@@ -31,7 +31,7 @@ export default function Error() {
                     <Spacing size={34} />
                     <Button
                         maxWidth={200}
-                        buttonColor={colors.keyColor}
+                        backgroundColor={colors.keyColor}
                         txtColor={colors.white}
                         borderRadius={100}
                         onClick={() => router.back()}

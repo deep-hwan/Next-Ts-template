@@ -140,7 +140,7 @@ function FieldContainer(props: Types) {
                         padding: '8px 10px 8px',
                         position: 'sticky',
                     }}
-                    disabled={tab.disabled}
+                    button_disabled={tab.disabled}
                 >
                     {tab.name ?? '확인'}
                 </TouchableOpacity>

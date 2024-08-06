@@ -21,7 +21,7 @@ export default function Header() {
             <AppBar width={1200} serviceName="서비스명">
                 <V.Row align="center" height="100%" crossAlign="space-between" padding={{ left: 20, right: 15 }}>
                     <Link href="/" css={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <Logo />
+                        <Logo alt="서비스명" />
                     </Link>
 
                     <nav css={{ [MQ[1]]: { display: 'none' } }}>
@@ -62,7 +62,7 @@ export default function Header() {
     )
 }
 
-const Logo = () => {
+const Logo = (props: React.SVGProps<SVGSVGElement> & { alt: string }) => {
     return (
         <svg
             viewBox="0 0 371 370"
@@ -76,6 +76,7 @@ const Logo = () => {
                     width: '28px',
                 },
             }}
+            {...props}
         >
             <path
                 d="M120 0H50C22.3858 0 0 22.3858 0 50V80C0 107.614 22.3858 130 50 130H120C147.614 130 170 107.614 170 80V50C170 22.3858 147.614 0 120 0Z"

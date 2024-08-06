@@ -164,7 +164,7 @@ export default function Fields() {
                         width="100%"
                         maxWidth={520}
                         type="submit"
-                        disabled={
+                        button_disabled={
                             !(
                                 isValues.name &&
                                 isValues.email &&

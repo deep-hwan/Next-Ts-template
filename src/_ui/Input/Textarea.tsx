@@ -69,7 +69,7 @@ const Textarea = forwardRef((props: EditorType, ref: ForwardedRef<HTMLTextAreaEl
                             lineHeight: 1.6,
                             overflow: rows >= 2 ? 'auto' : 'visible',
                             '::-webkit-scrollbar': {
-                                display: editorScroll ? 'flex' : rows >= 2 ? 'flex' : 'none' ?? 'none',
+                                display: editorScroll ? 'flex' : rows >= 2 ? 'flex' : 'none',
                                 width: '4px',
                                 height: '4px',
                             },
@@ -99,7 +99,7 @@ const Textarea = forwardRef((props: EditorType, ref: ForwardedRef<HTMLTextAreaEl
                                     padding: '5px 10px 8px 2px',
                                     position: 'sticky',
                                 }}
-                                disabled={tab.disabled}
+                                button_disabled={tab.disabled}
                             >
                                 {tab.name ?? '확인'}
                             </TouchableOpacity>

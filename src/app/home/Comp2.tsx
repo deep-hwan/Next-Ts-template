@@ -6,7 +6,12 @@ import { Spacing, Txt, V } from '@/_ui'
 export default function Comp2() {
     return (
         <V.Column padding={{ all: 24 }} shadow={{ x: 0, y: 2, blur: 30, color: 'rgba(0,0,0,0.08)' }} borderRadius={18}>
-            <Txt as="h1" size={18}>
+            <Txt
+                as="h1"
+                size={18}
+                transitionTime={0.3}
+                mediaQuery={{ s768: { size: 40, weight: 'bold', color: 'red' }, s600: { size: 50, color: 'green' } }}
+            >
                 오직 위젯들로만 <br />
                 템플릿 UI를 만들었어요
             </Txt>

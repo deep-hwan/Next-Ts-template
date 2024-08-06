@@ -1,132 +1,74 @@
 /** @jsxImportSource @emotion/react */
-import React, { ButtonHTMLAttributes, forwardRef, ForwardedRef, useState, useEffect } from 'react'
-import { UITypes } from '../_theme/_UIKit'
-import { Themes } from '../_theme'
+import React, { ButtonHTMLAttributes, forwardRef, ForwardedRef } from 'react'
 import { colors } from '@/libs/themes'
+import { TAB_EXTRACT_PROPS, TabType } from '../_theme/tab'
 
-interface Props
-    extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
-        Omit<
-            UITypes,
-            | 'backgroundColor'
-            | 'onClick'
-            | 'transitionTime'
-            | 'direction'
-            | 'reverse'
-            | 'reserse'
-            | 'align'
-            | 'crossAlign'
-            | 'cursor'
-            | 'touchOpacity'
-            | 'transitionTime'
-            | 'scroll'
-        > {
+
+//
+type AttriType = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color' | 'disabled'>
+
+//
+type Types = {
     as?: 's' | 'm' | 'l'
-    txtSize?: number
-    txtColor?: string
-    buttonColor?: string
-}
+    button_disabled?: boolean
+} & AttriType &
+    Omit<TabType, 'active' | 'hover'>
 
-export const Button = forwardRef<HTMLButtonElement, Props>((props: Props, ref: ForwardedRef<HTMLButtonElement>) => {
-    const {
-        as = 'l',
-        txtSize,
-        txtColor,
-        buttonColor,
-        width,
-        minWidth,
-        maxWidth,
-        height,
-        minHeight,
-        maxHeight,
-        flex,
-        alignContent,
-        alignSelf,
-        wrap,
-        basis,
-        grow,
-        shrink,
-        gap,
-        crossGap,
-        order,
-        padding,
-        margin,
-        background,
-        backgroundRepeat,
-        backgroundSize,
-        backgroundPosition,
-        backgroundClip,
-        backgroundImageUrl,
-        border,
-        borderRadius,
-        shadow,
-        zIndex,
-        opacity,
-        ...rest
-    } = props
 
-    const [os, setOs] = useState<'window' | 'mac'>('window')
+    //
+export const Button = forwardRef<HTMLButtonElement, Types>((props: Types, ref: ForwardedRef<HTMLButtonElement>) => {
+    const { as = 'l', disabled, ...restProps } = props
 
-    useEffect(() => {
-        if (/Macintosh|iPhone|iPad|iPod|Android/.test(navigator.userAgent)) setOs('mac')
-        else if (/Windows/.test(navigator.userAgent)) setOs('window')
-        else setOs('window')
-    }, [os])
+    const { button_disabled } = restProps
+
+    const { styleProps: styleSheets, otherProps } = TAB_EXTRACT_PROPS({
+        ...restProps,
+        padding:
+            (as === 's' && { vertical: 11, horizontal: 16 }) ||
+            (as === 'm' && { vertical: 13, horizontal: 18 }) ||
+            (as === 'l' && { vertical: 15, horizontal: 20 }) ||
+            restProps.padding,
+    })
 
     const TAB_SIZE = {
         s: {
             minHeight: 'auto',
-            padding: '11px 16px',
             fontSize: `${12 / 16}rem`,
             borderRadius: 12,
         },
         m: {
             minHeight: 'auto',
-            padding: '13px 18px',
             fontSize: `${14 / 16}rem`,
             borderRadius: 14,
         },
         l: {
             minHeight: 56,
-            padding: '15px 20px',
             fontSize: `${15 / 16}rem`,
             borderRadius: 18,
         },
     }
 
-    const { Size, Flex, Padding, Margin, Theme, Order } = Themes({ props, direction: 'horizontal' })
-
     return (
         <button
             className="button"
             ref={ref}
-            type={props.type ?? 'button'}
+            type={restProps.type ?? 'button'}
+            disabled={button_disabled}
             css={{
-                ...Size,
-                ...Flex,
-                ...Padding,
-                ...Margin,
-                ...Theme,
-                ...Order,
-                position: 'relative',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: props.padding ? props.padding : TAB_SIZE[as].padding,
-                minHeight: props?.minHeight ? props?.minHeight : TAB_SIZE[as].minHeight,
-                backgroundColor: buttonColor ?? colors.keyColor,
-                color: txtColor ?? '#FFF',
-                fontSize: txtSize ? txtSize : TAB_SIZE[as].fontSize,
-                borderRadius: borderRadius ? borderRadius : TAB_SIZE[as].borderRadius,
+                ...(styleSheets as any),
                 cursor: 'pointer',
-                userSelect: 'none',
                 transition: '0.2s ease-in-out',
-                whiteSpace: 'nowrap',
+                minHeight: restProps.minHeight ?? TAB_SIZE[as].minHeight,
+                fontSize: restProps.txtSize ?? TAB_SIZE[as].fontSize,
+                color: restProps.txtColor ?? '#fff',
+                borderRadius: restProps.borderRadius ?? TAB_SIZE[as].borderRadius,
+                backgroundColor: (restProps?.backgroundColor as string) ?? colors.keyColor,
 
                 '&:disabled': { backgroundColor: '#ccc', color: '#fff', transform: 'scale(1)' },
-                '&:hover': { filter: 'saturate(90%)', boxShadow: 'none' },
-                '&:active': { transform: 'scale(0.98)', opacity: 0.75, boxShadow: 'none' },
+                '&:hover': { filter: 'saturate(88%)', boxShadow: 'none' },
+                '&:active': { scale: button_disabled ? 1 : 0.98, opacity: 0.8, boxShadow: 'none' },
             }}
-            {...rest}
+            {...otherProps}
         >
             {props.children}
         </button>

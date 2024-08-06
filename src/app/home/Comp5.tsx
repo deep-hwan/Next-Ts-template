@@ -32,7 +32,7 @@ export default function Comp5() {
                         as="m"
                         width="auto"
                         txtColor={colors.blue[200]}
-                        buttonColor={colors.pastel_blue[200]}
+                        backgroundColor={colors.pastel_blue[200]}
                         onClick={() =>
                             addToast({
                                 status: 'success',
