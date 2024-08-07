@@ -1,19 +1,21 @@
-export function usePlatformOs() {
-  if (typeof window !== "undefined" && "userAgent" in navigator) {
-    const UA = navigator.userAgent.toLowerCase();
+import { useState, useEffect } from 'react'
 
-    if (UA.indexOf("android") > -1) {
-      return "android";
-    } else if (
-      UA.indexOf("iphone") > -1 ||
-      UA.indexOf("ipad") > -1 ||
-      UA.indexOf("ipod") > -1
-    ) {
-      //IOS
-      return "ios";
-    } else {
-      return "PC";
-    }
-  }
-  return "Unknown";
+export function usePlatformOs() {
+    const [platform, setPlatform] = useState('Unknown')
+
+    useEffect(() => {
+        if (typeof navigator !== 'undefined' && 'userAgent' in navigator) {
+            const UA = navigator.userAgent.toLowerCase()
+
+            if (UA.includes('android')) {
+                setPlatform('android')
+            } else if (UA.includes('iphone') || UA.includes('ipad') || UA.includes('ipod')) {
+                setPlatform('ios')
+            } else {
+                setPlatform('PC')
+            }
+        }
+    }, [])
+
+    return platform
 }
