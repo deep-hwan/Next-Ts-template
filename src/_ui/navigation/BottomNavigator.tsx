@@ -118,7 +118,7 @@ const Tab = forwardRef<HTMLAnchorElement, MenuProps>(({ children, href, label, b
                     )}
                 </V.Column>
 
-                <TxtSpan size={12} css={{ [MQ[3]]: { fontSize: '0.68rem' } }} {...props}>
+                <TxtSpan size={12} mediaQuery={{ s600: { size: 11 } }} {...props}>
                     {label}
                 </TxtSpan>
             </TouchableOpacity>

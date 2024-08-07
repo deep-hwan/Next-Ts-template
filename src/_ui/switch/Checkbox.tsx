@@ -1,8 +1,9 @@
+import { ForwardedRef, forwardRef, HTMLAttributes, useState } from 'react'
+import { Interpolation, Theme } from '@emotion/react'
 import { Txt, V } from '@/_ui'
 import { colors } from '@/libs/themes'
-import { Interpolation, Theme } from '@emotion/react'
-import { ForwardedRef, forwardRef, HTMLAttributes, useState } from 'react'
 
+//
 type Types = {
     themes?: {
         check?: {
@@ -38,6 +39,8 @@ type Types = {
     children?: never[]
 } & Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>
 
+//
+//
 const Checkbox = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement> | undefined) => {
     const [hover, setHover] = useState(false)
 
@@ -89,7 +92,7 @@ const Checkbox = forwardRef((props: Types, ref: ForwardedRef<HTMLDivElement> | u
             </div>
 
             {!!props?.label && (
-                <V.Column gap={4} css={{ opacity: props?.labelActive ? 1 : !!props.checked ? 1 : 0.7 }}>
+                <V.Column gap={4} opacity={props?.labelActive ? 1 : !!props.checked ? 1 : 0.7}>
                     <Txt
                         weight={props?.themes?.label?.titleWeight ?? 'medium'}
                         size={props?.themes?.label?.titleSize ?? 15}

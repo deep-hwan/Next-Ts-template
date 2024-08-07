@@ -1,10 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { ReactNode, useCallback, useEffect, useRef, HTMLAttributes } from 'react'
-import { BlurLayer } from '../display/BlurLayer'
-import { P } from '../flex/P'
-import { V } from '../flex/V'
+import { TouchableOpacity, V, P, BlurLayer } from '@/_ui'
 import { MQ } from '@/libs/themes'
-import { TouchableOpacity } from '../tab/TouchableOpacity'
 
 interface Props extends HTMLAttributes<HTMLElement> {
     children: ReactNode

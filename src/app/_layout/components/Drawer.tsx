@@ -13,7 +13,7 @@ const Drawer = () => {
     const [isDrawer, setIsDrawer] = useRecoilState<boolean>(appDrawerAtom)
 
     return (
-        <V.Column css={{ display: 'none', [MQ[1]]: { display: 'flex' } }}>
+        <V.Column display="none" mediaQuery={{ s1080: { display: 'flex' } }}>
             <AppDrawer open={isDrawer} onCancel={() => setIsDrawer(false)}>
                 <nav>
                     <V.Items gap={20} padding={{ vertical: 20, horizontal: 10 }}>

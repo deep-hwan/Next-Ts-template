@@ -1,8 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useCallback, useEffect, useRef } from 'react'
 import { MQ } from '@/libs/themes'
-import { BlurLayer, V, P } from '../index'
-import { Calendar } from '../calender/Calender'
+import { Calendar, BlurLayer, V, P } from '@/_ui'
 
 interface Props {
     zIndex?: number

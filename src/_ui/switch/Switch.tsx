@@ -1,7 +1,7 @@
 import React, { ForwardedRef, forwardRef } from 'react'
 
 //libs
-import { P, TouchableOpacity, V } from '@/_ui'
+import { P, TouchableOpacity } from '@/_ui'
 import { colors } from '@/libs/themes'
 
 //type

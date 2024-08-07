@@ -2,7 +2,7 @@ import { Interpolation, Theme } from '@emotion/react'
 
 //
 export type FlexType = {
-    display?: 'none' | 'flex' | 'inline' | 'inline-block' | 'block'
+    display?: 'none' | 'flex'
     flex?: number | string
     reverse?: boolean
     direction?: 'horizontal' | 'vertical'
@@ -37,7 +37,7 @@ export const FlexTheme = ({ direction, ...props }: FlexType) => {
     }
 
     return {
-        display: 'flex',
+        display: props?.display ?? 'flex',
         flexDirection: !!direction && FLEX_VARIANTS[direction].flexDirection,
         alignItems: !!direction && FLEX_VARIANTS[direction].align,
         justifyContent: props?.crossAlign,

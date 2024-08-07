@@ -2,7 +2,7 @@
 import React, { HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
 import { Interpolation, Theme } from '@emotion/react'
 import { MQ } from '@/libs/themes'
-import { BlurLayer, V, TouchableOpacity, P } from '../index'
+import { BlurLayer, V, TouchableOpacity, P } from '@/_ui'
 
 // --------------------------------------------
 // -------------- Type Interface --------------
@@ -145,9 +145,7 @@ export function BottomSheet({
                                 onClick={onCancel}
                                 borderRadius={1000}
                                 backgroundColor={THEME_VARIANT[theme].bar}
-                            >
-                                {''}
-                            </TouchableOpacity>
+                            />
                         </V.Column>
 
                         <V.Column
